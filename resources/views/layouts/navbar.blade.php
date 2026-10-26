@@ -525,11 +525,29 @@
                                  href="profile.html"><i
                                      class="bx bx-slider-alt text-[1.125rem] me-2 opacity-[0.7]"></i>Account
                                  Settings</a></li>
-                         <li><a class="dropdown-item text-defaulttextcolor !rounded-bl-md !rounded-br-md flex "
-                                 href="sign-in-basic.html"><i
-                                     class="bx bx-log-out text-[1.125rem] me-2 opacity-[0.7]"></i>Sign
-                                 Out</a>
-                         </li>
+
+                         {{-- <form method="POST" action="{{ route('logout') }}">
+                             @csrf
+                             <li><a class="dropdown-item text-defaulttextcolor !rounded-bl-md !rounded-br-md flex "
+                                     href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
+                                                this.closest('form').submit();"><i
+                                         class="bx bx-log-out text-[1.125rem] me-2 opacity-[0.7]"></i>Sign
+                                     Out</a>
+                             </li>
+                         </form> --}}
+
+                         <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                             <li><a class="dropdown-item text-defaulttextcolor !rounded-bl-md !rounded-br-md flex "
+                                     href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
+                                                this.closest('form').submit();"><i
+                                         class="bx bx-log-out text-[1.125rem] me-2 opacity-[0.7]"></i>Sign
+                                     Out</a>
+                             </li>
+                         </form>
+
                      </ul>
                  </div>
              </div>
