@@ -18,7 +18,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <!-- Welcome Banner -->
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white overflow-hidden shadow-xs sm:rounded-lg p-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900">
@@ -39,7 +39,7 @@
             <!-- Quick Navigation Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- My Bookings Card -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="bg-white p-6 rounded-lg shadow-xs border border-gray-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-2xl mb-4">
                         <i class="ri-calendar-check-line"></i>
                     </div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- Room Catalog Card -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="bg-white p-6 rounded-lg shadow-xs border border-gray-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl mb-4">
                         <i class="ri-hotel-bed-line"></i>
                     </div>
@@ -67,7 +67,7 @@
                 </div>
 
                 <!-- Backoffice Hub Card -->
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="bg-white p-6 rounded-lg shadow-xs border border-gray-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-4">
                         <i class="ri-shield-user-line"></i>
                     </div>

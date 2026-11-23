@@ -2,14 +2,14 @@
 
 @section('contents')
     <!-- Page Header -->
-    <div class="md:flex block items-center justify-between mb-6 mt-[2rem]  page-header-breadcrumb">
+    <div class="md:flex block items-center justify-between mb-6 mt-8  page-header-breadcrumb">
         <div class="my-auto">
             <h5 class="page-title text-[1.3125rem] font-medium text-defaulttextcolor mb-0">Profile</h5>
             <nav>
                 <ol class="flex items-center min-w-0 whitespace-nowrap">
                     <li class="text-[12px]"> <a class="flex items-center text-primary hover:text-primary"
                             href="javascript:void(0);"> Pages <i
-                                class="flex-shrink-0 mx-3 overflow-visible ti ti-chevrons-right text-textmuted rtl:rotate-180"></i>
+                                class="shrink-0 mx-3 overflow-visible ti ti-chevrons-right text-textmuted rtl:rotate-180"></i>
                         </a> </li>
                     <li class="text-[12px]"> <a class="flex items-center text-textmuted" href="javascript:void(0);">Profile
                         </a> </li>
@@ -19,27 +19,27 @@
 
         <div class="flex xl:my-auto right-content align-items-center">
             <div class="pe-1 xl:mb-0">
-                <button type="button" class="ti-btn ti-btn-info-full text-white ti-btn-icon me-2 btn-b !mb-0">
+                <button type="button" class="ti-btn ti-btn-info-full text-white ti-btn-icon me-2 btn-b mb-0!">
                     <i class="mdi mdi-filter-variant"></i>
                 </button>
             </div>
             <div class="pe-1 xl:mb-0">
-                <button type="button" class="ti-btn ti-btn-danger-full text-white ti-btn-icon me-2 !mb-0">
+                <button type="button" class="ti-btn ti-btn-danger-full text-white ti-btn-icon me-2 mb-0!">
                     <i class="mdi mdi-star"></i>
                 </button>
             </div>
             <div class="pe-1 xl:mb-0">
-                <button type="button" class="ti-btn ti-btn-warning-full text-white  ti-btn-icon me-2 !mb-0">
+                <button type="button" class="ti-btn ti-btn-warning-full text-white  ti-btn-icon me-2 mb-0!">
                     <i class="mdi mdi-refresh"></i>
                 </button>
             </div>
             <div class="xl:mb-0">
                 <div class="hs-dropdown ti-dropdown">
-                    <button class="ti-btn ti-btn-primary-full text-white dropdown-toggle !mb-0" type="button"
+                    <button class="ti-btn ti-btn-primary-full text-white dropdown-toggle mb-0!" type="button"
                         id="dropdownMenuDate" data-bs-toggle="dropdown" aria-expanded="false">
                         14 Aug 2019 <i class="bi bi-chevron-down text-[.6rem] font-semibold"></i>
                     </button>
-                    <ul class="hs-dropdown-menu ti-dropdown-menu hidden !z-[100]" aria-labelledby="dropdownMenuDate">
+                    <ul class="hs-dropdown-menu ti-dropdown-menu hidden z-100!" aria-labelledby="dropdownMenuDate">
                         <li><a class="ti-dropdown-item" href="javascript:void(0);">2015</a></li>
                         <li><a class="ti-dropdown-item" href="javascript:void(0);">2016</a></li>
                         <li><a class="ti-dropdown-item" href="javascript:void(0);">2017</a></li>
@@ -56,20 +56,20 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12 xxl:col-span-4 xl:col-span-12">
             <div class="overflow-hidden box">
-                <div class="box-body !p-0">
-                    <div class="sm:flex items-start !py-6 px-4 main-profile-cover">
+                <div class="box-body p-0!">
+                    <div class="sm:flex items-start py-6! px-4 main-profile-cover">
                         <div>
                             <span class="avatar avatar-xxl avatar-rounded online me-4">
                                 <img src="../assets/images/faces/9.jpg" alt="">
                             </span>
                         </div>
-                        <div class="flex-grow main-profile-info">
-                            <div class="flex items-center !justify-between">
+                        <div class="grow main-profile-info">
+                            <div class="flex items-center justify-between!">
                                 <h6 class="font-semibold mb-1 text-white text-[1rem]">Sonya Taylor</h6>
-                                <button type="button" class="ti-btn ti-btn-light !font-medium !gap-0"><i
+                                <button type="button" class="ti-btn ti-btn-light font-medium! gap-0!"><i
                                         class="inline-block align-middle ri-add-line me-1"></i>Follow</button>
                             </div>
-                            <p class="mb-1 !text-white  opacity-[0.7]">Chief Executive Officer (C.E.O)</p>
+                            <p class="mb-1 text-white!  opacity-[0.7]">Chief Executive Officer (C.E.O)</p>
                             <p class="text-[0.75rem] text-white mb-6 opacity-[0.5]">
                                 <span class="inline-flex me-4"><i
                                         class="align-middle ri-building-line me-1"></i>Georgia</span>
@@ -214,46 +214,46 @@
             <div class="grid grid-cols-12 gap-x-6">
                 <div class="col-span-12 xl:col-span-12">
                     <div class="box">
-                        <div class="box-body !p-0">
+                        <div class="box-body p-0!">
                             <div
-                                class="!p-4 border-b dark:border-defaultborder/10 border-dashed md:flex items-center justify-between">
+                                class="p-4! border-b dark:border-defaultborder/10 border-dashed md:flex items-center justify-between">
                                 <nav class="-mb-0.5 flex-wrap sm:flex md:space-x-6 rtl:space-x-reverse" aria-label="Tabs"
                                     role="tablist">
-                                    <a class="flex w-full px-4 py-2 text-sm rounded-sm sm:w-auto active hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
+                                    <a class="flex w-full px-4 py-2 text-sm rounded-xs sm:w-auto active hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
                                         href="javascript:void(0);" id="activity-tab" data-hs-tab="#activity-tab-pane"
                                         aria-controls="activity-tab-pane">
                                         Activity
                                     </a>
-                                    <a class="flex w-full px-4 py-2 text-sm rounded-sm sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
+                                    <a class="flex w-full px-4 py-2 text-sm rounded-xs sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
                                         href="javascript:void(0);" id="posts-tab" data-hs-tab="#posts-tab-pane"
                                         aria-controls="posts-tab-pane">
                                         Posts
                                     </a>
-                                    <a class="flex w-full px-4 py-2 text-sm rounded-sm sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
+                                    <a class="flex w-full px-4 py-2 text-sm rounded-xs sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
                                         href="javascript:void(0);" id="followers-tab" data-hs-tab="#followers-tab-pane"
                                         aria-controls="followers-tab-pane">
                                         Following
                                     </a>
-                                    <a class="flex w-full px-4 py-2 text-sm rounded-sm sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
+                                    <a class="flex w-full px-4 py-2 text-sm rounded-xs sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
                                         href="javascript:void(0);" id="followers-tab" data-hs-tab="#following-tab-pane"
                                         aria-controls="following-tab-pane">
                                         Followers
                                     </a>
-                                    <a class="flex w-full px-4 py-2 text-sm rounded-sm sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
+                                    <a class="flex w-full px-4 py-2 text-sm rounded-xs sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
                                         href="javascript:void(0);" id="gallery-tab" data-hs-tab="#gallery-tab-pane"
                                         aria-controls="gallery-tab-pane">
                                         Gallery
                                     </a>
-                                    <a class="flex w-full px-4 py-2 text-sm rounded-sm sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
+                                    <a class="flex w-full px-4 py-2 text-sm rounded-xs sm:w-auto hs-tab-active:font-semibold hs-tab-active:text-white hs-tab-active:bg-primary text-primary"
                                         href="javascript:void(0);" id="settings-tab" data-hs-tab="#settings-tab-pane"
                                         aria-controls="settings-tab-pane">
                                         Settings
                                     </a>
                                 </nav>
                             </div>
-                            <div class="!p-4">
+                            <div class="p-4!">
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane show active fade !p-0 !border-0" id="activity-tab-pane"
+                                    <div class="tab-pane show active fade p-0! border-0!" id="activity-tab-pane"
                                         role="tabpanel" aria-labelledby="activity-tab" tabindex="0">
                                         <ul class="list-none profile-timeline">
                                             <li>
@@ -412,9 +412,9 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="tab-pane fade !p-0 !border-0 hidden !rounded-md" id="posts-tab-pane"
+                                    <div class="tab-pane fade p-0! border-0! hidden rounded-md!" id="posts-tab-pane"
                                         role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
-                                        <ul class="list-group !rounded-md">
+                                        <ul class="list-group rounded-md!">
                                             <li class="list-group-item">
                                                 <div class="items-center leading-none sm:flex">
                                                     <div class="me-4">
@@ -422,23 +422,23 @@
                                                             <img src="../assets/images/faces/9.jpg" alt="">
                                                         </span>
                                                     </div>
-                                                    <div class="flex-grow">
+                                                    <div class="grow">
                                                         <div class="flex">
                                                             <input type="text"
-                                                                class="form-control !rounded-e-none !w-full"
+                                                                class="form-control rounded-e-none! w-full!"
                                                                 placeholder="Recipient's username"
                                                                 aria-label="Recipient's username with two button addons">
                                                             <button aria-label="button"
-                                                                class="ti-btn ti-btn-light !rounded-none !mb-0"
+                                                                class="ti-btn ti-btn-light rounded-none! mb-0!"
                                                                 type="button"><i class="bi bi-emoji-smile"></i></button>
                                                             <button aria-label="button"
-                                                                class="ti-btn ti-btn-light !rounded-none !mb-0"
+                                                                class="ti-btn ti-btn-light rounded-none! mb-0!"
                                                                 type="button"><i class="bi bi-paperclip"></i></button>
                                                             <button aria-label="button"
-                                                                class="ti-btn ti-btn-light !rounded-none !mb-0"
+                                                                class="ti-btn ti-btn-light rounded-none! mb-0!"
                                                                 type="button"><i class="bi bi-camera"></i></button>
                                                             <button
-                                                                class="ti-btn bg-primary !mb-0 !rounded-s-none text-white"
+                                                                class="ti-btn bg-primary mb-0! rounded-s-none! text-white"
                                                                 type="button">Post</button>
                                                         </div>
                                                     </div>
@@ -448,7 +448,7 @@
                                                 <div class="grid grid-cols-12 gap-4">
                                                     <div
                                                         class="col-span-12 xxl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12">
-                                                        <div class="border rounded dark:border-defaultborder/10">
+                                                        <div class="border rounded-sm dark:border-defaultborder/10">
                                                             <div class="flex flex-wrap items-start p-4">
                                                                 <div class="me-2">
                                                                     <span class="avatar avatar-sm avatar-rounded">
@@ -456,7 +456,7 @@
                                                                             alt="">
                                                                     </span>
                                                                 </div>
-                                                                <div class="flex-grow">
+                                                                <div class="grow">
                                                                     <p class="mb-1 font-semibold leading-none">
                                                                         You</p>
                                                                     <p class="text-[.6875rem] mb-2 text-textmuted">
@@ -472,11 +472,11 @@
                                                                         <div>
                                                                             <div class="btn-list">
                                                                                 <button type="button"
-                                                                                    class="ti-btn ti-btn-primary !me-[.375rem] !py-1 !px-2 !text-[0.75rem] !font-medium btn-wave">
+                                                                                    class="ti-btn ti-btn-primary me-[.375rem]! py-1! px-2! text-[0.75rem]! font-medium! btn-wave">
                                                                                     Comment
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
-                                                                                    class="ti-btn !me-[.375rem] ti-btn-sm ti-btn-success">
+                                                                                    class="ti-btn me-[.375rem]! ti-btn-sm ti-btn-success">
                                                                                     <i class="ri-thumb-up-line"></i>
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
@@ -501,13 +501,13 @@
                                                                             </button>
                                                                             <ul
                                                                                 class="hidden hs-dropdown-menu ti-dropdown-menu">
-                                                                                <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                         href="javascript:void(0);">Delete</a>
                                                                                 </li>
-                                                                                <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                         href="javascript:void(0);">Hide</a>
                                                                                 </li>
-                                                                                <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                         href="javascript:void(0);">Edit</a>
                                                                                 </li>
                                                                             </ul>
@@ -519,7 +519,7 @@
                                                     </div>
                                                     <div
                                                         class="col-span-12 xxl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12">
-                                                        <div class="border rounded dark:border-defaultborder/10">
+                                                        <div class="border rounded-sm dark:border-defaultborder/10">
                                                             <div class="flex flex-wrap items-start p-4">
                                                                 <div class="me-2">
                                                                     <span class="avatar avatar-sm avatar-rounded">
@@ -527,7 +527,7 @@
                                                                             alt="">
                                                                     </span>
                                                                 </div>
-                                                                <div class="flex-grow">
+                                                                <div class="grow">
                                                                     <p class="mb-1 font-semibold leading-none">
                                                                         You</p>
                                                                     <p class="text-[.6875rem] mb-2 text-textmuted">
@@ -559,11 +559,11 @@
                                                                         <div>
                                                                             <div class="btn-list">
                                                                                 <button type="button"
-                                                                                    class="ti-btn ti-btn-primary !me-[.375rem] !py-1 !px-2 !text-[0.75rem] !font-medium btn-wave">
+                                                                                    class="ti-btn ti-btn-primary me-[.375rem]! py-1! px-2! text-[0.75rem]! font-medium! btn-wave">
                                                                                     Comment
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
-                                                                                    class="ti-btn !me-[.375rem] ti-btn-sm ti-btn-success">
+                                                                                    class="ti-btn me-[.375rem]! ti-btn-sm ti-btn-success">
                                                                                     <i class="ri-thumb-up-line"></i>
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
@@ -589,13 +589,13 @@
                                                                                 </button>
                                                                                 <ul
                                                                                     class="hidden hs-dropdown-menu ti-dropdown-menu">
-                                                                                    <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                    <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                             href="javascript:void(0);">Delete</a>
                                                                                     </li>
-                                                                                    <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                    <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                             href="javascript:void(0);">Hide</a>
                                                                                     </li>
-                                                                                    <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                    <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                             href="javascript:void(0);">Edit</a>
                                                                                     </li>
                                                                                 </ul>
@@ -626,7 +626,7 @@
                                                     </div>
                                                     <div
                                                         class="col-span-12 xxl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12">
-                                                        <div class="border rounded dark:border-defaultborder/10">
+                                                        <div class="border rounded-sm dark:border-defaultborder/10">
                                                             <div class="flex flex-wrap items-start p-4">
                                                                 <div class="me-2">
                                                                     <span class="avatar avatar-sm avatar-rounded">
@@ -634,7 +634,7 @@
                                                                             alt="">
                                                                     </span>
                                                                 </div>
-                                                                <div class="flex-grow">
+                                                                <div class="grow">
                                                                     <p class="mb-1 font-semibold leading-none">
                                                                         You</p>
                                                                     <p class="text-[.6875rem] mb-2 text-textmuted">
@@ -655,11 +655,11 @@
                                                                         <div>
                                                                             <div class="btn-list">
                                                                                 <button type="button"
-                                                                                    class="ti-btn ti-btn-primary !me-[.375rem] !py-1 !px-2 !text-[0.75rem] !font-medium btn-wave">
+                                                                                    class="ti-btn ti-btn-primary me-[.375rem]! py-1! px-2! text-[0.75rem]! font-medium! btn-wave">
                                                                                     Comment
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
-                                                                                    class="ti-btn !me-[.375rem] ti-btn-sm ti-btn-success">
+                                                                                    class="ti-btn me-[.375rem]! ti-btn-sm ti-btn-success">
                                                                                     <i class="ri-thumb-up-line"></i>
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
@@ -683,13 +683,13 @@
                                                                         </button>
                                                                         <ul
                                                                             class="hidden hs-dropdown-menu ti-dropdown-menu">
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Delete</a>
                                                                             </li>
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Hide</a>
                                                                             </li>
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Edit</a>
                                                                             </li>
                                                                         </ul>
@@ -700,7 +700,7 @@
                                                     </div>
                                                     <div
                                                         class="col-span-12 xxl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12">
-                                                        <div class="border rounded dark:border-defaultborder/10">
+                                                        <div class="border rounded-sm dark:border-defaultborder/10">
                                                             <div class="flex flex-wrap items-start p-4">
                                                                 <div class="me-2">
                                                                     <span class="avatar avatar-sm avatar-rounded">
@@ -708,7 +708,7 @@
                                                                             alt="">
                                                                     </span>
                                                                 </div>
-                                                                <div class="flex-grow">
+                                                                <div class="grow">
                                                                     <p class="mb-1 font-semibold leading-none">
                                                                         You</p>
                                                                     <p class="text-[.6875rem] mb-2 text-textmuted">
@@ -741,11 +741,11 @@
                                                                         <div>
                                                                             <div class="btn-list">
                                                                                 <button type="button"
-                                                                                    class="ti-btn ti-btn-primary !me-[.375rem] !py-1 !px-2 !text-[0.75rem] !font-medium btn-wave">
+                                                                                    class="ti-btn ti-btn-primary me-[.375rem]! py-1! px-2! text-[0.75rem]! font-medium! btn-wave">
                                                                                     Comment
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
-                                                                                    class="ti-btn !me-[.375rem] ti-btn-sm ti-btn-success">
+                                                                                    class="ti-btn me-[.375rem]! ti-btn-sm ti-btn-success">
                                                                                     <i class="ri-thumb-up-line"></i>
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
@@ -770,13 +770,13 @@
                                                                             </button>
                                                                             <ul
                                                                                 class="hidden hs-dropdown-menu ti-dropdown-menu">
-                                                                                <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                         href="javascript:void(0);">Delete</a>
                                                                                 </li>
-                                                                                <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                         href="javascript:void(0);">Hide</a>
                                                                                 </li>
-                                                                                <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                                <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                         href="javascript:void(0);">Edit</a>
                                                                                 </li>
                                                                             </ul>
@@ -802,7 +802,7 @@
                                                     </div>
                                                     <div
                                                         class="col-span-12 xxl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12">
-                                                        <div class="border rounded dark:border-defaultborder/10">
+                                                        <div class="border rounded-sm dark:border-defaultborder/10">
                                                             <div class="flex flex-wrap items-start p-4">
                                                                 <div class="me-2">
                                                                     <span class="avatar avatar-sm avatar-rounded">
@@ -810,7 +810,7 @@
                                                                             alt="">
                                                                     </span>
                                                                 </div>
-                                                                <div class="flex-grow">
+                                                                <div class="grow">
                                                                     <p class="mb-1 font-semibold leading-none">
                                                                         You</p>
                                                                     <p class="text-[.6875rem] mb-2 text-textmuted">
@@ -831,11 +831,11 @@
                                                                         <div>
                                                                             <div class="btn-list">
                                                                                 <button type="button"
-                                                                                    class="ti-btn ti-btn-primary !me-[.375rem] !py-1 !px-2 !text-[0.75rem] !font-medium btn-wave">
+                                                                                    class="ti-btn ti-btn-primary me-[.375rem]! py-1! px-2! text-[0.75rem]! font-medium! btn-wave">
                                                                                     Comment
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
-                                                                                    class="ti-btn !me-[.375rem] ti-btn-sm ti-btn-success">
+                                                                                    class="ti-btn me-[.375rem]! ti-btn-sm ti-btn-success">
                                                                                     <i class="ri-thumb-up-line"></i>
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
@@ -859,13 +859,13 @@
                                                                         </button>
                                                                         <ul
                                                                             class="hidden hs-dropdown-menu ti-dropdown-menu">
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Delete</a>
                                                                             </li>
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Hide</a>
                                                                             </li>
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Edit</a>
                                                                             </li>
                                                                         </ul>
@@ -876,7 +876,7 @@
                                                     </div>
                                                     <div
                                                         class="col-span-12 xxl:col-span-12 xl:col-span-12 lg:col-span-12 md:col-span-12">
-                                                        <div class="border rounded dark:border-defaultborder/10">
+                                                        <div class="border rounded-sm dark:border-defaultborder/10">
                                                             <div class="flex flex-wrap items-start p-4">
                                                                 <div class="me-2">
                                                                     <span class="avatar avatar-sm avatar-rounded">
@@ -884,7 +884,7 @@
                                                                             alt="">
                                                                     </span>
                                                                 </div>
-                                                                <div class="flex-grow">
+                                                                <div class="grow">
                                                                     <p class="mb-1 font-semibold leading-none">
                                                                         You</p>
                                                                     <p class="text-[.6875rem] mb-2 text-textmuted">
@@ -900,11 +900,11 @@
                                                                         <div>
                                                                             <div class="btn-list">
                                                                                 <button type="button"
-                                                                                    class="ti-btn ti-btn-primary !me-[.375rem] !py-1 !px-2 !text-[0.75rem] !font-medium btn-wave">
+                                                                                    class="ti-btn ti-btn-primary me-[.375rem]! py-1! px-2! text-[0.75rem]! font-medium! btn-wave">
                                                                                     Comment
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
-                                                                                    class="ti-btn !me-[.375rem] ti-btn-sm ti-btn-success">
+                                                                                    class="ti-btn me-[.375rem]! ti-btn-sm ti-btn-success">
                                                                                     <i class="ri-thumb-up-line"></i>
                                                                                 </button>
                                                                                 <button aria-label="button" type="button"
@@ -928,13 +928,13 @@
                                                                         </button>
                                                                         <ul
                                                                             class="hidden hs-dropdown-menu ti-dropdown-menu">
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Delete</a>
                                                                             </li>
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Hide</a>
                                                                             </li>
-                                                                            <li><a class="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                                                            <li><a class="ti-dropdown-item py-2! px-3.75! text-[0.8125rem]! font-medium! block"
                                                                                     href="javascript:void(0);">Edit</a>
                                                                             </li>
                                                                         </ul>
@@ -947,18 +947,18 @@
                                             </li>
                                             <li class="list-group-item">
                                                 <div class="pt-4 text-center">
-                                                    <button type="button" class="ti-btn ti-btn-primary !font-medium">Show
+                                                    <button type="button" class="ti-btn ti-btn-primary font-medium!">Show
                                                         All</button>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="tab-pane fade !p-0 !border-0 hidden" id="followers-tab-pane"
+                                    <div class="tab-pane fade p-0! border-0! hidden" id="followers-tab-pane"
                                         role="tabpanel" aria-labelledby="followers-tab" tabindex="0">
                                         <div class="grid grid-cols-12 sm:gap-x-6">
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -966,7 +966,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -998,16 +998,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">Unfollow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">Unfollow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1015,7 +1015,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1048,16 +1048,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">Unfollow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">Unfollow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1065,7 +1065,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1097,24 +1097,24 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">Unfollow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">Unfollow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
-                                                    <div class="box-body !p-6">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
+                                                    <div class="box-body p-6!">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
                                                                 data-bs-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1147,16 +1147,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">Unfollow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">Unfollow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1164,7 +1164,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1196,16 +1196,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">Unfollow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">Unfollow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1213,7 +1213,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1245,28 +1245,28 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">Unfollow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">Unfollow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-span-12">
-                                                <div class="text-center !mt-4">
+                                                <div class="text-center mt-4!">
                                                     <button type="button"
-                                                        class="ti-btn ti-btn-primary !font-medium btn-wave">Show
+                                                        class="ti-btn ti-btn-primary font-medium! btn-wave">Show
                                                         All</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade !p-0 !border-0 hidden" id="following-tab-pane"
+                                    <div class="tab-pane fade p-0! border-0! hidden" id="following-tab-pane"
                                         role="tabpanel" aria-labelledby="following-tab" tabindex="0">
                                         <div class="grid grid-cols-12 sm:gap-x-6">
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1274,7 +1274,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1306,16 +1306,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">follow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">follow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1323,7 +1323,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1355,16 +1355,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">follow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">follow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1372,7 +1372,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1404,24 +1404,24 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">follow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">follow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
-                                                    <div class="box-body !p-6">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
+                                                    <div class="box-body p-6!">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
                                                                 data-bs-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item" href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
                                                                     Message</a> <a class="ti-dropdown-item"
@@ -1454,16 +1454,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">follow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">follow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1471,7 +1471,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!">
                                                                 <a class="ti-dropdown-item"
                                                                     href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
@@ -1505,16 +1505,16 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">follow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">follow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
                                                 class="col-span-12 xxl:col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-6">
-                                                <div class="box !shadow-none border dark:border-defaultborder/10">
+                                                <div class="box shadow-none! border dark:border-defaultborder/10">
                                                     <div class="p-6 box-body">
                                                         <div class="float-right hs-dropdown ti-dropdown">
                                                             <a href="javascript:void(0);" class="option-dots"
@@ -1522,7 +1522,7 @@
                                                                 aria-expanded="true">
                                                                 <i class="fe fe-more-vertical"></i> </a>
                                                             <div
-                                                                class="hs-dropdown-menu ti-dropdown-menu hidden !z-[1000]   ">
+                                                                class="hs-dropdown-menu ti-dropdown-menu hidden z-1000!   ">
                                                                 <a class="ti-dropdown-item"
                                                                     href="javascript:void(0);"><i
                                                                         class="fe fe-message-square me-2"></i>
@@ -1556,23 +1556,23 @@
                                                     <div class="text-center box-footer">
                                                         <div class="btn-list">
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] me-1 ti-btn-light">Block</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! me-1 ti-btn-light">Block</button>
                                                             <button type="button"
-                                                                class="ti-btn btn-sm !py-1 !px-2 !text-[0.75rem] text-white bg-primary">follow</button>
+                                                                class="ti-btn btn-sm py-1! px-2! text-[0.75rem]! text-white bg-primary">follow</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-span-12">
-                                                <div class="text-center !mt-4">
+                                                <div class="text-center mt-4!">
                                                     <button type="button"
-                                                        class="ti-btn ti-btn-primary !font-medium btn-wave">Show
+                                                        class="ti-btn ti-btn-primary font-medium! btn-wave">Show
                                                         All</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade !p-0 !border-0 hidden" id="gallery-tab-pane"
+                                    <div class="tab-pane fade p-0! border-0! hidden" id="gallery-tab-pane"
                                         role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
                                         <div class="grid grid-cols-12 sm:gap-x-6 gap-y-6">
                                             <div
@@ -1674,13 +1674,13 @@
                                             <div class="col-span-12">
                                                 <div class="mt-6 text-center">
                                                     <button type="button"
-                                                        class="ti-btn ti-btn-primary !font-medium">Show
+                                                        class="ti-btn ti-btn-primary font-medium!">Show
                                                         All</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade !p-0 !border-0 hidden" id="settings-tab-pane"
+                                    <div class="tab-pane fade p-0! border-0! hidden" id="settings-tab-pane"
                                         role="tabpanel" aria-labelledby="settings-tab" tabindex="0">
                                         <div class="mb-4 main-content-label">Personal Information</div>
                                         <form class="form-horizontal">
@@ -1890,7 +1890,7 @@
                                                 </div>
                                             </div>
                                             <button type="submit"
-                                                class="ti-btn ti-btn-primary-full float-end !my-3 waves-effect waves-light">Update
+                                                class="ti-btn ti-btn-primary-full float-end my-3! waves-effect waves-light">Update
                                                 Profile</button>
                                         </form>
 

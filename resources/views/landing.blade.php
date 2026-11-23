@@ -80,7 +80,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- 1. Single-bed Room -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col hover:shadow-lg transition">
             <div class="h-44 bg-slate-800 relative flex items-center justify-center text-white p-4">
                 <div class="text-center">
                     <i class="ri-hotel-bed-line text-4xl text-amber-400 mb-1"></i>
@@ -90,7 +90,7 @@
                     ₱999<span class="text-[10px] font-normal">/night</span>
                 </span>
             </div>
-            <div class="p-5 flex-grow flex flex-col justify-between">
+            <div class="p-5 grow flex flex-col justify-between">
                 <div>
                     <h4 class="text-lg font-bold text-slate-900">Single-bed Room</h4>
                     <p class="text-xs text-slate-500 mt-1 mb-4">
@@ -110,7 +110,7 @@
         </div>
 
         <!-- 2. Double-bed Room -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col hover:shadow-lg transition">
             <div class="h-44 bg-indigo-950 relative flex items-center justify-center text-white p-4">
                 <div class="text-center">
                     <i class="ri-hotel-bed-fill text-4xl text-indigo-400 mb-1"></i>
@@ -120,7 +120,7 @@
                     ₱1,999<span class="text-[10px] font-normal">/night</span>
                 </span>
             </div>
-            <div class="p-5 flex-grow flex flex-col justify-between">
+            <div class="p-5 grow flex flex-col justify-between">
                 <div>
                     <h4 class="text-lg font-bold text-slate-900">Double-bed Room</h4>
                     <p class="text-xs text-slate-500 mt-1 mb-4">
@@ -140,7 +140,7 @@
         </div>
 
         <!-- 3. Family Room -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col hover:shadow-lg transition">
             <div class="h-44 bg-slate-900 relative flex items-center justify-center text-white p-4">
                 <div class="text-center">
                     <i class="ri-group-line text-4xl text-emerald-400 mb-1"></i>
@@ -150,7 +150,7 @@
                     ₱2,999<span class="text-[10px] font-normal">/night</span>
                 </span>
             </div>
-            <div class="p-5 flex-grow flex flex-col justify-between">
+            <div class="p-5 grow flex flex-col justify-between">
                 <div>
                     <h4 class="text-lg font-bold text-slate-900">Family Room</h4>
                     <p class="text-xs text-slate-500 mt-1 mb-4">
@@ -171,7 +171,7 @@
 
         <!-- 4. Superior Suite -->
         <div class="bg-white rounded-2xl border-2 border-amber-300 shadow-md overflow-hidden flex flex-col hover:shadow-xl transition relative">
-            <div class="h-44 bg-gradient-to-tr from-amber-900 to-slate-900 relative flex items-center justify-center text-white p-4">
+            <div class="h-44 bg-linear-to-tr from-amber-900 to-slate-900 relative flex items-center justify-center text-white p-4">
                 <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">
                     VIP Flagship Suite
                 </span>
@@ -183,7 +183,7 @@
                     ₱4,999<span class="text-[10px] font-normal">/night</span>
                 </span>
             </div>
-            <div class="p-5 flex-grow flex flex-col justify-between">
+            <div class="p-5 grow flex flex-col justify-between">
                 <div>
                     <h4 class="text-lg font-bold text-slate-900">Superior Room</h4>
                     <p class="text-xs text-slate-500 mt-1 mb-4">
@@ -214,7 +214,7 @@
                 Enter your unique Reservation Code and Email into our fast lookup tool to retrieve your printable E-receipt, check stay status, or process cancellations.
             </p>
             <div class="mt-6 flex flex-wrap gap-4">
-                <a href="{{ route('reservations.lookup') }}" class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm shadow transition">
+                <a href="{{ route('reservations.lookup') }}" class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm shadow-sm transition">
                     Look Up Booking Code
                 </a>
                 <a href="{{ route('rooms.index') }}" class="px-5 py-3 rounded-xl bg-indigo-800 hover:bg-indigo-700 text-white font-semibold text-sm transition border border-indigo-700">

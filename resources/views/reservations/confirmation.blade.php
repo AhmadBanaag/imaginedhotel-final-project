@@ -4,7 +4,7 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Success Banner -->
     <div class="text-center mb-8">
-        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-xs">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-2xs">
             <i class="ri-checkbox-circle-line"></i>
         </div>
         <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Reservation Confirmed!</h1>

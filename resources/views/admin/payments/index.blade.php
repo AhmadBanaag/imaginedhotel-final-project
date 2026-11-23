@@ -7,17 +7,17 @@
 <div class="space-y-6">
     <!-- Top Summary Metrics -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Today's Total Collected</span>
             <div class="text-2xl font-bold text-slate-900 mt-1">₱18,990.00</div>
             <span class="text-[11px] text-emerald-600 font-medium">OTC Deposits + E-Wallet transactions</span>
         </div>
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Pending E-Wallet Approvals</span>
             <div class="text-2xl font-bold text-amber-600 mt-1">2 Queue</div>
             <span class="text-[11px] text-slate-400">Requires receptionist reference check</span>
         </div>
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Refunds Processed (80%)</span>
             <div class="text-2xl font-bold text-rose-600 mt-1">₱1,600.00</div>
             <span class="text-[11px] text-slate-400">2 cancellations (20% fee retained)</span>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Payments Table -->
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="p-5 border-b border-slate-100 flex justify-between items-center">
             <h3 class="font-bold text-slate-900 text-sm">Recent Transactions &amp; Verification Ledger</h3>
         </div>

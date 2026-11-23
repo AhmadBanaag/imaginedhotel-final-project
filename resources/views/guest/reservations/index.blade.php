@@ -8,14 +8,14 @@
             <p class="text-sm text-slate-500 mt-1">Review your current, upcoming, and past hotel room bookings.</p>
         </div>
         <div>
-            <a href="{{ route('rooms.index') }}" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-xs transition inline-flex items-center gap-1.5">
+            <a href="{{ route('rooms.index') }}" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-2xs transition inline-flex items-center gap-1.5">
                 <i class="ri-add-line"></i> New Booking
             </a>
         </div>
     </div>
 
     <!-- Reservations Table Card -->
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse text-xs">
                 <thead>

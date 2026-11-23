@@ -5,13 +5,13 @@
 
 @section('content')
 <div class="space-y-6">
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
                 <h3 class="font-bold text-slate-900 text-sm">System User Directory</h3>
                 <p class="text-xs text-slate-500 mt-0.5">Control account activation and role authorizations (Admin, Receptionist, Guest).</p>
             </div>
-            <button onclick="alert('User invitation dialog opened.')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-1.5">
+            <button onclick="alert('User invitation dialog opened.')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-2xs transition inline-flex items-center gap-1.5">
                 <i class="ri-user-add-line"></i> Add New Staff Account
             </button>
         </div>

@@ -20,13 +20,13 @@
     </div>
 
     <!-- Booking Card -->
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 space-y-6 mb-6">
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-xs p-6 sm:p-8 space-y-6 mb-6">
         <!-- Room Info -->
         <div class="flex flex-col sm:flex-row gap-6 pb-6 border-b border-slate-100">
             <div class="w-full sm:w-48 h-32 bg-slate-900 rounded-2xl flex items-center justify-center text-white shrink-0">
                 <i class="ri-hotel-bed-fill text-4xl text-indigo-400"></i>
             </div>
-            <div class="space-y-1.5 flex-grow">
+            <div class="space-y-1.5 grow">
                 <h3 class="text-xl font-bold text-slate-900">Double-bed Room (Unit 205)</h3>
                 <p class="text-xs text-slate-500">Double bed, Storage, Air-conditioned, Free WiFi, Flat Screen TV, Bathroom with Shower &amp; Toiletries.</p>
                 <div class="pt-2 flex flex-wrap gap-4 text-xs">

@@ -19,7 +19,7 @@
 <body class="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans antialiased">
 
     <!-- Main Navigation Header -->
-    <header class="absolute top-0 left-0 w-full z-50 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
+    <header class="absolute top-0 left-0 w-full z-50 bg-linear-to-b from-black/80 via-black/40 to-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Hotel Brand Logo -->
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('signin') }}"  class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-[#EDC92C] text-white text-sm font-semibold hover:bg-[#06923E] shadow-sm transition">
+                        <a href="{{ route('signin') }}"  class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-[#EDC92C] text-white text-sm font-semibold hover:bg-[#06923E] shadow-xs transition">
                             Sign In
                         </a>
                     @endauth
@@ -103,7 +103,7 @@
     </header>
 
     <!-- Main Dynamic Content -->
-    <main class="flex-grow -mt-17"> 
+    <main class="grow -mt-17"> 
         @yield('content')
     </main>
 

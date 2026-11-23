@@ -9,7 +9,7 @@
     filterStatus: ''
 }">
     <!-- Top Action Bar -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
         <div class="flex flex-wrap gap-2 text-xs">
             <button @click="filterCategory = ''" :class="filterCategory === '' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition">
                 All (31 Units)
@@ -28,14 +28,14 @@
             </button>
         </div>
         <div>
-            <a href="{{ route('admin.rooms.create') }}" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-1.5">
+            <a href="{{ route('admin.rooms.create') }}" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-2xs transition inline-flex items-center gap-1.5">
                 <i class="ri-add-line"></i> Add New Room Unit
             </a>
         </div>
     </div>
 
     <!-- Inventory Table Card -->
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs border-collapse">
                 <thead>

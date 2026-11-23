@@ -8,7 +8,7 @@
     <!-- Top KPI Metric Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <!-- Card 1: Total Rooms -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Inventory</span>
                 <span class="text-2xl font-bold text-slate-900 mt-1 block">31 Rooms</span>
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Card 2: Available Rooms -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Currently Available</span>
                 <span class="text-2xl font-bold text-emerald-600 mt-1 block">15 Rooms</span>
@@ -32,7 +32,7 @@
         </div>
 
         <!-- Card 3: Booked / Occupied -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Booked / Occupied</span>
                 <span class="text-2xl font-bold text-blue-600 mt-1 block">10 Rooms</span>
@@ -44,7 +44,7 @@
         </div>
 
         <!-- Card 4: Maintenance / Unavailable -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Unavailable / Hold</span>
                 <span class="text-2xl font-bold text-amber-600 mt-1 block">6 Rooms</span>
@@ -63,7 +63,7 @@
             <p class="text-xs text-indigo-200 mt-0.5">Quickly register walk-in guests, verify E-wallet payments, or look up booking codes.</p>
         </div>
         <div class="flex flex-wrap gap-2.5">
-            <a href="{{ route('admin.reservations.create') }}" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-xs transition flex items-center gap-1.5">
+            <a href="{{ route('admin.reservations.create') }}" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-2xs transition flex items-center gap-1.5">
                 <i class="ri-user-add-line"></i> Walk-in Booking
             </a>
             <a href="{{ route('admin.payments.index') }}" class="px-4 py-2 rounded-xl bg-indigo-800 hover:bg-indigo-700 text-white font-semibold text-xs transition border border-indigo-700 flex items-center gap-1.5">
@@ -76,7 +76,7 @@
     </div>
 
     <!-- Today's Front Desk Activity Table -->
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="p-5 border-b border-slate-100 flex justify-between items-center">
             <div>
                 <h3 class="font-bold text-slate-900 text-sm">Today's Scheduled Arrivals &amp; Stay Status</h3>

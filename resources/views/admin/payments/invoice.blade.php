@@ -9,7 +9,7 @@
         <a href="{{ route('admin.payments.index') }}" class="text-xs font-semibold text-indigo-600 hover:underline">
             &larr; Back to Payment Ledger
         </a>
-        <button onclick="window.print()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+        <button onclick="window.print()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-2xs transition flex items-center gap-1.5">
             <i class="ri-printer-line"></i> Print Official Invoice
         </button>
     </div>

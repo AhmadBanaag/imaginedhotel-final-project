@@ -18,9 +18,9 @@
 
     <div class="min-h-screen flex flex-col lg:flex-row">
         <!-- Left Side: Hotel Showcase & Context Banner (Desktop only) -->
-        <div class="lg:w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-8 sm:p-12 lg:p-16 flex flex-col justify-between text-white relative overflow-hidden">
+        <div class="lg:w-1/2 bg-linear-to-br from-slate-950 via-slate-900 to-indigo-950 p-8 sm:p-12 lg:p-16 flex flex-col justify-between text-white relative overflow-hidden">
             <!-- Decorative Pattern -->
-            <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
+            <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#818cf8_1px,transparent_1px)] bg-size-[20px_20px]"></div>
 
             <div class="relative z-10">
                 <a href="{{ route('landing') }}" class="inline-flex items-center gap-2.5 group">
@@ -148,13 +148,13 @@
                     <!-- Remember Me -->
                     <div class="flex items-center justify-between pt-1">
                         <label for="remember_me" class="inline-flex items-center cursor-pointer">
-                            <input id="remember_me" type="checkbox" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" name="remember">
+                            <input id="remember_me" type="checkbox" class="rounded-sm border-slate-300 text-indigo-600 focus:ring-indigo-500" name="remember">
                             <span class="ms-2 text-xs text-slate-600 font-medium">Remember this browser</span>
                         </label>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-xs transition flex items-center justify-center gap-2">
                         <i class="ri-login-box-line"></i> Sign In
                     </button>
 

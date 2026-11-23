@@ -36,7 +36,7 @@
         <div class="lg:col-span-8 space-y-6">
             <form action="{{ route('reservations.confirmation') }}" method="GET">
                 <!-- Step 1: Guest Information -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-6">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                         <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">1</span>
                         <h3 class="text-lg font-bold text-slate-900">Guest Information</h3>
@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Step 2: Stay Dates & Room Selection -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-6">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                         <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">2</span>
                         <h3 class="text-lg font-bold text-slate-900">Room &amp; Stay Dates</h3>
@@ -92,7 +92,7 @@
                 </div>
 
                 <!-- Step 3: Payment Method Selection -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-6">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                         <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">3</span>
                         <h3 class="text-lg font-bold text-slate-900">Payment Option</h3>
@@ -122,7 +122,7 @@
 
                     <!-- E-Wallet QR Display Section -->
                     <div x-show="paymentMethod === 'ewallet'" class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center gap-6">
-                        <div class="w-36 h-36 bg-white p-2 rounded-xl border border-slate-200 flex flex-col items-center justify-center shrink-0 shadow-xs">
+                        <div class="w-36 h-36 bg-white p-2 rounded-xl border border-slate-200 flex flex-col items-center justify-center shrink-0 shadow-2xs">
                             <i class="ri-qr-code-line text-6xl text-slate-900"></i>
                             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-1">Scan to Pay</span>
                         </div>
@@ -154,7 +154,7 @@
 
         <!-- Sticky Booking Summary Sidebar (4 cols) -->
         <div class="lg:col-span-4">
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs sticky top-24">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs sticky top-24">
                 <h3 class="text-base font-bold text-slate-900 pb-3 border-b border-slate-100 mb-4">Reservation Summary</h3>
 
                 <div class="space-y-3 text-xs">

@@ -15,7 +15,7 @@
     </div>
 
     <!-- Search Form Card -->
-    <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs mb-8">
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-2xs mb-8">
         <form action="{{ route('reservations.lookup') }}" method="GET" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

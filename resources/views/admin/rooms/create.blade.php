@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 sm:p-8 space-y-6">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs p-6 sm:p-8 space-y-6">
         <h2 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">Room Configuration Details</h2>
 
         <form action="{{ route('admin.rooms.index') }}" method="GET" class="space-y-4">

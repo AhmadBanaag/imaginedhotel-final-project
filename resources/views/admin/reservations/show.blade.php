@@ -24,7 +24,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Col 1: Stay & Guest Details (8 cols) -->
         <div class="lg:col-span-8 space-y-6">
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-6">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs space-y-6">
                 <!-- Guest Header -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-slate-100 gap-2">
                     <div>
@@ -84,13 +84,13 @@
 
         <!-- Col 2: Action Control Panel (4 cols) -->
         <div class="lg:col-span-4 space-y-4">
-            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-3">
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-2xs space-y-3">
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 pb-2 border-b border-slate-100">
                     Front Desk Status Actions
                 </h3>
 
                 <!-- 1. Check in button -->
-                <button onclick="alert('Guest Juan Dela Cruz marked as CHECKED IN. Room 205 status updated to Booked.')" class="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition shadow-xs">
+                <button onclick="alert('Guest Juan Dela Cruz marked as CHECKED IN. Room 205 status updated to Booked.')" class="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition shadow-2xs">
                     <i class="ri-login-box-line text-sm"></i> Check In Guest
                 </button>
 

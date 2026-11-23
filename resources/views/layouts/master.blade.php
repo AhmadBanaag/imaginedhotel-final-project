@@ -69,10 +69,10 @@
             <div class="header-content-right">
 
                 <!-- Start::header-element -->
-                <div class="header-element !items-center">
+                <div class="header-element items-center!">
                     <!-- Start::header-link|switcher-icon -->
                     <div class="lg:hidden block">
-                        <a href="sign-up-basic.html" class="ti-btn ti-btn-primary !m-0">
+                        <a href="sign-up-basic.html" class="ti-btn ti-btn-primary m-0!">
                             Sign Up
                         </a>
                         <a aria-label="anchor" href="javascript:void(0);" class="ti-btn m-0 p-2 px-3 ti-btn-success"

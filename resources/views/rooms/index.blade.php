@@ -16,7 +16,7 @@
     </div>
 
     <!-- Search / Filter Card -->
-    <div class="bg-white rounded-2xl p-5 shadow-xs border border-slate-200 mb-8">
+    <div class="bg-white rounded-2xl p-5 shadow-2xs border border-slate-200 mb-8">
         <form action="{{ route('rooms.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1">Check-in Date</label>
@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="flex items-end gap-2">
-                <button type="submit" class="flex-grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition">
+                <button type="submit" class="grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition">
                     Apply Filters
                 </button>
                 <a href="{{ route('rooms.index') }}" class="p-2.5 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 text-sm">
@@ -50,7 +50,7 @@
     <!-- Room Results Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Room 1: Single Bed -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between">
             <div>
                 <div class="h-44 bg-slate-900 relative p-4 flex items-center justify-center text-white">
                     <div class="text-center">
@@ -68,9 +68,9 @@
                     <h3 class="text-lg font-bold text-slate-900">Single-bed Room</h3>
                     <p class="text-xs text-slate-500 mt-1 mb-3">Single bed, private bathroom with shower &amp; toiletries, flat screen TV, AC.</p>
                     <div class="flex flex-wrap gap-1.5 mb-4 text-[11px]">
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-wifi-line"></i> Free WiFi</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-tv-line"></i> TV</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-wifi-line"></i> Free WiFi</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-tv-line"></i> TV</span>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
         </div>
 
         <!-- Room 2: Double Bed -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between">
             <div>
                 <div class="h-44 bg-indigo-950 relative p-4 flex items-center justify-center text-white">
                     <div class="text-center">
@@ -100,9 +100,9 @@
                     <h3 class="text-lg font-bold text-slate-900">Double-bed Room</h3>
                     <p class="text-xs text-slate-500 mt-1 mb-3">Double bed, ample wardrobe storage, air-conditioned, shower &amp; toiletries.</p>
                     <div class="flex flex-wrap gap-1.5 mb-4 text-[11px]">
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-wifi-line"></i> Free WiFi</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-tv-line"></i> TV</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-wifi-line"></i> Free WiFi</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-tv-line"></i> TV</span>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
         </div>
 
         <!-- Room 3: Family Room -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between">
             <div>
                 <div class="h-44 bg-slate-900 relative p-4 flex items-center justify-center text-white">
                     <div class="text-center">
@@ -132,9 +132,9 @@
                     <h3 class="text-lg font-bold text-slate-900">Family Room</h3>
                     <p class="text-xs text-slate-500 mt-1 mb-3">2 Double-beds, 1 Single-large bed, baby crib, shower &amp; toiletries, WiFi.</p>
                     <div class="flex flex-wrap gap-1.5 mb-4 text-[11px]">
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-parent-line"></i> Crib</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-wifi-line"></i> WiFi</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-parent-line"></i> Crib</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-wifi-line"></i> WiFi</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
                     </div>
                 </div>
             </div>
@@ -146,7 +146,7 @@
         </div>
 
         <!-- Room 4: Superior Room -->
-        <div class="bg-white rounded-2xl border-2 border-amber-300 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border-2 border-amber-300 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between">
             <div>
                 <div class="h-44 bg-amber-950 relative p-4 flex items-center justify-center text-white">
                     <div class="text-center">
@@ -164,9 +164,9 @@
                     <h3 class="text-lg font-bold text-slate-900">Superior Room</h3>
                     <p class="text-xs text-slate-500 mt-1 mb-3">Massage chairs, private balcony, living room, refrigerator, washer, microwave.</p>
                     <div class="flex flex-wrap gap-1.5 mb-4 text-[11px]">
-                        <span class="px-2 py-0.5 bg-amber-50 rounded text-amber-700 font-medium">Massage Chair</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600">Balcony</span>
-                        <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600">Kitchenette</span>
+                        <span class="px-2 py-0.5 bg-amber-50 rounded-sm text-amber-700 font-medium">Massage Chair</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600">Balcony</span>
+                        <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600">Kitchenette</span>
                     </div>
                 </div>
             </div>

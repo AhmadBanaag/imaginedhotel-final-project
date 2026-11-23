@@ -68,7 +68,7 @@
             </div>
 
             <!-- Navigation Links -->
-            <nav class="flex-grow p-4 space-y-1 overflow-y-auto">
+            <nav class="grow p-4 space-y-1 overflow-y-auto">
                 <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3 pt-2 pb-1">Operations</div>
                 <a href="{{ route('admin.dashboard') }}" class="admin-sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <i class="ri-dashboard-line text-lg"></i> Overview Dashboard
@@ -114,7 +114,7 @@
         </aside>
 
         <!-- Main Wrapper -->
-        <div class="flex-grow flex flex-col min-w-0">
+        <div class="grow flex flex-col min-w-0">
             <!-- Top App Bar -->
             <header class="h-20 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-30">
                 <div class="flex items-center gap-4">
@@ -155,7 +155,7 @@
             </header>
 
             <!-- Content Area -->
-            <main class="flex-grow p-6 lg:p-8">
+            <main class="grow p-6 lg:p-8">
                 @yield('content')
             </main>
 
