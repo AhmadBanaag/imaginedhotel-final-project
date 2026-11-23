@@ -36,7 +36,7 @@
                         <div class="flex flex-wrap gap-1.5 mb-4 text-[11px]">
                             <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-wifi-line"></i> Free WiFi</span>
                             <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-temp-cold-line"></i> AC</span>
-                            <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-tv-line"></i> TV</span>
+                            <span class="px-2 py-0.5 bg-slate-100 rounded-sm text-slate-600"><i class="ri-tv-line"></i> TV</span>   
                         </div>
                     </div>
                 </div>

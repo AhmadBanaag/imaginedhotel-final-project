@@ -1,7 +1,8 @@
 @extends('layouts.hotel')
 
-@section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" x-data="{
+@section('reservation-create')
+@include('components.navbar2')
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-25 pb-15" x-data="{
     roomType: '{{ request('room_type', 'single') }}',
     checkIn: '{{ date('Y-m-d') }}',
     checkOut: '{{ date('Y-m-d', strtotime('+1 day')) }}',
@@ -28,7 +29,6 @@
             &larr; Back to Rooms
         </a>
         <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Complete Your Room Reservation</h1>
-        <p class="text-sm text-slate-500 mt-1">Fill in guest details, choose between 50% OTC deposit or E-wallet payment, and confirm booking.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -71,15 +71,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Room Category</label>
-                            <select name="room_type" x-model="roomType" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
-                                <option value="single">Single-bed (₱999/night)</option>
-                                <option value="double">Double-bed (₱1,999/night)</option>
-                                <option value="family">Family Room (₱2,999/night)</option>
-                                <option value="superior">Superior Room (₱4,999/night)</option>
-                            </select>
-                        </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Check-in Date</label>
                             <input type="date" name="check_in" x-model="checkIn" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
@@ -154,7 +145,7 @@
 
         <!-- Sticky Booking Summary Sidebar (4 cols) -->
         <div class="lg:col-span-4">
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs sticky top-24">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs top-24 sticky">
                 <h3 class="text-base font-bold text-slate-900 pb-3 border-b border-slate-100 mb-4">Reservation Summary</h3>
 
                 <div class="space-y-3 text-xs">

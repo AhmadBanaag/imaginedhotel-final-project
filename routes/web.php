@@ -3,12 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Public Hotel & Guest Routes
-|--------------------------------------------------------------------------
-*/
-
 // Public Hotel Landing Page (Accessible by all guests without login)
 Route::get('/', function () {
     return view('landing');
@@ -92,6 +86,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.rooms.index');
     })->name('rooms.index');
 
+    Route::get('/rooms', function () {
+        return view('admin.rooms.index');
+    })->name('rooms.index');
+
     Route::get('/rooms/create', function () {
         return view('admin.rooms.create');
     })->name('rooms.create');
@@ -106,8 +104,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.reservations.index');
     })->name('reservations.index');
 
-    Route::get('/reservations/walk-in', function () {
-        return view('admin.reservations.create');
+    Route::get('/reservations/create', function () {
+        return view('reservations.create');
     })->name('reservations.create');
 
     Route::get('/reservations/{id}', function ($id) {
