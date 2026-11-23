@@ -7,7 +7,7 @@
 
     <div class="max-w-7xl mx-auto relative z-10 text-center">
 
-        <h1 class="text-1xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-shadow max-w-4xl mx-auto leading-tight">
+        <h1 class="text-1xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-shadow-lg max-w-4xl mx-auto leading-tight">
             Make Your Stay Memorable in Imagined Hotel!
         </h1>
 
