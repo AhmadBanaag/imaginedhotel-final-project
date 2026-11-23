@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'ImaginedHotel - Modern Comfort & Online Booking' }}</title>
+    <title>{{ $title ?? 'ImaginedHotel' }}</title>
     <meta name="description" content="ImaginedHotel online room reservation system. Single, Double, Family and Superior rooms in Kabacan.">
 
     <!-- Tailwind & Vite Styles -->
@@ -12,63 +12,40 @@
     <!-- Remix Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans antialiased">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-3">
-                <span class="inline-flex items-center gap-1">
-                    <i class="ri-map-pin-line text-amber-400"></i> UICTO, USM, Kabacan
-                </span>
-                <span class="hidden md:inline">|</span>
-                <span class="hidden md:inline-flex items-center gap-1">
-                    <i class="ri-time-line text-emerald-400"></i> Check-in: 2:00 PM / Check-out: 12:00 PM
-                </span>
-            </div>
-            <div class="flex items-center gap-4">
-                <span class="inline-flex items-center gap-1 text-slate-300">
-                    <i class="ri-wallet-3-line text-blue-400"></i> Accepted: 50% OTC Deposit or E-Wallet QR
-                </span>
-                <a href="{{ route('reservations.lookup') }}" class="text-amber-400 hover:underline">Look up Booking</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Navigation Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <header class="absolute top-0 left-0 w-full z-50 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Hotel Brand Logo -->
-                <div class="flex items-center gap-3">
+                <div class="flex items-center">
                     <a href="{{ route('landing') }}" class="flex items-center gap-2 group">
-                        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-700 to-indigo-500 text-white flex items-center justify-center font-bold text-xl shadow-md group-hover:scale-105 transition">
-                            IH
-                        </div>
+                         <i class="ri-hotel-line text-4xl text-[#EDC92C]"></i>
                         <div>
-                            <span class="text-xl font-bold tracking-tight text-slate-900">Imagined<span class="text-indigo-600">Hotel</span></span>
-                            <span class="block text-[10px] tracking-widest uppercase text-slate-500 font-semibold">Hospitality &amp; Suites</span>
+                            <span class="text-white text-xl font-bold tracking-tight text-slate-900">ImaginedHotel</span>
                         </div>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
-                    <a href="{{ route('landing') }}" class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('landing') ? 'text-indigo-600 bg-indigo-50' : 'text-slate-700 hover:text-indigo-600 hover:bg-slate-50' }}">
+                <nav class="hidden md:flex items-center space-x-5 lg:space-x-2">
+                    <a href="{{ route('landing') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('landing') ? 'text-white bg-[#EDC92C]' : 'text-white hover:text-white hover:bg-[#06923E]' }}">
                         Home
                     </a>
-                    <a href="{{ route('rooms.index') }}" class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('rooms.*') ? 'text-indigo-600 bg-indigo-50' : 'text-slate-700 hover:text-indigo-600 hover:bg-slate-50' }}">
+                    <a href="{{ route('rooms.index') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors  {{ request()->routeIs('rooms.*') ? 'text-white bg-[#EDC92C]' : 'text-white hover:text-white hover:bg-[#06923E]' }}">
                         Rooms &amp; Suites
                     </a>
-                    <a href="{{ route('reservations.lookup') }}" class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('reservations.lookup') ? 'text-indigo-600 bg-indigo-50' : 'text-slate-700 hover:text-indigo-600 hover:bg-slate-50' }}">
+                    <a href="{{ route('reservations.lookup') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors  {{ request()->routeIs('reservations.lookup') ? 'text-white bg-[#EDC92C]' : 'text-white hover:text-white hover:bg-[#06923E]' }}">
                         Find My Booking
                     </a>
-                    <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200">
+                    <!--<a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200">
                         <i class="ri-dashboard-3-line mr-1"></i> Front Desk Hub
-                    </a>
+                    </a>-->
                 </nav>
 
                 <!-- Auth & Action CTA -->
@@ -94,11 +71,8 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('signin') }}" class="text-sm font-medium text-slate-700 hover:text-indigo-600 px-3 py-2">
+                        <a href="{{ route('signin') }}"  class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-[#EDC92C] text-white text-sm font-semibold hover:bg-[#06923E] shadow-sm transition">
                             Sign In
-                        </a>
-                        <a href="{{ route('rooms.index') }}" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 shadow-sm transition">
-                            Book Now
                         </a>
                     @endauth
                 </div>
@@ -129,7 +103,7 @@
     </header>
 
     <!-- Main Dynamic Content -->
-    <main class="flex-grow">
+    <main class="flex-grow -mt-17"> 
         @yield('content')
     </main>
 

@@ -2,48 +2,40 @@
 
 @section('content')
 <!-- Hero Section with Booking Search Bar -->
-<section class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+<section class="relative bg-[url('../assets/images/hero/kabacan-header.jpg')] bg-cover bg-center text-white py-60 px-4 sm:px-6 lg:px-8">
     <!-- Ambient Background Glow -->
-    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
     <div class="max-w-7xl mx-auto relative z-10 text-center">
-        <!-- Eyebrow Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-xs font-semibold mb-6">
-            <i class="ri-hotel-star-line text-amber-400"></i> Premier Hospitality in Kabacan
-        </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight">
-            Experience Comfort, Elegance &amp; Seamless Room Reservations
+        <h1 class="text-1xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-shadow max-w-4xl mx-auto leading-tight">
+            Make Your Stay Memorable in Imagined Hotel!
         </h1>
-        <p class="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
-            Book certified accommodations starting at just <span class="text-amber-400 font-bold">₱999/night</span>. Choose flexible 50% Over-The-Counter deposits or fast E-Wallet QR verification.
-        </p>
 
         <!-- Booking Search Widget Card -->
-        <div class="mt-10 max-w-5xl mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-2xl text-slate-800 text-left border border-slate-100">
+        <div class="mt-3 max-w-5xl mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-2sxl text-slate-800 text-left border border-slate-100">
             <form action="{{ route('rooms.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
                 <!-- Check-in Date -->
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">
-                        <i class="ri-calendar-check-line text-indigo-600 mr-1"></i> Check-in Date
+                        <i class="ri-calendar-check-line text-black mr-1"></i> Check-in Date
                     </label>
-                    <input type="date" name="check_in" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" class="w-full rounded-xl border-slate-200 text-sm focus:border-indigo-500 focus:ring-indigo-500 py-2.5">
+                    <input type="date" name="check_in" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" class="w-full rounded-xl border-slate-200 text-sm focus:border-[#EDC92C] focus:ring-[#EDC92C] py-2.5">
                 </div>
 
                 <!-- Check-out Date -->
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">
-                        <i class="ri-calendar-event-line text-indigo-600 mr-1"></i> Check-out Date
+                        <i class="ri-calendar-event-line text-black mr-1"></i> Check-out Date
                     </label>
-                    <input type="date" name="check_out" value="{{ date('Y-m-d', strtotime('+1 day')) }}" min="{{ date('Y-m-d', strtotime('+1 day')) }}" class="w-full rounded-xl border-slate-200 text-sm focus:border-indigo-500 focus:ring-indigo-500 py-2.5">
+                    <input type="date" name="check_out" value="{{ date('Y-m-d', strtotime('+1 day')) }}" min="{{ date('Y-m-d', strtotime('+1 day')) }}" class="w-full rounded-xl border-slate-200 text-sm focus:border-[#EDC92C] focus:ring-[#EDC92C] py-2.5">
                 </div>
 
                 <!-- Room Type -->
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">
-                        <i class="ri-hotel-bed-line text-indigo-600 mr-1"></i> Room Category
+                        <i class="ri-hotel-bed-line text-black mr-1"></i> Room Category
                     </label>
-                    <select name="type" class="w-full rounded-xl border-slate-200 text-sm focus:border-indigo-500 focus:ring-indigo-500 py-2.5">
+                    <select name="type" class="w-full rounded-xl border-slate-200 text-sm focus:border-[#EDC92C] focus:ring-[#EDC92C] py-2.5">
                         <option value="">All Categories (31 Rooms)</option>
                         <option value="single">Single-bed Room (₱999)</option>
                         <option value="double">Double-bed Room (₱1,999)</option>
@@ -55,9 +47,9 @@
                 <!-- Budget Range -->
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">
-                        <i class="ri-money-dollar-circle-line text-indigo-600 mr-1"></i> Max Budget
+                        <i class="ri-money-dollar-circle-line text-black mr-1"></i> Max Budget
                     </label>
-                    <select name="budget" class="w-full rounded-xl border-slate-200 text-sm focus:border-indigo-500 focus:ring-indigo-500 py-2.5">
+                    <select name="budget" class="w-full rounded-xl border-slate-200 text-sm focus:border-[#EDC92C] focus:ring-[#EDC92C] py-2.5">
                         <option value="">Any Budget</option>
                         <option value="1000">Up to ₱1,000</option>
                         <option value="2000">Up to ₱2,000</option>
@@ -68,29 +60,21 @@
 
                 <!-- Submit Search Button -->
                 <div>
-                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full bg-[#EDC92C] hover:bg-[#06923E] text-white font-semibold py-3 px-4 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
                         <i class="ri-search-2-line"></i> Search Available
                     </button>
                 </div>
             </form>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="mt-8 flex flex-wrap justify-center gap-6 text-xs text-slate-400">
-            <span class="inline-flex items-center gap-1.5"><i class="ri-shield-check-line text-emerald-400 text-sm"></i> Real-time Room Availability</span>
-            <span class="inline-flex items-center gap-1.5"><i class="ri-bank-card-line text-blue-400 text-sm"></i> 50% OTC Deposit or E-Wallet QR</span>
-            <span class="inline-flex items-center gap-1.5"><i class="ri-refund-line text-amber-400 text-sm"></i> Fair Cancellation (80% Refund Policy)</span>
         </div>
     </div>
 </section>
 
 <!-- Room Categories Showcase Section -->
 <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1">Our Accommodations</h2>
-        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Handcrafted Suites For Every Travel Need</h3>
+    <div class="text-left max-w-3xl mb-12">
+        <h3 class="text-3xl font-bold text-slate-900 text-left tracking-tight">Looking For Some Rooms?</h3>
         <p class="mt-2 text-slate-600 text-sm">
-            Total of 31 rooms meticulously managed to guarantee clean, safe, and comfortable stays.
+            Explore ImaginedHotel's Budget Rooms! 
         </p>
     </div>
 
@@ -220,59 +204,7 @@
     </div>
 </section>
 
-<!-- Amenities & Service Features Section -->
-<section class="py-16 bg-white border-y border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Hotel Amenities &amp; Services</h3>
-            <p class="text-slate-500 text-sm mt-1">Everything you need for a restful, convenient stay in Kabacan.</p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">
-                    <i class="ri-wifi-line"></i>
-                </div>
-                <div>
-                    <h5 class="text-sm font-semibold text-slate-900">High-Speed WiFi</h5>
-                    <p class="text-xs text-slate-500 mt-0.5">Complimentary fast internet across all rooms.</p>
-                </div>
-            </div>
-
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center text-xl shrink-0">
-                    <i class="ri-temp-cold-line"></i>
-                </div>
-                <div>
-                    <h5 class="text-sm font-semibold text-slate-900">Full Air-Conditioning</h5>
-                    <p class="text-xs text-slate-500 mt-0.5">Adjustable climate control in every room.</p>
-                </div>
-            </div>
-
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0">
-                    <i class="ri-tv-line"></i>
-                </div>
-                <div>
-                    <h5 class="text-sm font-semibold text-slate-900">Flat Screen TV</h5>
-                    <p class="text-xs text-slate-500 mt-0.5">High definition entertainment screens.</p>
-                </div>
-            </div>
-
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0">
-                    <i class="ri-wallet-3-line"></i>
-                </div>
-                <div>
-                    <h5 class="text-sm font-semibold text-slate-900">Flexible 50% OTC</h5>
-                    <p class="text-xs text-slate-500 mt-0.5">Pay 50% deposit now, 50% balance at check-in.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Reservation Workflow Guidance Banner -->
+<!-- Reservation Workflow Guidance Banner 
 <section class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-indigo-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl">
         <div class="relative z-10 max-w-2xl">
@@ -294,5 +226,5 @@
             <i class="ri-hotel-bed-line"></i>
         </div>
     </div>
-</section>
+</section> -->
 @endsection
