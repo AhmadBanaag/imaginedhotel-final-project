@@ -110,65 +110,45 @@
     <!-- Site Footer -->
     <footer class="bg-slate-900 text-slate-400 text-sm mt-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr_1fr] gap-x-12 gap-y-8">
                 <!-- Col 1: Hotel Info -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">
-                            IH
-                        </div>
+                       <i class="ri-hotel-line text-4xl text-[#EDC92C]"></i>
                         <span class="text-white text-lg font-bold">ImaginedHotel</span>
                     </div>
                     <p class="text-xs leading-relaxed text-slate-400">
-                        Providing premier hospitality accommodations with simple, reliable room reservation, flexible 50% OTC or E-wallet payment, and verified booking guarantees.
-                    </p>
-                    <p class="text-xs text-slate-500">
-                        Final Project System by Ahmad Banaag, Carl James Ayag, and Kzyube Napoles. UICTO, USM, Kabacan.
+                        Looking for a hotel that won’t put a hole in your wallet? Welcome to "ImaginedHotel" and enjoy comfortable, affordable, and hassle-free accommodations!
                     </p>
                 </div>
 
-                <!-- Col 2: Room Types & Pricing -->
+                <!-- Col 2: Final Project Members -->
                 <div>
-                    <h5 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Room Categories</h5>
+                    <h5 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Final Project Members</h5>
                     <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between"><span>Single-bed Room (15 units)</span> <span class="text-amber-400 font-medium">₱999/night</span></li>
-                        <li class="flex justify-between"><span>Double-bed Room (10 units)</span> <span class="text-amber-400 font-medium">₱1,999/night</span></li>
-                        <li class="flex justify-between"><span>Family Room (5 units)</span> <span class="text-amber-400 font-medium">₱2,999/night</span></li>
-                        <li class="flex justify-between"><span>Superior Suite (1 unit)</span> <span class="text-amber-400 font-medium">₱4,999/night</span></li>
+                        <li><i class="ri-user-line text-[#EDC92C] mr-1"></i> Ahmad Banaag</li>
+                        <li><i class="ri-user-line text-[#EDC92C] mr-1"></i> Carl James Ayag</li>
+                        <li><i class="ri-user-line text-[#EDC92C] mr-1"></i> Kzyube Napoles</li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Policies -->
-                <div>
-                    <h5 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Hotel Policies</h5>
-                    <ul class="space-y-2 text-xs">
-                        <li><i class="ri-check-line text-emerald-400 mr-1"></i> Over the Counter (OTC): 50% downpayment required</li>
-                        <li><i class="ri-check-line text-emerald-400 mr-1"></i> E-Wallet instant payment via QR code verification</li>
-                        <li><i class="ri-information-line text-amber-400 mr-1"></i> Cancellation Policy: 20% deduction from paid deposit</li>
-                        <li><i class="ri-calendar-line text-blue-400 mr-1"></i> Guaranteed check-in with verified booking code</li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Quick Portals -->
+                <!-- Col 3: Quick Access-->
                 <div>
                     <h5 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Portals &amp; Access</h5>
                     <div class="space-y-2 text-xs">
                         <a href="{{ route('reservations.lookup') }}" class="block p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
-                            <i class="ri-search-eye-line text-amber-400 mr-1"></i> Look Up Booking Code
+                            <i class="ri-key-line text-[#EDC92C] mr-1"></i> Look Up Booking Code
                         </a>
-                        <a href="{{ route('admin.dashboard') }}" class="block p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
-                            <i class="ri-shield-keyhole-line text-purple-400 mr-1"></i> Admin &amp; Receptionist Portal
-                        </a>
-                        <a href="{{ route('rooms.index') }}" class="block p-2.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-900 text-indigo-200">
-                            <i class="ri-hotel-bed-line text-indigo-400 mr-1"></i> Book a Room Online
+                        <a onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="block p-2.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-900 text-indigo-200">
+                            <i class="ri-search-line text-[#EDC92C] mr-1"></i> Search for Rooms
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-slate-800 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
-                <p>&copy; {{ date('Y') }} ImaginedHotel.com. All rights reserved.</p>
-                <p>USM UICTO Presentation Date: December 1, 2026</p>
+                <p>&copy; {{ date('Y') }} ImaginedHotel. All rights reserved.</p>
+                <p>2 BSCS A</p>
             </div>
         </div>
     </footer>
