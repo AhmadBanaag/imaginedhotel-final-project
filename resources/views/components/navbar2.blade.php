@@ -1,5 +1,5 @@
 <!-- Main Navigation Header -->
-    <header class="absolute top-0 left-0 w-full z-50 bg-linear-to-b bg-[#202734] mb-5">
+    <header class="absolute top-0 left-0 w-full z-50 bg-linear-to-b bg-[url('../assets/images/hero/kabacan-header.jpg')] bg-cover bg-center mb-5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Hotel Brand Logo -->
@@ -7,20 +7,20 @@
                     <a href="{{ route('landing') }}" class="flex items-center gap-2 group">
                          <i class="ri-hotel-line text-4xl text-[#EDC92C]"></i>
                         <div>
-                            <span class="text-white text-xl font-bold tracking-tight text-slate-900">ImaginedHotel</span>
+                            <span class="text-white text-shadow-lg text-shadow-black/25 text-xl font-bold tracking-tight text-slate-900">ImaginedHotel</span>
                         </div>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-5 lg:space-x-2">
-                    <a href="{{ route('landing') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('landing') ? 'text-white bg-[#EDC92C]' : 'text-white hover:text-white hover:bg-[#06923E]' }}">
+                    <a href="{{ route('landing') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('landing') ? 'text-white bg-[#EDC92C]' : 'text-white text-shadow-lg hover:text-white hover:bg-[#06923E]' }}">
                         Home
                     </a>
-                    <a href="{{ route('rooms.index') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors  {{ request()->routeIs('rooms.*') ? 'text-white bg-[#EDC92C]' : 'text-white hover:text-white hover:bg-[#06923E]' }}">
+                    <a href="{{ route('rooms.index') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors  {{ request()->routeIs('rooms.*') ? 'text-white bg-[#EDC92C]' : 'text-white text-shadow-lg hover:text-white hover:bg-[#06923E]' }}">
                         Rooms &amp; Suites
                     </a>
-                    <a href="{{ route('reservations.lookup') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors  {{ request()->routeIs('reservations.lookup') ? 'text-white bg-[#EDC92C]' : 'text-white hover:text-white hover:bg-[#06923E]' }}">
+                    <a href="{{ route('reservations.lookup') }}" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors  {{ request()->routeIs('reservations.lookup') ? 'text-white bg-[#EDC92C]' : 'text-white text-shadow-lg hover:text-white hover:bg-[#06923E]' }}">
                         Find My Booking
                     </a>
                     <!--<a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200">

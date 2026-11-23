@@ -19,16 +19,16 @@
 <body class="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans antialiased">
 
     <!-- Main Dynamic Content -->
-    <main class="grow -mt-6"> 
+    <main class="grow -mt-6 mb-15"> 
         @yield('main-section')
     </main>
 
-    <main class="grow pt-24"> 
+    <main class="grow">
         @yield('rooms')
     </main>
 
     <!-- Site Footer -->
-    <footer class="bg-[#202734] text-slate-400 text-sm border-t border-slate-800 pb-15 pt-10">
+    <footer class="bg-[#202734] text-slate-400 text-sm border-t border-slate-800 pb-15 pt-15">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr_1fr] gap-x-12 gap-y-8">
                 <!-- Col 1: Hotel Info -->
@@ -37,7 +37,7 @@
                        <i class="ri-hotel-line text-4xl text-[#EDC92C]"></i>
                         <span class="text-white text-lg font-bold">ImaginedHotel</span>
                     </div>
-                    <p class="text-xs leading-relaxed text-slate-400">
+                    <p class="text-xs leading-relaxed text-white">
                         Looking for a hotel that won’t put a hole in your wallet? Welcome to "ImaginedHotel" and enjoy comfortable, affordable, and hassle-free accommodations!
                     </p>
                 </div>
@@ -56,17 +56,17 @@
                 <div>
                     <h5 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Portals &amp; Access</h5>
                     <div class="space-y-2 text-xs">
-                        <a href="{{ route('reservations.lookup') }}" class="block p-2.5 rounded-lg bg-[#06923E] hover:bg-slate-700 text-slate-200">
+                        <a href="{{ route('reservations.lookup') }}" class="block p-2.5 rounded-lg bg-[#06923E] hover:bg-[#EDC92C] text-white">
                             <i class="ri-key-line text-[#EDC92C] mr-1"></i> Look Up Booking Code
                         </a>
-                        <a onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="block p-2.5 rounded-lg bg-[#06923E] hover:bg-indigo-900 text-indigo-200">
+                        <a onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="block p-2.5 rounded-lg bg-[#06923E] hover:bg-[#EDC92C] text-white">
                             <i class="ri-search-line text-[#EDC92C] mr-1"></i> Search for Rooms
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-slate-800 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+            <div class="border-t border-white mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
                 <p>&copy; {{ date('Y') }} ImaginedHotel. All rights reserved.</p>
                 <p>2 BSCS A</p>
             </div>
