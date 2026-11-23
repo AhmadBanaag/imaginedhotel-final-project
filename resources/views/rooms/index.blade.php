@@ -2,11 +2,11 @@
 
 @section('rooms')
 @include('components.navbar2')
-<section class="pt-18">
+<section class="pt-23">
     @include('components.search-widget') 
 </section>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-9 pb-3">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-9 pb-1">
     <!-- Search / Filter Card -->
     <section class="pb-10 pt-1 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <!-- Breadcrumb & Header -->
