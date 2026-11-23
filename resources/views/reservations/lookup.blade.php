@@ -1,16 +1,14 @@
 @extends('layouts.hotel')
 
-@section('content')
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12" x-data="{
+@section('lookup')
+@include('components.navbar2')
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20" x-data="{
     searchDone: {{ request()->has('code') ? 'true' : 'false' }},
     showCancelModal: false
 }">
     <!-- Header -->
-    <div class="text-center mb-8">
-        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
-            <i class="ri-search-eye-line"></i>
-        </div>
-        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Find My Hotel Reservation</h1>
+    <div class="text-center mb-8">  
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Find My ImaginedHotel Reservation</h1>
         <p class="text-sm text-slate-500 mt-1">Booked without an account? Enter your unique Reservation Code and Email below.</p>
     </div>
 

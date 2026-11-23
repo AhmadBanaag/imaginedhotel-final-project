@@ -2,13 +2,13 @@
 
 @section('rooms')
 @include('components.navbar2')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <!-- Search / Filter Card -->
-     <section class="pt-10">
-        @include('components.search-widget')
-    </section>
+<section class="pt-18">
+    @include('components.search-widget') 
+</section>
 
-    <section class="pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-9 pb-3">
+    <!-- Search / Filter Card -->
+    <section class="pb-10 pt-1 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <!-- Breadcrumb & Header -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>

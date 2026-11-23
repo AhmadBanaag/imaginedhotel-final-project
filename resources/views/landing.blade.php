@@ -14,6 +14,7 @@
 
         @include('components.search-widget')
 
+</section>
 <!-- Room Categories Showcase Section -->
 <section class="pt-13 pb-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-left max-w-3xl mb-12">

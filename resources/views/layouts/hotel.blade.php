@@ -27,6 +27,10 @@
         @yield('rooms')
     </main>
 
+    <main class="grow">
+        @yield('lookup')
+    </main>
+
     <!-- Site Footer -->
     <footer class="bg-[#202734] text-slate-400 text-sm border-t border-slate-800 pb-15 pt-15">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,11 +60,11 @@
                 <div>
                     <h5 class="text-white font-semibold mb-3 text-sm tracking-wide uppercase">Portals &amp; Access</h5>
                     <div class="space-y-2 text-xs">
-                        <a href="{{ route('reservations.lookup') }}" class="block p-2.5 rounded-lg bg-[#06923E] hover:bg-[#EDC92C] text-white">
-                            <i class="ri-key-line text-[#EDC92C] mr-1"></i> Look Up Booking Code
+                        <a href="{{ route('reservations.lookup') }}" class="block p-2.5 rounded-lg bg-[#EDC92C] hover:bg-[#06923E] text-white">
+                            <i class="ri-key-line text-white mr-1"></i> Look Up Booking Code
                         </a>
-                        <a onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="block p-2.5 rounded-lg bg-[#06923E] hover:bg-[#EDC92C] text-white">
-                            <i class="ri-search-line text-[#EDC92C] mr-1"></i> Search for Rooms
+                        <a onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="block p-2.5 rounded-lg bg-[#EDC92C] hover:bg-[#06923E] text-white">
+                            <i class="ri-search-line text-white mr-1"></i> Search for Rooms
                         </a>
                     </div>
                 </div>

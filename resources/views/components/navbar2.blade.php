@@ -1,5 +1,5 @@
 <!-- Main Navigation Header -->
-    <header class="absolute top-0 left-0 w-full z-50 bg-linear-to-b bg-[url('../assets/images/hero/kabacan-header.jpg')] bg-cover bg-center mb-5">
+    <header class="absolute top-0 left-0 w-full z-50 bg-linear-to-b bg-[url('../assets/images/hero/kabacan-header.jpg')] bg-cover bg-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Hotel Brand Logo -->
