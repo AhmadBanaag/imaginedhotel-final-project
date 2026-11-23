@@ -103,7 +103,7 @@
     </header>
 
     <!-- Main Dynamic Content -->
-    <main class="grow -mt-17"> 
+    <main class="grow -mt-6"> 
         @yield('content')
     </main>
 
