@@ -1,6 +1,7 @@
 @extends('layouts.hotel')
 
-@section('content')
+@section('main-section')
+@include('components.navbar')
 <!-- Hero Section with Booking Search Bar -->
 <section class="relative bg-[url('../assets/images/hero/kabacan-header.jpg')] bg-cover bg-center text-white py-70 px-4 sm:px-6 lg:px-8">
     <!-- Ambient Background Glow -->
@@ -70,7 +71,7 @@
 </section>
 
 <!-- Room Categories Showcase Section -->
-<section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="pt-13 pb-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-left max-w-3xl mb-12">
         <h3 class="text-4xl font-bold text-slate-900 text-left tracking-tight">Looking For Some Rooms?</h3>
         <p class="mt-2 text-slate-600 text-lg">
