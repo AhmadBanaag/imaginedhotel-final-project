@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Front Desk & Backoffice Management - ImaginedHotel' }}</title>
     <meta name="description" content="ImaginedHotel Admin & Receptionist Backoffice Portal">
-
-    <!-- Theme Styles from backend assets -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/libs/simplebar/simplebar.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/libs/@simonwep/pickr/themes/nano.min.css') }}">
 
     <!-- Remix Icons & Font -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
@@ -41,8 +37,11 @@
 <body class="bg-slate-100 text-slate-800 font-sans antialiased">
 
     <div class="min-h-screen flex" x-data="{ sidebarOpen: false }">
+        <!-- Mobile Sidebar Backdrop -->
+        <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 z-40 bg-slate-900/50 md:hidden" style="display: none;"></div>
+
         <!-- Sidebar Navigation -->
-        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'" class="fixed md:static inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white flex flex-col transition-transform duration-200 ease-in-out border-r border-slate-800">
+        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'" class="fixed md:sticky md:top-0 md:h-screen inset-y-0 left-0 z-50 w-64 shrink-0 bg-slate-900 text-white flex flex-col transition-transform duration-200 ease-in-out border-r border-slate-800">
             <!-- Sidebar Header / Logo -->
             <div class="h-20 flex items-center justify-between px-6 border-b border-slate-800">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2">
@@ -167,10 +166,5 @@
         </div>
     </div>
 
-    <!-- Scripts from Valex backend assets -->
-    <script src="{{ asset('backend/assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/defaultmenu.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/sticky.js') }}"></script>
-    <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
 </body>
 </html>
