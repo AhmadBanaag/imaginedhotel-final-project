@@ -25,7 +25,7 @@
 }">
     <!-- Header -->
     <div class="mb-8">
-        <a href="{{ route('rooms.index') }}" class="text-xs font-semibold text-indigo-600 hover:underline inline-flex items-center gap-1 mb-2">
+        <a href="{{ route('rooms.index') }}" class="text-xs font-semibold text-[#EDC92C] hover:underline inline-flex items-center gap-1 mb-2">
             &larr; Back to Rooms
         </a>
         <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Complete Reservation!</h1>
@@ -161,13 +161,8 @@
                         <span class="text-slate-500">Duration</span>
                         <span class="font-semibold text-slate-900">1 Night</span>
                     </div>
-                    <hr class="border-slate-100 my-2">
-                    <div class="flex justify-between text-sm font-bold text-slate-900">
-                        <span>Total Stay Cost</span>
-                        <span class="text-indigo-600">₱<span x-text="price"></span></span>
-                    </div>
 
-                    <div x-show="paymentMethod === 'otc'" class="pt-3 border-t border-slate-100 space-y-1.5">
+                    <div x-show="paymentMethod === 'otc'" class="space-y-1.5">
                         <div class="flex justify-between text-xs text-emerald-700 font-semibold">
                             <span>50% Downpayment Today</span>
                             <span>₱<span x-text="otcDeposit"></span></span>
@@ -177,7 +172,12 @@
                             <span>₱<span x-text="otcRemaining"></span></span>
                         </div>
                     </div>
-                </div>
+
+                    <hr class="border-slate-100 my-2">
+                    <div class="flex justify-between text-sm font-bold text-slate-900">
+                        <span>Total Stay Cost</span>
+                        <span class="text-[#EDC92C] font-bold">₱<span x-text="price"></span></span>
+                    </div>
 
                 <div class="flex gap-3 w-full pt-4">
 
