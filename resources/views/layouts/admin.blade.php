@@ -66,13 +66,10 @@
                 <a href="{{ route('admin.reservations.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.reservations.*') ? 'active' : '' }}">
                     <i class="ri-calendar-event-line text-lg"></i> Reservations Desk
                 </a>
-                <a href="{{ route('admin.reservations.create') }}" class="admin-sidebar-item {{ request()->routeIs('admin.reservations.create') ? 'active' : '' }}">
-                    <i class="ri-user-add-line text-lg"></i> Walk-in Booking
-                </a>
 
                 <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3 pt-4 pb-1">Room Management</div>
                 <a href="{{ route('admin.rooms.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.rooms.*') ? 'active' : '' }}">
-                    <i class="ri-hotel-bed-line text-lg"></i> 31 Rooms Inventory
+                    <i class="ri-hotel-bed-line text-lg"></i> Rooms Inventory
                 </a>
                 <a href="{{ route('admin.categories.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
                     <i class="ri-price-tag-3-line text-lg"></i> Room Categories &amp; Rates
