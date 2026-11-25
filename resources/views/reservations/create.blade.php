@@ -28,19 +28,20 @@
         <a href="{{ route('rooms.index') }}" class="text-xs font-semibold text-indigo-600 hover:underline inline-flex items-center gap-1 mb-2">
             &larr; Back to Rooms
         </a>
-        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Complete Your Room Reservation</h1>
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Complete Reservation!</h1>
+        <p class="text-base text-slate-500 tracking-tight">Just fill in the (*) required info, and you're all set!</p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <!-- Form Column (8 cols) -->
         <div class="lg:col-span-8 space-y-6">
             <form action="{{ route('reservations.confirmation') }}" method="GET">
                 <!-- Step 1: Guest Information -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
-                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">1</span>
+                        <span class="w-6 h-6 rounded-full bg-[#EDC92C] text-white font-bold text-xs flex items-center justify-center">1</span>
                         <h3 class="text-lg font-bold text-slate-900">Guest Information</h3>
-                        <span class="text-xs text-slate-400 ml-auto">*All fields required for booking reference</span>
+                        <span class="text-xs text-slate-400 ml-auto">*Fill up all (*) required details</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -64,10 +65,10 @@
                 </div>
 
                 <!-- Step 2: Stay Dates & Room Selection -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
-                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">2</span>
-                        <h3 class="text-lg font-bold text-slate-900">Room &amp; Stay Dates</h3>
+                        <span class="w-6 h-6 rounded-full bg-[#EDC92C] text-white font-bold text-xs flex items-center justify-center">2</span>
+                        <h3 class="text-lg font-bold text-slate-900">Stay dates</h3>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -83,29 +84,29 @@
                 </div>
 
                 <!-- Step 3: Payment Method Selection -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
-                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">3</span>
+                        <span class="w-6 h-6 rounded-full bg-[#EDC92C] text-white font-bold text-xs flex items-center justify-center">3</span>
                         <h3 class="text-lg font-bold text-slate-900">Payment Option</h3>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                         <!-- OTC Option -->
-                        <label :class="paymentMethod === 'otc' ? 'border-indigo-600 bg-indigo-50/50' : 'border-slate-200'" class="p-4 rounded-xl border-2 cursor-pointer flex items-start gap-3 transition">
-                            <input type="radio" name="payment_method" value="otc" x-model="paymentMethod" class="mt-1 text-indigo-600 focus:ring-indigo-500">
+                        <label :class="paymentMethod === 'otc' ? 'border-[#EDC92C] bg-[#EDC92C]/50' : 'border-slate-200'" class="p-4 rounded-xl border-2 cursor-pointer flex items-start gap-3 transition">
+                            <input type="radio" name="payment_method" value="otc" x-model="paymentMethod" class="mt-1 text-[#EDC92C] focus:ring-[#EDC92C]">
                             <div>
-                                <span class="block text-sm font-bold text-slate-900">Over The Counter (OTC)</span>
-                                <span class="block text-xs text-indigo-700 font-semibold mt-0.5">Pay 50% downpayment (₱<span x-text="otcDeposit"></span>)</span>
+                                <span class="block text-sm font-bold text-black">Over The Counter (OTC)</span>
+                                <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Pay 50% downpayment (₱<span x-text="otcDeposit"></span>)</span>
                                 <p class="text-xs text-slate-500 mt-1">Remaining 50% balance (₱<span x-text="otcRemaining"></span>) paid directly to the receptionist upon check-in.</p>
                             </div>
                         </label>
 
                         <!-- E-Wallet Option -->
-                        <label :class="paymentMethod === 'ewallet' ? 'border-indigo-600 bg-indigo-50/50' : 'border-slate-200'" class="p-4 rounded-xl border-2 cursor-pointer flex items-start gap-3 transition">
-                            <input type="radio" name="payment_method" value="ewallet" x-model="paymentMethod" class="mt-1 text-indigo-600 focus:ring-indigo-500">
+                        <label :class="paymentMethod === 'ewallet' ? 'border-[#EDC92C] bg-[#EDC92C]/50' : 'border-slate-200'" class="p-4 rounded-xl border-2 cursor-pointer flex items-start gap-3 transition">
+                            <input type="radio" name="payment_method" value="ewallet" x-model="paymentMethod" class="mt-1 text-[#EDC92C] focus:ring-[#EDC92C]">
                             <div>
-                                <span class="block text-sm font-bold text-slate-900">E-Wallet (GCash / Maya QR)</span>
-                                <span class="block text-xs text-indigo-700 font-semibold mt-0.5">Scan QR &amp; instant verification</span>
+                                <span class="block text-sm font-bold text-black">E-Wallet (GCash / Maya QR)</span>
+                                <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Scan QR &amp; instant verification</span>
                                 <p class="text-xs text-slate-500 mt-1">Pay full amount (₱<span x-text="price"></span>) or deposit via online wallet QR.</p>
                             </div>
                         </label>
@@ -114,12 +115,15 @@
                     <!-- E-Wallet QR Display Section -->
                     <div x-show="paymentMethod === 'ewallet'" class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center gap-6">
                         <div class="w-36 h-36 bg-white p-2 rounded-xl border border-slate-200 flex flex-col items-center justify-center shrink-0 shadow-2xs">
-                            <i class="ri-qr-code-line text-6xl text-slate-900"></i>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-1">Scan to Pay</span>
+                            <img 
+                                src="{{ asset('images/imagined-hotel-qr.jpg')}}"
+                                alt="ImaginedHotel QR"
+                                class="w-full h-full object-contain"
+                            />
                         </div>
                         <div class="space-y-2">
                             <h4 class="text-sm font-bold text-slate-900">Scan QR via GCash or Maya App</h4>
-                            <p class="text-xs text-slate-500">Account Name: <strong>ImaginedHotel Official</strong> | 0917-000-HOTEL</p>
+                            <p class="text-xs text-slate-500">Account Name: <strong>ImaginedHotel</strong></p>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-700 mb-1">Enter Payment Reference Number</label>
                                 <input type="text" name="ref_number" placeholder="e.g. 10023491823" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
@@ -136,10 +140,6 @@
                         If you choose to cancel this reservation later, <strong>20% of the paid deposit will be deducted</strong> as an administrative processing fee, returning 80% to you.
                     </div>
                 </div>
-
-                <button type="submit" class="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
-                    <i class="ri-lock-line"></i> Confirm Reservation &amp; Generate E-Receipt
-                </button>
             </form>
         </div>
 
@@ -179,10 +179,15 @@
                     </div>
                 </div>
 
-                <div class="mt-6 pt-4 border-t border-slate-100 text-center">
-                    <div class="inline-flex items-center gap-1.5 text-xs text-slate-400">
-                        <i class="ri-shield-check-line text-emerald-500"></i> Guaranteed Booking Reservation
-                    </div>
+                <div class="flex gap-3 w-full pt-4">
+
+                    <button type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
+                        <i class="text-xs"></i> Pay as Guest
+                    </button>
+
+                    <button type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
+                        <i class="text-xs"></i> Login
+                    </button>
                 </div>
             </div>
         </div>
