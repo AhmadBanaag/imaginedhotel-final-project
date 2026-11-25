@@ -86,10 +86,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.rooms.index');
     })->name('rooms.index');
 
-    Route::get('/rooms', function () {
-        return view('admin.rooms.index');
-    })->name('rooms.index');
-
     Route::get('/rooms/create', function () {
         return view('admin.rooms.create');
     })->name('rooms.create');
@@ -105,7 +101,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reservations.index');
 
     Route::get('/reservations/create', function () {
-        return view('reservations.create');
+        return view('admin.reservations.create');
     })->name('reservations.create');
 
     Route::get('/reservations/{id}', function ($id) {
