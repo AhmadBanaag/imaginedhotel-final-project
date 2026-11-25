@@ -58,14 +58,15 @@
         if (s === 'available') return 'bg-emerald-100 text-emerald-800';
         if (s === 'booked') return 'bg-blue-100 text-blue-800';
         return 'bg-red-100 text-red-700';
-    }
+    },
+    showAddRoomModal: false
 }">
     <!-- Live KPI Strip (Matches Main Dashboard Totals) -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Total Inventory</span>
-                <span class="text-xl font-bold text-slate-900 mt-0.5 block" x-text="rooms.length + ' Units'"></span>
+                <span class="text-xl font-bold text-slate-900 mt-0.5 block" x-text="rooms.length + ' Rooms'"></span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-[#EDC92C]/25 text-[#EDC92C] flex items-center justify-center text-xl">
                 <i class="ri-hotel-bed-line"></i>
@@ -117,7 +118,7 @@
                     Family Room (5)
                 </button>
                 <button @click="filterCategory = 'Superior'" :class="filterCategory === 'Superior' ? 'bg-[#EDC92C] text-slate-950' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'" class="px-3 py-1.5 rounded-lg font-semibold transition">
-                    Superior VIP (1)
+                    Deluxe (1)
                 </button>
             </div>
 
@@ -132,9 +133,9 @@
                     <option value="booked">Booked</option>
                     <option value="unavailable">Unavailable</option>
                 </select>
-                <a href="{{ route('admin.rooms.create') }}" class="px-4 py-2 bg-[#06923E] hover:bg-[#057a34] text-white font-semibold text-xs rounded-xl shadow-2xs transition inline-flex items-center gap-1.5">
-                    <i class="ri-add-line"></i> Add Room Unit
-                </a>
+                <button @click="showAddRoomModal = true" class="px-4 py-2 bg-[#06923E] hover:bg-[#057a34] text-white font-semibold text-xs rounded-xl shadow-2xs transition inline-flex items-center gap-1.5 transition">
+                    Add Room Unit
+                </button>
             </div>
         </div>
     </div>
@@ -170,7 +171,7 @@
                                 <span :class="statusBadgeClass(room.status)" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold" x-text="statusLabel(room.status)"></span>
                             </td>
                             <td class="py-3 px-5 text-right space-x-2 whitespace-nowrap">
-                                <a href="{{ route('admin.rooms.create') }}" class="text-[#06923E] hover:underline font-semibold">Edit</a>
+                                <button @click = "showAddRoomModal = true" class="text-[#06923E] hover:underline font-semibold">Edit</button>
                                 <button type="button" @click="cycleStatus(room)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#EDC92C] text-slate-700 hover:text-slate-950 font-semibold transition">
                                     Cycle Status
                                 </button>
@@ -184,6 +185,57 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Room Modal -->
+    <div x-show="showAddRoomModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
+        <div @click.outside = "showAddRoomModal = false" class="bg-white rounded-3xl shadow-xl overflow-hidden max-w-lg h-80 w-full mx-auto space-y-6">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs p-6 sm:p-8 space-y-6">
+                <h2 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">Add Room Unit</h2>
+
+                <form @submit.prevent="saved = true" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Room Number / Identifier</label>
+                            <input type="text" x-model="roomNumber" required placeholder="e.g. Room 106" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Floor / Wing</label>
+                            <input type="text" x-model="floor" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Room Category</label>
+                            <select x-model="category" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                                <option value="single">Single-bed Room (₱999/night)</option>
+                                <option value="double">Double-bed Room (₱1,999/night)</option>
+                                <option value="family">Family Room (₱2,999/night)</option>
+                                <option value="superior">Superior Room (₱4,999/night)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Availability Status</label>
+                            <select x-model="status" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                                <option value="available">Available (Open for guest reservations)</option>
+                                <option value="booked">Booked (Guest currently staying)</option>
+                                <option value="unavailable">Unavailable (Under maintenance / hold)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex gap-3">
+                        <button type="submit" class="flex-1 py-2.5 rounded-xl bg-[#06923E] hover:bg-[#057a34] text-white font-semibold text-xs transition">
+                            Save Room Unit
+                        </button>
+                        <button @click="showAddRoomModal = false" class="py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
