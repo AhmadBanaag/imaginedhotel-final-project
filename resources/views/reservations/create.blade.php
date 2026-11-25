@@ -34,7 +34,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <!-- Form Column (8 cols) -->
-        <div class="lg:col-span-8 space-y-6">
+            
             <form action="{{ route('reservations.confirmation') }}" method="GET">
                 <!-- Step 1: Guest Information -->
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">

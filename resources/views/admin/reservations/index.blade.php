@@ -12,7 +12,7 @@
         { key: 'confirmed', label: 'Confirmed' },
         { key: 'checked_in', label: 'Checked In' },
         { key: 'checked_out', label: 'Checked Out' },
-        { key: 'cancelled', label: 'Cancelled (80% Refund)' },
+        { key: 'cancelled', label: 'Cancelled)' },
         { key: 'no_show', label: 'No-Show / Overstay' }
     ],
     bookings: [
@@ -142,8 +142,8 @@
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
-                <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Total Active Ledger</span>
-                <span class="text-xl font-bold text-slate-900 mt-0.5 block" x-text="bookings.length + ' Bookings'"></span>
+                <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Total Bookings</span>
+                <span class="text-xl font-bold text-slate-900 mt-0.5 block" x-text="bookings.length"></span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-[#EDC92C]/20 text-[#EDC92C] flex items-center justify-center text-xl">
                 <i class="ri-calendar-event-line"></i>
@@ -152,7 +152,7 @@
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Pending Verification</span>
-                <span class="text-xl font-bold text-amber-600 mt-0.5 block" x-text="countFor('pending') + ' Arrival'"></span>
+                <span class="text-xl font-bold text-amber-600 mt-0.5 block" x-text="countFor('pending')"></span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
                 <i class="ri-time-line"></i>
@@ -161,7 +161,7 @@
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Currently Checked In</span>
-                <span class="text-xl font-bold text-[#06923E] mt-0.5 block" x-text="countFor('checked_in') + ' In-House'"></span>
+                <span class="text-xl font-bold text-[#06923E] mt-0.5 block" x-text="countFor('checked_in')"></span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-[#06923E] flex items-center justify-center text-xl">
                 <i class="ri-hotel-bed-line"></i>
@@ -170,7 +170,7 @@
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Cancelled / No-Show</span>
-                <span class="text-xl font-bold text-rose-600 mt-0.5 block" x-text="(countFor('cancelled') + countFor('no_show')) + ' Flagged'"></span>
+                <span class="text-xl font-bold text-rose-600 mt-0.5 block" x-text="(countFor('cancelled') + countFor('no_show'))"></span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl">
                 <i class="ri-error-warning-line"></i>
@@ -226,7 +226,7 @@
                 <tbody class="divide-y divide-slate-100 text-slate-700">
                     <template x-for="booking in filteredBookings" :key="booking.id">
                         <tr class="hover:bg-slate-50/80 transition">
-                            <td class="py-3.5 px-5 font-mono font-bold text-slate-900" x-text="booking.code"></td>
+                            <td class="py-3.5 px-5 font-mono font-bold text-[#06923E]" x-text="booking.code"></td>
                             <td class="py-3.5 px-5">
                                 <span class="font-bold text-slate-900 block" x-text="booking.guest"></span>
                                 <span class="text-[11px] text-slate-400" x-text="booking.phone"></span>

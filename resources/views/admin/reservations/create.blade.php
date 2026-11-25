@@ -84,36 +84,47 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <!-- Form Column -->
-        <div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-2xs p-6 sm:p-8 space-y-6">
+        <div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-2xs p-8 sm:p-8 space-y-6">
             <h2 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">Walk-in Guest Registration Form</h2>
 
             <form @submit.prevent="submitWalkIn" class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">First Name</label>
-                        <input type="text" x-model="firstName" required placeholder="Guest First Name" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
+                    <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <span class="w-6 h-6 rounded-full bg-[#EDC92C] text-white font-bold text-xs flex items-center justify-center">1</span>
+                        <h3 class="text-lg font-bold text-slate-900">Guest Information</h3>
+                        <span class="text-xs text-slate-400 ml-auto">*Fill up all (*) required details</span>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Last Name</label>
-                        <input type="text" x-model="lastName" required placeholder="Guest Last Name" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">First Name</label>
+                            <input type="text" name="first_name" required value="{{ Auth::check() ? explode(' ', Auth::user()->name)[0] : 'Juan' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Last Name</label>
+                            <input type="text" name="last_name" required value="{{ Auth::check() ? (explode(' ', Auth::user()->name)[1] ?? 'Dela Cruz') : 'Dela Cruz' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address (For E-Receipt)</label>
+                            <input type="email" name="email" required value="{{ Auth::check() ? Auth::user()->email : 'guest@example.com' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number</label>
+                            <input type="tel" name="phone_number" required value="09171234567" placeholder="e.g. 09171234567" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number</label>
-                        <input type="tel" x-model="phone" required placeholder="e.g. 0917-000-0000" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
+                    <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <span class="w-6 h-6 rounded-full bg-[#EDC92C] text-white font-bold text-xs flex items-center justify-center">2</span>
+                        <h3 class="text-lg font-bold text-slate-900">Stay dates</h3>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Email (Optional)</label>
-                        <input type="email" x-model="email" placeholder="e.g. guest@example.com" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
-                    </div>
-                </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
                         <label class="block text-xs font-semibold text-slate-700 mb-1">Available Room Unit</label>
                         <select x-model="selectedRoomId" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
                             <template x-for="room in rooms" :key="room.id">
@@ -121,48 +132,15 @@
                             </template>
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Check-in Date</label>
-                        <input type="date" x-model="checkIn" min="{{ date('Y-m-d') }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Check-in Date</label>
+                            <input type="date" name="check_in" x-model="checkIn" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Check-out Date</label>
+                            <input type="date" name="check_out" x-model="checkOut" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Check-out Date</label>
-                        <input type="date" x-model="checkOut" :min="checkIn" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Payment Received at Reception</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <label :class="paymentType === 'otc_50' ? 'border-[#EDC92C] bg-[#EDC92C]/10' : 'border-slate-200 bg-slate-50'" class="p-3.5 border-2 rounded-xl flex items-center gap-2.5 cursor-pointer transition">
-                            <input type="radio" x-model="paymentType" value="otc_50" class="text-[#06923E] focus:ring-[#06923E]">
-                            <div>
-                                <span class="text-xs font-bold text-slate-900 block">50% Cash Downpayment</span>
-                                <span class="text-[11px] text-slate-500">Collect <span x-text="formatPeso(Math.round(totalCost * 0.5))"></span> now</span>
-                            </div>
-                        </label>
-                        <label :class="paymentType === 'full_paid' ? 'border-[#06923E] bg-emerald-50' : 'border-slate-200 bg-slate-50'" class="p-3.5 border-2 rounded-xl flex items-center gap-2.5 cursor-pointer transition">
-                            <input type="radio" x-model="paymentType" value="full_paid" class="text-[#06923E] focus:ring-[#06923E]">
-                            <div>
-                                <span class="text-xs font-bold text-slate-900 block">100% Full Payment Settled</span>
-                                <span class="text-[11px] text-slate-500">Collect <span x-text="formatPeso(totalCost)"></span> now</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Front Desk Confirmation Remarks</label>
-                    <textarea x-model="remarks" rows="2" placeholder="e.g. Verified walk-in guest ID, issued room key card." class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]"></textarea>
-                </div>
-
-                <div class="pt-4 border-t border-slate-100 flex gap-3">
-                    <button type="submit" class="flex-1 py-3 rounded-xl bg-[#06923E] hover:bg-[#057a34] text-white font-bold text-xs transition inline-flex items-center justify-center gap-1.5">
-                        <i class="ri-key-2-line"></i> Register Walk-in Guest &amp; Issue Key
-                    </button>
-                    <a href="{{ route('admin.reservations.index') }}" class="py-3 px-5 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
-                        Cancel
-                    </a>
                 </div>
             </form>
         </div>
@@ -202,6 +180,14 @@
                         <span>Remaining Balance</span>
                         <span class="font-semibold" x-text="formatPeso(balanceDue)"></span>
                     </div>
+                    <div class="pt-4 border-t border-slate-100 flex gap-3">
+                    <button type="submit" class="flex-1 py-3 rounded-xl bg-[#06923E] hover:bg-[#057a34] text-white font-bold text-xs transition inline-flex items-center justify-center gap-1.5">
+                        <i class="ri-key-2-line"></i> Register Walk-in Guest &amp; Issue Key
+                    </button>
+                    <a href="{{ route('admin.reservations.index') }}" class="py-3 px-5 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+                        Cancel
+                    </a>
+                </div>
                 </div>
 
                 <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900">

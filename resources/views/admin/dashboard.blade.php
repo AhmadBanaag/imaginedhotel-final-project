@@ -12,7 +12,7 @@
                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Total Rooms</span>
                 <span class="text-2xl font-bold text-slate-900 mt-1 block">31 Rooms</span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-[#EDC92C]/30 text-[#EDC92C] flex items-center justify-center text-2xl shrink-0">
+            <div class="w-12 h-12 rounded-xl bg-gray-400/10 text-black flex items-center justify-center text-2xl shrink-0">
                 <i class="ri-hotel-bed-line"></i>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Booked Rooms</span>
                 <span class="text-2xl font-bold text-blue-600 mt-1 block">10 Rooms</span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-[#EDC92C]/30 text-[#EDC92C] flex items-center justify-center text-2xl shrink-0">
+            <div class="w-12 h-12 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center text-2xl shrink-0">
                 <i class="ri-user-shared-line"></i>
             </div>
         </div>
@@ -56,11 +56,8 @@
         <div class="p-5 border-b border-slate-100 flex justify-between items-center">
             <div>
                 <h3 class="font-bold text-slate-900 text-sm">Today's Scheduled Arrivals &amp; Stay Status</h3>
-                <p class="text-xs text-slate-500 mt-0.5">Manage Check-in, Check-out, or flag No-Show and Overstay remarks.</p>
+                <p class="text-xs text-slate-500 mt-0.5">View Check-in, Check-out, and other Guest Details.</p>
             </div>
-            <a href="{{ route('admin.reservations.index') }}" class="text-xs font-semibold text-indigo-600 hover:underline">
-                View All Reservations &rarr;
-            </a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs border-collapse">
@@ -73,7 +70,6 @@
                         <th class="py-3.5 px-5">Check-out Date</th>
                         <th class="py-3.5 px-5">Payment / Balance</th>
                         <th class="py-3.5 px-5">Stay Status</th>
-                        <th class="py-3.5 px-5 text-right">Desk Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700">
@@ -93,11 +89,6 @@
                                 Pending Check-in
                             </span>
                         </td>
-                        <td class="py-3.5 px-5 text-right space-x-1.5">
-                            <a href="{{ route('admin.reservations.show', 1) }}" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold text-xs inline-flex items-center gap-1">
-                                <i class="ri-login-box-line"></i> Check In
-                            </a>
-                        </td>
                     </tr>
 
                     <!-- Row 2: Currently Checked In -->
@@ -115,11 +106,6 @@
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
                                 Checked In
                             </span>
-                        </td>
-                        <td class="py-3.5 px-5 text-right space-x-1.5">
-                            <a href="{{ route('admin.reservations.show', 2) }}" class="px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-semibold text-xs inline-flex items-center gap-1">
-                                <i class="ri-logout-box-line"></i> Check Out
-                            </a>
                         </td>
                     </tr>
                 </tbody>
