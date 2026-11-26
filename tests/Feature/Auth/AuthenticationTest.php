@@ -18,6 +18,10 @@ test('users can authenticate using the login screen', function () {
 
     $this->assertAuthenticated();
     $response->assertRedirect(route('dashboard', absolute: false));
+
+    $this->get('/rooms')->assertOk();
+    $this->assertDatabaseCount('admin_notifications', 1);
+    $this->assertDatabaseHas('admin_notifications', ['event_type' => 'customer_login']);
 });
 
 test('users can not authenticate with invalid password', function () {
@@ -29,6 +33,7 @@ test('users can not authenticate with invalid password', function () {
     ]);
 
     $this->assertGuest();
+    $this->assertDatabaseCount('admin_notifications', 0);
 });
 
 test('users can logout', function () {

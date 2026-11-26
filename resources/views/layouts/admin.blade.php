@@ -114,13 +114,24 @@
 
                 <div class="flex items-center gap-4">
 
-                    <!-- Notification icon -->
-                    <div class="relative">
-                        <button class="w-9 h-9 rounded-lg border border-slate-200 flex items-center justify-center bg-white text-[#EDC92C] hover:bg-slate-50">
-                            <i class="ri-notification-3-line text-lg"></i>
-                        </button>
-                        <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500"></span>
-                    </div>
+                    <details class="relative" @click.outside="$el.open = false" @keydown.escape="$el.open = false; $el.querySelector('summary').focus()">
+                        <summary aria-label="Admin notifications" class="relative flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-lg border border-slate-200 bg-white text-[#EDC92C] hover:bg-slate-50">
+                            <i aria-hidden="true" class="ri-notification-3-line text-lg"></i>
+                        </summary>
+                        <section aria-label="Recent notifications" class="absolute right-0 top-full mt-2 w-64 max-w-[75vw] rounded-xl border border-slate-200 bg-white text-slate-900 shadow-lg">
+                            <h2 class="border-b border-slate-100 px-4 py-3 text-sm font-semibold">Recent notifications</h2>
+                            <ul class="max-h-72 divide-y divide-slate-100 overflow-y-auto">
+                                @forelse ($notifications as $notification)
+                                    <li class="px-4 py-3">
+                                        <p class="text-sm">{{ $notification->message }}</p>
+                                        <p class="mt-1 text-xs text-slate-500">{{ \Illuminate\Support\Carbon::parse($notification->created_at)->timezone('Asia/Manila')->format('M j, g:i A') }} PHT</p>
+                                    </li>
+                                @empty
+                                    <li class="px-4 py-3 text-sm text-slate-500">No notifications yet.</li>
+                                @endforelse
+                            </ul>
+                        </section>
+                    </details>
 
                     <!-- Staff User Profile Dropdown -->
                     <div class="flex items-center gap-3 pl-2 border-l border-slate-200">
