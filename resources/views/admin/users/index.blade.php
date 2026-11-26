@@ -8,17 +8,17 @@
     searchQuery: '',
     showAddModal: false,
     editingUser: null,
-    editRoleValue: 'Receptionist',
+    editRoleValue: 'Administrator',
     newName: '',
     newEmail: '',
     newPhone: '',
-    newTitle: 'Front Desk Officer',
-    newRole: 'Receptionist',
+    newTitle: 'Hotel Administrator',
+    newRole: 'Administrator',
     toastMessage: '',
     users: [
         { id: 1, name: 'Ahmad Banaag', title: 'Lead Project Developer', email: 'admin@imaginedhotel.com', phone: '0917-111-2222', role: 'Administrator', active: true },
-        { id: 2, name: 'Carl James Ayag', title: 'Front Desk Officer', email: 'receptionist@imaginedhotel.com', phone: '0918-333-4444', role: 'Receptionist', active: true },
-        { id: 3, name: 'Kzyube Napoles', title: 'Night Shift Receptionist', email: 'kzyube@imaginedhotel.com', phone: '0919-555-6666', role: 'Receptionist', active: true },
+        { id: 2, name: 'Carl James Ayag', title: 'Hotel Administrator', email: 'carl@imaginedhotel.com', phone: '0918-333-4444', role: 'Administrator', active: true },
+        { id: 3, name: 'Kzyube Napoles', title: 'Night Shift Admin', email: 'kzyube@imaginedhotel.com', phone: '0919-555-6666', role: 'Administrator', active: true },
         { id: 4, name: 'Juan Dela Cruz', title: 'Registered Guest', email: 'guest@example.com', phone: '0917-123-4567', role: 'Guest', active: true },
         { id: 5, name: 'Maria Santos', title: 'Registered Guest', email: 'maria.santos@example.com', phone: '0918-987-6543', role: 'Guest', active: true }
     ],
@@ -32,7 +32,6 @@
     },
     roleBadge(role) {
         if (role === 'Administrator') return 'bg-purple-100 text-purple-800';
-        if (role === 'Receptionist') return 'bg-amber-100 text-amber-800';
         return 'bg-slate-100 text-slate-700';
     },
     openRoleModal(user) {
@@ -59,7 +58,7 @@
         this.newName = '';
         this.newEmail = '';
         this.newPhone = '';
-        this.newRole = 'Receptionist';
+        this.newRole = 'Administrator';
         this.showAddModal = false;
     },
     toggleActive(user) {
@@ -80,7 +79,6 @@
         <div class="flex flex-wrap gap-1.5 text-xs">
             <button @click="roleFilter = 'ALL'" :class="roleFilter === 'ALL' ? 'bg-slate-900 text-white font-bold' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg transition">All Users</button>
             <button @click="roleFilter = 'Administrator'" :class="roleFilter === 'Administrator' ? 'bg-slate-900 text-white font-bold' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg transition">Administrator</button>
-            <button @click="roleFilter = 'Receptionist'" :class="roleFilter === 'Receptionist' ? 'bg-slate-900 text-white font-bold' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg transition">Receptionist</button>
             <button @click="roleFilter = 'Guest'" :class="roleFilter === 'Guest' ? 'bg-slate-900 text-white font-bold' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg transition">Guest</button>
         </div>
         <div class="flex flex-wrap items-center gap-3">
@@ -97,8 +95,7 @@
     <!-- Directory Table -->
     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="p-5 border-b border-slate-100">
-            <h3 class="font-bold text-slate-900 text-sm">System User &amp; Staff Directory</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Control account activation and role permissions (Administrator, Receptionist, Guest).</p>
+            <h3 class="font-bold text-slate-900 text-sm">System User &amp; Staff</h3>
         </div>
 
         <div class="overflow-x-auto">
@@ -171,8 +168,8 @@
                     <div>
                         <label class="block font-semibold text-slate-700 mb-1">Role</label>
                         <select x-model="newRole" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
-                            <option value="Receptionist">Receptionist</option>
                             <option value="Administrator">Administrator</option>
+                            <option value="Guest">Guest</option>
                         </select>
                     </div>
                 </div>
@@ -195,7 +192,6 @@
                 <p class="text-slate-600">Assign system role for <strong class="text-slate-900" x-text="editingUser?.name"></strong>:</p>
                 <select x-model="editRoleValue" class="w-full text-sm rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
                     <option value="Administrator">Administrator</option>
-                    <option value="Receptionist">Receptionist</option>
                     <option value="Guest">Guest</option>
                 </select>
             </div>

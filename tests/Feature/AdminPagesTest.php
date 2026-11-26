@@ -17,10 +17,22 @@ it('renders every admin sidebar page with expected content', function (string $r
     'reservation details' => ['admin.reservations.show', ['id' => 1], 'Front Desk Status Actions'],
     'rooms inventory' => ['admin.rooms.index', [], 'Room 401 (VIP Suite)'],
     'create room' => ['admin.rooms.create', [], 'Room Configuration Details'],
-    'room categories' => ['admin.categories.index', [], 'Pricing, 50% OTC Deposit'],
+    'room categories' => ['admin.categories.index', [], 'Pricings'],
     'payments ledger' => ['admin.payments.index', [], 'Verify E-Wallet QR Payment'],
     'payment invoice' => ['admin.payments.invoice', ['id' => 1], 'Official Invoice'],
-    'monthly reports' => ['admin.reports.index', [], 'Revenue Mix: Over-the-Counter vs. E-Wallet QR'],
-    'audit trails' => ['admin.audit-trails.index', [], 'System Audit Trails'],
+    'monthly reports' => ['admin.reports.index', [], 'Revenue: Over-the-Counter vs. E-Wallet'],
+    'audit trails' => ['admin.audit-trails.index', [], 'Audit Trails Log'],
     'users and roles' => ['admin.users.index', [], 'System User & Staff Directory'],
+]);
+
+it('does not expose any receptionist role across admin and auth pages', function (string $routeName) {
+    $response = $this->get(route($routeName))->assertOk();
+
+    expect(strtolower($response->getContent()))->not->toContain('receptionist');
+})->with([
+    'admin dashboard' => 'admin.dashboard',
+    'admin users' => 'admin.users.index',
+    'admin audit trails' => 'admin.audit-trails.index',
+    'signin page' => 'signin',
+    'public booking' => 'reservations.create',
 ]);

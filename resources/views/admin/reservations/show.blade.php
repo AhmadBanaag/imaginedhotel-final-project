@@ -5,7 +5,7 @@
 @section('content')
 <div class="space-y-6" x-data="{
     status: 'pending_checkin',
-    remarks: '50% OTC deposit verified by receptionist.',
+    remarks: '50% OTC deposit verified by admin.',
     showCancelModal: false,
     feedbackMessage: '',
     logs: [

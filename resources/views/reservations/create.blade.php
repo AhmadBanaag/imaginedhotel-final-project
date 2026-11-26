@@ -97,7 +97,7 @@
                             <div>
                                 <span class="block text-sm font-bold text-black">Over The Counter (OTC)</span>
                                 <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Pay 50% downpayment (₱<span x-text="otcDeposit"></span>)</span>
-                                <p class="text-xs text-slate-500 mt-1">Remaining 50% balance (₱<span x-text="otcRemaining"></span>) paid directly to the receptionist upon check-in.</p>
+                                <p class="text-xs text-slate-500 mt-1">Remaining 50% balance (₱<span x-text="otcRemaining"></span>) paid directly to the admin upon check-in.</p>
                             </div>
                         </label>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Front Desk & Backoffice Management - ImaginedHotel' }}</title>
-    <meta name="description" content="ImaginedHotel Admin & Receptionist Backoffice Portal">
+    <meta name="description" content="ImaginedHotel Admin Backoffice Portal">
 
     <!-- Remix Icons & Font -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
@@ -79,15 +79,15 @@
                     <i class="ri-wallet-3-line text-lg"></i> Payments Verification
                 </a>
                 <a href="{{ route('admin.reports.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
-                    <i class="ri-file-chart-line text-lg"></i> Monthly Reports
+                    <i class="ri-file-chart-line text-lg"></i>Reports
                 </a>
                 <a href="{{ route('admin.audit-trails.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.audit-trails.*') ? 'active' : '' }}">
                     <i class="ri-history-line text-lg"></i> Audit Trails Log
                 </a>
 
-                <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-4 pb-1">System</div>
+                <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-4 pb-1">Users Management</div>
                 <a href="{{ route('admin.users.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-                    <i class="ri-group-line text-lg"></i> Manage Users &amp; Roles
+                    <i class="ri-group-line text-lg"></i> User Management
                 </a>
             </nav>
 
@@ -129,7 +129,7 @@
                         </div>
                         <div class="hidden lg:block text-left">
                             <div class="text-sm font-semibold text-white text-shadow-lg text-shadow-black/25 leading-none">{{ Auth::check() ? Auth::user()->name : 'Staff Administrator' }}</div>
-                            <div class="text-[11px] text-white text-shadow-lg text-shadow-black/25 mt-0.5">{{ Auth::check() ? Auth::user()->email : 'receptionist@imaginedhotel.com' }}</div>
+                            <div class="text-[11px] text-white text-shadow-lg text-shadow-black/25 mt-0.5">{{ Auth::check() ? Auth::user()->email : 'admin@imaginedhotel.com' }}</div>
                         </div>
                     </div>
 

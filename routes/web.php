@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin & Receptionist Backoffice Routes
+| Admin Backoffice Routes
 |--------------------------------------------------------------------------
 */
 
