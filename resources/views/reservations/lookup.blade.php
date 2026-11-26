@@ -2,7 +2,7 @@
 
 @section('lookup')
 @include('components.navbar2')
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-25" x-data="{
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-35" x-data="{
     searchDone: {{ request()->has('code') ? 'true' : 'false' }},
     showCancelModal: false,
     showReceiptModal: false
