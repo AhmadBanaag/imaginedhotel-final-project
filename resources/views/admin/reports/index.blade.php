@@ -4,8 +4,6 @@
 
 @section('content')
 <div class="space-y-6" x-data="{
-    showEditRoomModal: false,
-    selectedRoom: null,
     selectedMonth: '2026-11',
     reports: {
         '2026-11': {

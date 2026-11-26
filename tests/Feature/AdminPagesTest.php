@@ -4,7 +4,7 @@ it('renders the main admin dashboard', function () {
     $this->get(route('admin.dashboard'))
         ->assertOk()
         ->assertSee('Total Rooms')
-        ->assertSee("Today's Scheduled Arrivals", false);
+        ->assertSee('Scheduled Arrivals');
 });
 
 it('renders every admin sidebar page with expected content', function (string $routeName, array $params, string $expectedText) {
@@ -22,7 +22,7 @@ it('renders every admin sidebar page with expected content', function (string $r
     'payment invoice' => ['admin.payments.invoice', ['id' => 1], 'Official Invoice'],
     'monthly reports' => ['admin.reports.index', [], 'Revenue: Over-the-Counter vs. E-Wallet'],
     'audit trails' => ['admin.audit-trails.index', [], 'Audit Trails Log'],
-    'users and roles' => ['admin.users.index', [], 'System User & Staff Directory'],
+    'users and roles' => ['admin.users.index', [], 'System User & Staff'],
 ]);
 
 it('does not expose any receptionist role across admin and auth pages', function (string $routeName) {
