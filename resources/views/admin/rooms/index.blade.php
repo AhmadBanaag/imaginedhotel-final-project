@@ -133,7 +133,7 @@
                     <option value="booked">Booked</option>
                     <option value="unavailable">Unavailable</option>
                 </select>
-                <button @click="showAddRoomModal = true" class="px-4 py-2 bg-[#06923E] hover:bg-[#057a34] text-white font-semibold text-xs rounded-xl shadow-2xs transition inline-flex items-center gap-1.5 transition">
+                <button @click="showAddRoomModal = true" class="px-4 py-2 bg-[#06923E] hover:bg-[#EDC92C] text-white font-semibold text-xs rounded-xl shadow-2xs transition inline-flex items-center gap-1.5 transition">
                     Add Room Unit
                 </button>
             </div>
