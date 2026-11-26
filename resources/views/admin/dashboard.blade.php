@@ -55,8 +55,7 @@
     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="p-5 border-b border-slate-100 flex justify-between items-center">
             <div>
-                <h3 class="font-bold text-slate-900 text-sm">Today's Scheduled Arrivals &amp; Stay Status</h3>
-                <p class="text-xs text-slate-500 mt-0.5">View Check-in, Check-out, and other Guest Details.</p>
+                <h3 class="font-bold text-slate-900 text-sm">Scheduled Arrivals &amp; Stay Status</h3>
             </div>
         </div>
         <div class="overflow-x-auto">
