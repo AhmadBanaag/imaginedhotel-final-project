@@ -1,5 +1,5 @@
 <!-- Booking Search Widget Card -->
-        <div class="mt-3 max-w-5xl mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-lg text-slate-800 text-left border border-slate-100">
+<div class="mt-3 max-w-5xl mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-lg text-slate-800 text-left border border-slate-100">
             <form action="{{ route('rooms.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
                 <!-- Check-in Date -->
                 <div>
@@ -53,5 +53,3 @@
                 </div>
             </form>
         </div>
-    </div>
-</section>

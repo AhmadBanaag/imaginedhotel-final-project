@@ -186,9 +186,9 @@
                                 <button x-show="tx.status === 'pending'" type="button" @click="selectedTx = tx" class="px-3 py-1.5 bg-[#06923E] hover:bg-[#057a34] text-white font-semibold rounded-lg text-xs transition">
                                     Verify QR
                                 </button>
-                                <a x-show="tx.status !== 'pending'" type="button" @click="viewInvoice = true" class="text-[#06923E] hover:underline font-semibold">
+                                <button x-show="tx.status !== 'pending'" type="button" @click="viewInvoice = true" class="text-[#06923E] hover:underline font-semibold">
                                     View Invoice &rarr;
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </template>

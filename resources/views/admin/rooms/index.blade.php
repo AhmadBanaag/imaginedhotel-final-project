@@ -59,7 +59,60 @@
         if (s === 'booked') return 'bg-blue-100 text-blue-800';
         return 'bg-red-100 text-red-700';
     },
-    showAddRoomModal: false
+    showAddRoomModal: false,
+    editingRoom: null,
+    roomNumber: '',
+    floor: '1st Floor',
+    category: 'single',
+    status: 'available',
+    categoryMeta: {
+        single: { key: 'Single', label: 'Single-bed Room', rate: '₱999', beds: '1 Single bed, Storage, AC, TV' },
+        double: { key: 'Double', label: 'Double-bed Room', rate: '₱1,999', beds: '1 Double bed, Wardrobe, AC, TV' },
+        family: { key: 'Family', label: 'Family Room', rate: '₱2,999', beds: '2 Double-beds, 1 Single-large, Baby Crib' },
+        superior: { key: 'Superior', label: 'Superior Room', rate: '₱4,999', beds: '2 Double-beds, 1 Double-large, Massage Chairs, Living Room, Balcony' }
+    },
+    openAddModal() {
+        this.editingRoom = null;
+        this.roomNumber = '';
+        this.floor = '1st Floor';
+        this.category = 'single';
+        this.status = 'available';
+        this.showAddRoomModal = true;
+    },
+    openEditModal(room) {
+        this.editingRoom = room;
+        this.roomNumber = room.number;
+        this.floor = room.floor;
+        this.category = room.category.toLowerCase();
+        this.status = room.status;
+        this.showAddRoomModal = true;
+    },
+    saveRoom() {
+        const meta = this.categoryMeta[this.category];
+        const note = this.status === 'available' ? 'Ready for Check-in' : (this.status === 'booked' ? 'Occupied by Guest' : 'Maintenance / Hold');
+        if (this.editingRoom) {
+            this.editingRoom.number = this.roomNumber.trim();
+            this.editingRoom.floor = this.floor.trim() || '1st Floor';
+            this.editingRoom.category = meta.key;
+            this.editingRoom.categoryLabel = meta.label;
+            this.editingRoom.rate = meta.rate;
+            this.editingRoom.beds = meta.beds;
+            this.editingRoom.status = this.status;
+            this.editingRoom.note = note;
+        } else {
+            this.rooms.push({
+                number: this.roomNumber.trim(),
+                floor: this.floor.trim() || '1st Floor',
+                category: meta.key,
+                categoryLabel: meta.label,
+                rate: meta.rate,
+                beds: meta.beds,
+                status: this.status,
+                note: note
+            });
+        }
+        this.showAddRoomModal = false;
+    }
 }">
     <!-- Live KPI Strip (Matches Main Dashboard Totals) -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -171,7 +224,7 @@
                                 <span :class="statusBadgeClass(room.status)" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold" x-text="statusLabel(room.status)"></span>
                             </td>
                             <td class="py-3 px-5 text-right space-x-2 whitespace-nowrap">
-                                <button @click = "showAddRoomModal = true" class="text-[#06923E] hover:underline font-semibold">Edit</button>
+                                <button type="button" @click="openEditModal(room)" class="text-[#06923E] hover:underline font-semibold">Edit</button>
                                 <button type="button" @click="cycleStatus(room)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#EDC92C] text-slate-700 hover:text-slate-950 font-semibold transition">
                                     Cycle Status
                                 </button>
@@ -189,7 +242,7 @@
     </div>
 
     <!-- Add/Edit Room Modal -->
-    <div x-show="showAddRoomModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div x-show="showAddRoomModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
         <div @click.outside = "showAddRoomModal = false" class="bg-white rounded-3xl shadow-xl overflow-hidden max-w-lg h-80 w-full mx-auto space-y-6">
             <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs p-6 sm:p-8 space-y-6">
                 <h2 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">Add Room Unit</h2>
@@ -230,7 +283,7 @@
                         <button type="submit" class="flex-1 py-2.5 rounded-xl bg-[#06923E] hover:bg-[#057a34] text-white font-semibold text-xs transition">
                             Save Room Unit
                         </button>
-                        <button @click="showAddRoomModal = false" class="py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+                        <button type="button" @click="showAddRoomModal = false" class="py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
                             Cancel
                         </button>
                     </div>

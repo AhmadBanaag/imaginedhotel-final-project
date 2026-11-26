@@ -19,29 +19,24 @@
 <body class="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans antialiased">
 
     <!-- Main Dynamic Content -->
-    <main class="grow -mt-6 mb-15"> 
-        @yield('main-section')
-    </main>
-
-    <main class="grow">
-        @yield('rooms')
-    </main>
-
-    <main class="grow">
-        @yield('lookup')
-    </main>
-
-    <main class="grow">
-        @yield('confirmation-receipt')
-    </main>
-
-    <main class="grow">
-        @yield('reservation-create')
-    </main>
-
-    <main class="grow">
-        @yield('admin')
-    </main>
+    @hasSection('main-section')
+        <main class="grow -mt-6 mb-15">
+            @yield('main-section')
+        </main>
+    @else
+        <main class="grow">
+            @yield('rooms')
+            @yield('lookup')
+            @yield('confirmation-receipt')
+            @yield('reservation-create')
+            @hasSection('content')
+                @include('components.navbar2')
+                <div class="pt-20">
+                    @yield('content')
+                </div>
+            @endif
+        </main>
+    @endif
 
     <!-- Site Footer -->
     <footer class="bg-[#202734] text-slate-400 text-sm border-t border-slate-800 pb-15 pt-15">

@@ -18,10 +18,6 @@ Route::get('/rooms', function () {
     return view('rooms.index');
 })->name('rooms.index');
 
-Route::get('/rooms/{id}', function ($id) {
-    return view('rooms.show', ['type' => $id]);
-})->name('rooms.show');
-
 // Reservation Booking Flow
 Route::get('/reservations/book', function () {
     return view('reservations.create');

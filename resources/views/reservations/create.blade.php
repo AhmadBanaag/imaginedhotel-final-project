@@ -13,14 +13,24 @@
         'family': 2999,
         'superior': 4999
     },
+    get nights() {
+        const start = new Date(this.checkIn);
+        const end = new Date(this.checkOut);
+        if (isNaN(start) || isNaN(end)) return 1;
+        const diff = Math.round((end - start) / 86400000);
+        return diff > 0 ? diff : 1;
+    },
+    get totalCost() {
+        return this.price * this.nights;
+    },
     get price() {
         return this.rates[this.roomType] || 999;
     },
     get otcDeposit() {
-        return Math.round(this.price * 0.5);
+        return Math.round(this.totalCost * 0.5);
     },
     get otcRemaining() {
-        return this.price - this.otcDeposit;
+        return this.totalCost - this.otcDeposit;
     }
 }">
     <!-- Header -->
@@ -34,8 +44,8 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <!-- Form Column (8 cols) -->
-            
-            <form action="{{ route('reservations.confirmation') }}" method="GET">
+        <div class="lg:col-span-8 space-y-6">
+            <form id="reservationForm" action="{{ route('reservations.confirmation') }}" method="GET">
                 <!-- Step 1: Guest Information -->
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
@@ -71,7 +81,7 @@
                         <h3 class="text-lg font-bold text-slate-900">Stay dates</h3>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Check-in Date</label>
                             <input type="date" name="check_in" x-model="checkIn" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
@@ -107,7 +117,7 @@
                             <div>
                                 <span class="block text-sm font-bold text-black">E-Wallet (GCash / Maya QR)</span>
                                 <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Scan QR &amp; instant verification</span>
-                                <p class="text-xs text-slate-500 mt-1">Pay full amount (₱<span x-text="price"></span>) or deposit via online wallet QR.</p>
+                                <p class="text-xs text-slate-500 mt-1">Pay full amount (₱<span x-text="totalCost"></span>) or deposit via online wallet QR.</p>
                             </div>
                         </label>
                     </div>
@@ -159,7 +169,7 @@
                     </div>
                     <div class="flex justify-between">
                         <span class="text-slate-500">Duration</span>
-                        <span class="font-semibold text-slate-900">1 Night</span>
+                        <span class="font-semibold text-slate-900" x-text="nights + (nights === 1 ? ' Night' : ' Nights')"></span>
                     </div>
 
                     <div x-show="paymentMethod === 'otc'" class="space-y-1.5">
@@ -176,18 +186,18 @@
                     <hr class="border-slate-100 my-2">
                     <div class="flex justify-between text-sm font-bold text-slate-900">
                         <span>Total Stay Cost</span>
-                        <span class="text-[#EDC92C] font-bold">₱<span x-text="price"></span></span>
+                        <span class="text-[#EDC92C] font-bold">₱<span x-text="totalCost"></span></span>
                     </div>
 
                 <div class="flex gap-3 w-full pt-4">
 
-                    <button type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
+                    <button type="submit" form="reservationForm" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
                         <i class="text-xs"></i> Pay as Guest
                     </button>
 
-                    <button type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
+                    <a form="reservationForm" type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
                         <i class="text-xs"></i> Login
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

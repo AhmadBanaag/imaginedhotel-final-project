@@ -85,10 +85,13 @@
     
     <!-- Sign In Modal -->
     <div x-show="showSignInModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
-        <div @click.outside = "showSignInModal = false" class="bg-white rounded-3xl shadow-xl overflow-hidden max-w-lg h-89 w-full mx-auto space-y-6">
+        <div @click.outside = "showSignInModal = false" class="bg-white rounded-3xl shadow-xl max-w-md w-full p-6 sm:p-8 space-y-5">
             <div class="max-w-md w-full mx-auto space-y-1 mt-4">
-                <div class="mb-4">
+                <div class="flex justify-between mb-4">
                     <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Log in to your Account</h2>
+                    <button type="button" @click="showSignInModal = false" class="text-slate-400 hover:text-slate-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
                 </div>
 
                 <!-- Session Status Message -->
@@ -100,14 +103,14 @@
 
                     <!-- Email Address -->
                     <div>
-                        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+                        <label for="modal_email" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
                             Email Address
                         </label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                                 <i class="ri-mail-line"></i>
                             </span>
-                            <input id="email" type="email" name="email" x-model="email" required autofocus autocomplete="username"
+                            <input id="modal_email" type="email" name="email" x-model="email" required autofocus autocomplete="username"
                                 class="w-full text-sm pl-10 pr-4 py-2.5 rounded-xl border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 text-slate-900 placeholder:text-slate-400"
                                 placeholder="name@example.com">
                         </div>
@@ -117,11 +120,11 @@
                     <!-- Password -->
                     <div>
                         <div class="flex items-center justify-between mb-1">
-                            <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-slate-700">
+                            <label for="modal_password" class="block text-xs font-semibold uppercase tracking-wider text-slate-700">
                                 Password
                             </label>
                             @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="text-xs text-[#EDC92C] hover:text--[#06923E] hover:underline font-medium">
+                                <a href="{{ route('password.request') }}" class="text-xs text-[#EDC92C] hover:text-[#06923E] hover:underline font-medium">
                                     Forgot Password?
                                 </a>
                             @endif
@@ -130,7 +133,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                                 <i class="ri-lock-line"></i>
                             </span>
-                            <input id="password" :type="showPass ? 'text' : 'password'" name="password" x-model="password" required autocomplete="current-password"
+                            <input id="modal_password" :type="showPass ? 'text' : 'password'" name="password" x-model="password" required autocomplete="current-password"
                                 class="w-full text-sm pl-10 pr-10 py-2.5 rounded-xl border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 text-slate-900 placeholder:text-slate-400"
                                 placeholder="••••••••">
                             <button type="button" @click="showPass = !showPass" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600">
@@ -142,23 +145,23 @@
 
                     <!-- Remember Me -->
                     <div class="flex items-center justify-between pt-1">
-                        <label for="remember_me" class="inline-flex items-center cursor-pointer">
-                            <input id="remember_me" type="checkbox" class="rounded-sm border-slate-300 text-indigo-600 focus:ring-indigo-500" name="remember">
+                        <label for="modal_remember_me" class="inline-flex items-center cursor-pointer">
+                            <input id="modal_remember_me" type="checkbox" class="rounded-sm border-slate-300 text-indigo-600 focus:ring-indigo-500" name="remember">
                             <span class="ms-2 text-xs text-slate-600 font-medium">Remember Me</span>
                         </label>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="w-full py-3 px-4 rounded-xl bg-[#EDC92C] hover:bg-[#06923E]o-700 text-white font-bold text-sm shadow-xs transition flex items-center justify-center gap-2">
-                        <i class="ri-login-box-line text-white"></i> Sign In
+                    <button type="submit" class="w-full py-3 px-4 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-sm shadow-xs transition flex items-center justify-center gap-2">
+                        <i class="ri-login-box-line text-white"></i> Log In
                     </button>
                 </form>
 
                 <!-- Registration Link -->
                 <div class="text-center text-xs text-black pt-2">
                     Don't have an account yet?
-                    <a href="{{ route('register') }}" class="font-bold tex[#EDC92C] hover:tex[#06923E] hover:underline">
-                        Register as Guest
+                    <a href="{{ route('register') }}" class="font-bold text-[#EDC92C] hover:text-[#06923E] hover:underline">
+                        Sign up
                     </a>
                 </div>
             </div>

@@ -22,7 +22,7 @@
             <!-- Room 1: Single Bed -->
             <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between">
                 <div>
-                    <div class="h-44 bg-[url('../assets/images/rooms/single-bed-room.jpg')] bg-cover bg-center relative p-4 flex items-center justify-center text-white">>
+                    <div class="h-44 bg-[url('../assets/images/grooms/single-bed-room.jpg')] bg-cover bg-center relative p-4 flex items-center justify-center text-white">
                         <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#06923E] text-white">
                             Available
                         </span>
