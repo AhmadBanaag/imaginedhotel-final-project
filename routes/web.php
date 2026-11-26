@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin & Receptionist Backoffice Routes
+| Admin Backoffice Routes
 |--------------------------------------------------------------------------
 */
 
@@ -86,10 +86,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('dashboard');
 
     // Room Inventory
-    Route::get('/rooms', function () {
-        return view('admin.rooms.index');
-    })->name('rooms.index');
-
     Route::get('/rooms', function () {
         return view('admin.rooms.index');
     })->name('rooms.index');
@@ -109,7 +105,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reservations.index');
 
     Route::get('/reservations/create', function () {
-        return view('reservations.create');
+        return view('admin.reservations.create');
     })->name('reservations.create');
 
     Route::get('/reservations/{id}', function ($id) {

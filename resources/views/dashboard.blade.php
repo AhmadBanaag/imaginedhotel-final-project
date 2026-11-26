@@ -25,7 +25,7 @@
                             Welcome back, {{ Auth::user()->name }}!
                         </h3>
                         <p class="text-gray-600 mt-1">
-                            Manage your stays, explore available hotel rooms, or access the receptionist backoffice.
+                            Manage your stays, explore available hotel rooms, or access the admin backoffice.
                         </p>
                     </div>
                     <div class="flex items-center gap-2">
