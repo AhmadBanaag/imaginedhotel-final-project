@@ -89,7 +89,7 @@
         <div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-2xs p-8 sm:p-8 space-y-6">
             <h2 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">Walk-in Guest Registration Form</h2>
 
-            <form @submit.prevent="submitWalkIn" class="space-y-4">
+            <form @submit.prevent="submitWalkIn" class="space-y-4" id="walkInForm">
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                         <span class="w-6 h-6 rounded-full bg-[#EDC92C] text-white font-bold text-xs flex items-center justify-center">1</span>
@@ -181,15 +181,14 @@
                         <span class="font-semibold" x-text="formatPeso(balanceDue)"></span>
                     </div>
                     <div class="pt-4 border-t border-slate-100 flex gap-3">
-                    <button type="submit" class="flex-1 py-3 rounded-xl bg-[#06923E] hover:bg-[#057a34] text-white font-bold text-xs transition inline-flex items-center justify-center gap-1.5">
-                        <i class="ri-key-2-line"></i> Register Walk-in Guest &amp; Issue Key
-                    </button>
-                    <a href="{{ route('admin.reservations.index') }}" class="py-3 px-5 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
-                        Cancel
-                    </a>
+                        <button type="submit" form="walkInForm" class="flex-1 py-3 rounded-xl bg-[#06923E] hover:bg-[#057a34] text-white font-bold text-xs transition inline-flex items-center justify-center gap-1.5">
+                            <i class="ri-key-2-line"></i> Register Walk-in Guest &amp; Issue Key
+                        </button>
+                        <a href="{{ route('admin.reservations.index') }}" class="py-3 px-5 rounded-xl border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition">
+                            Cancel
+                        </a>
+                     </div>
                 </div>
-                </div>
-
                 <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900">
                     <strong>Policy Reminder:</strong> Cancellations incur a 20% fee on the paid deposit (80% refundable).
                 </div>
