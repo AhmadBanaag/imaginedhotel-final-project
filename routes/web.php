@@ -84,16 +84,34 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Dashboard & Metrics
     Route::get('/dashboard', function () {
         $today = now('Asia/Manila')->toImmutable()->startOfDay();
-        $firstDay = $today->subDays(6);
+        $ranges = [7 => 'Last 7 days', 21 => 'Last 3 weeks', 30 => 'Last month', 90 => 'Last 3 months'];
+        $days = request()->integer('days', 7);
+        if (! isset($ranges[$days])) {
+            $days = 7;
+        }
+        $firstDay = $today->subDays($days - 1);
         $counts = DB::table('daily_page_views')
             ->whereBetween('view_date', [$firstDay->toDateString(), $today->toDateString()])
             ->pluck('views', 'view_date');
-        $dailyViews = [];
-        for ($day = $firstDay; $day <= $today; $day = $day->addDay()) {
-            $dailyViews[$day->format('M j')] = (int) $counts->get($day->toDateString(), 0);
+        $bucketDays = match ($days) {
+            7 => 1,
+            90 => 30,
+            default => 7,
+        };
+        $viewTotals = [];
+        for ($end = $today; $end >= $firstDay; $end = $start->subDay()) {
+            $start = $end->subDays($bucketDays - 1)->max($firstDay);
+            $label = $start->format('M j');
+            if ($start < $end) {
+                $label .= ' – '.$end->format('M j');
+            }
+            $viewTotals[$label] = 0;
+            for ($day = $start; $day <= $end; $day = $day->addDay()) {
+                $viewTotals[$label] += (int) $counts->get($day->toDateString(), 0);
+            }
         }
 
-        return view('admin.dashboard', ['dailyViews' => $dailyViews]);
+        return view('admin.dashboard', compact('viewTotals', 'ranges', 'days'));
     })->name('dashboard');
 
     // Room Inventory

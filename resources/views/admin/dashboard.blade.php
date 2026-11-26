@@ -112,14 +112,23 @@
                 </table>
             </div>
         </div>
-        <figure class="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-2xs">
-            <figcaption class="text-sm font-bold text-slate-900">Daily website views</figcaption>
-            <p class="mt-1 text-xs text-slate-500">Last 7 days · Philippine time</p>
-            @php($peak = max(1, max($dailyViews)))
+        <figure id="daily-views" class="scroll-mt-24 min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-2xs">
+            <figcaption class="text-sm font-bold text-slate-900">{{ $days === 7 ? 'Daily website views' : 'Website views' }}</figcaption>
+            <form action="{{ route('admin.dashboard') }}#daily-views" method="get" class="mt-2 flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs text-slate-500">Philippine time</span>
+                <select aria-label="Website views date range" name="days" onchange="this.form.requestSubmit()"
+                    class="rounded-lg border-slate-300 py-1 pl-2 pr-8 text-xs text-slate-700">
+                    @foreach ($ranges as $length => $label)
+                        <option value="{{ $length }}" @selected($days === $length)>{{ $label }}</option>
+                    @endforeach
+                </select>
+                <noscript><button type="submit">Apply</button></noscript>
+            </form>
+            @php($peak = max(1, max($viewTotals)))
             <ol class="mt-5 space-y-2">
-                @foreach ($dailyViews as $date => $views)
+                @foreach ($viewTotals as $date => $views)
                     <li class="flex items-center gap-3 text-xs tabular-nums">
-                        <span class="w-12 shrink-0 text-slate-600">{{ $date }}</span>
+                        <span class="shrink-0 text-slate-600 {{ $days === 7 ? 'w-12' : 'w-28' }}">{{ $date }}</span>
                         <span aria-hidden="true" class="h-2 grow overflow-hidden rounded-full bg-slate-100">
                             <span class="block h-full rounded-full bg-[#06923E]" style="width: {{ 100 * $views / $peak }}%"></span>
                         </span>
