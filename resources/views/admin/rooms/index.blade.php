@@ -189,7 +189,7 @@
     </div>
 
     <!-- Add/Edit Room Modal -->
-    <div x-show="showAddRoomModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
+    <div x-show="showAddRoomModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click.outside = "showAddRoomModal = false" class="bg-white rounded-3xl shadow-xl overflow-hidden max-w-lg h-80 w-full mx-auto space-y-6">
             <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs p-6 sm:p-8 space-y-6">
                 <h2 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">Add Room Unit</h2>

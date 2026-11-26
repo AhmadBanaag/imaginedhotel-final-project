@@ -76,7 +76,7 @@
 
                 <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-4 pb-1">Billing &amp; Auditing</div>
                 <a href="{{ route('admin.payments.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.payments.*') ? 'active' : '' }}">
-                    <i class="ri-wallet-3-line text-lg"></i> Payments &amp; QR Verify
+                    <i class="ri-wallet-3-line text-lg"></i> Payments Verification
                 </a>
                 <a href="{{ route('admin.reports.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
                     <i class="ri-file-chart-line text-lg"></i> Monthly Reports
