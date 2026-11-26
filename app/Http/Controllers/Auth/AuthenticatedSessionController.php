@@ -15,8 +15,14 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
+        if ($request->boolean('checkout')) {
+            $type = $request->query('room_type');
+            $room = in_array($type, ['single', 'double', 'family', 'superior'], true) ? $type : 'single';
+            redirect()->setIntendedUrl(route('reservations.create', ['room_type' => $room]));
+        }
+
         return view('auth.login');
     }
 

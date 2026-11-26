@@ -35,7 +35,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <!-- Form Column (8 cols) -->
         <div class="lg:col-span-8 space-y-6">
-            <form action="{{ route('reservations.store') }}" method="POST">
+            <form id="reservation-form" action="{{ route('reservations.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="room_type" :value="roomType">
 
@@ -192,13 +192,12 @@
 
                 <div class="flex gap-3 w-full pt-4">
 
-                    <button type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
-                        <i class="text-xs"></i> Pay as Guest
+                    <button type="submit" form="reservation-form" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
+                        {{ auth()->check() ? 'Confirm reservation' : 'Pay as Guest' }}
                     </button>
-
-                    <button type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
-                        <i class="text-xs"></i> Login
-                    </button>
+                    @guest
+                        <a href="{{ route('login', ['checkout' => 1, 'room_type' => request('room_type', 'single')]) }}" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">Log in</a>
+                    @endguest
                 </div>
             </div>
         </div>
