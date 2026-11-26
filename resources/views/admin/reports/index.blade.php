@@ -81,7 +81,7 @@
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 print:hidden">
         <div class="flex items-center gap-3">
             <label class="text-xs font-semibold text-slate-700">Select Report Period:</label>
-            <select x-model="selectedMonth" class="text-xs rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C] py-1.5 px-3">
+            <select x-model="selectedMonth" class="text-xs rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C] py-1.5 pl-2 pr-7">
                 <option value="2026-11">November 2026 (Current Period)</option>
                 <option value="2026-10">October 2026</option>
                 <option value="2026-09">September 2026</option>
@@ -119,13 +119,13 @@
     <!-- Payment Channel Split -->
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h3 class="font-bold text-slate-900 text-sm">Revenue Mix: Over-the-Counter vs. E-Wallet QR</h3>
+            <h3 class="font-bold text-slate-900 text-sm">Revenue: Over-the-Counter vs. E-Wallet</h3>
             <div class="flex items-center gap-4 text-xs">
                 <span class="inline-flex items-center gap-1.5 font-semibold text-slate-700">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#EDC92C]"></span> OTC (<span x-text="otcPct + '%'"></span>) — <span x-text="peso(current.otcRevenue)"></span>
                 </span>
                 <span class="inline-flex items-center gap-1.5 font-semibold text-slate-700">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#06923E]"></span> E-Wallet QR (<span x-text="ewalletPct + '%'"></span>) — <span x-text="peso(current.ewalletRevenue)"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#06923E]"></span> E-Wallet (<span x-text="ewalletPct + '%'"></span>) — <span x-text="peso(current.ewalletRevenue)"></span>
                 </span>
             </div>
         </div>
