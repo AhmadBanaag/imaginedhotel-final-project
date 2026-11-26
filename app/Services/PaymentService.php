@@ -8,4 +8,9 @@ class PaymentService
     {
         return intdiv($totalInCentavos + 1, 2);
     }
+    public function calculateRefundInCentavos(int $paidInCentavos): int
+    {
+        return intdiv($paidInCentavos * 80 + 50, 100);
+    }
 }
+
