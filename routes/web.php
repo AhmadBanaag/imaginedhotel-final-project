@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 // Public Hotel Landing Page (Accessible by all guests without login)
@@ -82,7 +83,17 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     // Dashboard & Metrics
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        $today = now('Asia/Manila')->toImmutable()->startOfDay();
+        $firstDay = $today->subDays(6);
+        $counts = DB::table('daily_page_views')
+            ->whereBetween('view_date', [$firstDay->toDateString(), $today->toDateString()])
+            ->pluck('views', 'view_date');
+        $dailyViews = [];
+        for ($day = $firstDay; $day <= $today; $day = $day->addDay()) {
+            $dailyViews[$day->format('M j')] = (int) $counts->get($day->toDateString(), 0);
+        }
+
+        return view('admin.dashboard', ['dailyViews' => $dailyViews]);
     })->name('dashboard');
 
     // Room Inventory

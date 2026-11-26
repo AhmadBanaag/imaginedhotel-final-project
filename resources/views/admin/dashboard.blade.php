@@ -51,65 +51,83 @@
         </div>
     </div>
 
-    <!-- Today's Front Desk Activity Table -->
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-        <div class="p-5 border-b border-slate-100 flex justify-between items-center">
-            <div>
-                <h3 class="font-bold text-slate-900 text-sm">Scheduled Arrivals &amp; Stay Status</h3>
+    <div class="grid items-start gap-5 lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)]">
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+            <div class="p-5 border-b border-slate-100 flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-slate-900 text-sm">Scheduled Arrivals &amp; Stay Status</h3>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase tracking-wider font-semibold">
+                            <th class="py-3.5 px-5">Code</th>
+                            <th class="py-3.5 px-5">Guest Name</th>
+                            <th class="py-3.5 px-5">Room Category &amp; No.</th>
+                            <th class="py-3.5 px-5">Check-in Date</th>
+                            <th class="py-3.5 px-5">Check-out Date</th>
+                            <th class="py-3.5 px-5">Payment / Balance</th>
+                            <th class="py-3.5 px-5">Stay Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <!-- Row 1: Expected Arrival -->
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-3.5 px-5 font-mono font-bold text-[#06923E]">IH-2026-8492</td>
+                            <td class="py-3.5 px-5 font-semibold text-slate-900">Juan Dela Cruz</td>
+                            <td class="py-3.5 px-5">Double-bed (Unit 205)</td>
+                            <td class="py-3.5 px-5">{{ date('M d, Y') }} (Today)</td>
+                            <td class="py-3.5 px-5">{{ date('M d, Y') }} (Today)</td>
+                            <td class="py-3.5 px-5">
+                                <span class="text-emerald-700 font-semibold">50% Paid (₱1,000)</span>
+                                <span class="block text-[10px] text-slate-400">Bal: ₱999 due</span>
+                            </td>
+                            <td class="py-3.5 px-5">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                                    Pending Check-in
+                                </span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2: Currently Checked In -->
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-3.5 px-5 font-mono font-bold text-[#06923E]">IH-2026-7911</td>
+                            <td class="py-3.5 px-5 font-semibold text-slate-900">Maria Santos</td>
+                            <td class="py-3.5 px-5">Family Room (Unit 301)</td>
+                            <td class="py-3.5 px-5">Nov 21 &rarr; Today</td>
+                            <td class="py-3.5 px-5">{{ date('M d, Y') }} (Today)</td>
+                            <td class="py-3.5 px-5">
+                                <span class="text-emerald-700 font-semibold">Fully Settled</span>
+                                <span class="block text-[10px] text-slate-400">E-Wallet QR (₱2,999)</span>
+                            </td>
+                            <td class="py-3.5 px-5">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                    Checked In
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs border-collapse">
-                <thead>
-                    <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase tracking-wider font-semibold">
-                        <th class="py-3.5 px-5">Code</th>
-                        <th class="py-3.5 px-5">Guest Name</th>
-                        <th class="py-3.5 px-5">Room Category &amp; No.</th>
-                        <th class="py-3.5 px-5">Check-in Date</th>
-                        <th class="py-3.5 px-5">Check-out Date</th>
-                        <th class="py-3.5 px-5">Payment / Balance</th>
-                        <th class="py-3.5 px-5">Stay Status</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 text-slate-700">
-                    <!-- Row 1: Expected Arrival -->
-                    <tr class="hover:bg-slate-50/80 transition">
-                        <td class="py-3.5 px-5 font-mono font-bold text-[#06923E]">IH-2026-8492</td>
-                        <td class="py-3.5 px-5 font-semibold text-slate-900">Juan Dela Cruz</td>
-                        <td class="py-3.5 px-5">Double-bed (Unit 205)</td>
-                        <td class="py-3.5 px-5">{{ date('M d, Y') }} (Today)</td>
-                        <td class="py-3.5 px-5">{{ date('M d, Y') }} (Today)</td>
-                        <td class="py-3.5 px-5">
-                            <span class="text-emerald-700 font-semibold">50% Paid (₱1,000)</span>
-                            <span class="block text-[10px] text-slate-400">Bal: ₱999 due</span>
-                        </td>
-                        <td class="py-3.5 px-5">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
-                                Pending Check-in
-                            </span>
-                        </td>
-                    </tr>
-
-                    <!-- Row 2: Currently Checked In -->
-                    <tr class="hover:bg-slate-50/80 transition">
-                        <td class="py-3.5 px-5 font-mono font-bold text-[#06923E]">IH-2026-7911</td>
-                        <td class="py-3.5 px-5 font-semibold text-slate-900">Maria Santos</td>
-                        <td class="py-3.5 px-5">Family Room (Unit 301)</td>
-                        <td class="py-3.5 px-5">Nov 21 &rarr; Today</td>
-                        <td class="py-3.5 px-5">{{ date('M d, Y') }} (Today)</td>
-                        <td class="py-3.5 px-5">
-                            <span class="text-emerald-700 font-semibold">Fully Settled</span>
-                            <span class="block text-[10px] text-slate-400">E-Wallet QR (₱2,999)</span>
-                        </td>
-                        <td class="py-3.5 px-5">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                                Checked In
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <figure class="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-2xs">
+            <figcaption class="text-sm font-bold text-slate-900">Daily website views</figcaption>
+            <p class="mt-1 text-xs text-slate-500">Last 7 days · Philippine time</p>
+            @php($peak = max(1, max($dailyViews)))
+            <ol class="mt-5 space-y-2">
+                @foreach ($dailyViews as $date => $views)
+                    <li class="flex items-center gap-3 text-xs tabular-nums">
+                        <span class="w-12 shrink-0 text-slate-600">{{ $date }}</span>
+                        <span aria-hidden="true" class="h-2 grow overflow-hidden rounded-full bg-slate-100">
+                            <span class="block h-full rounded-full bg-[#06923E]" style="width: {{ 100 * $views / $peak }}%"></span>
+                        </span>
+                        <span class="font-semibold text-slate-900">{{ number_format($views) }}</span>
+                    </li>
+                @endforeach
+            </ol>
+        </figure>
     </div>
 </div>
 @endsection
