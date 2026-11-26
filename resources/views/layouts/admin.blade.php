@@ -24,13 +24,12 @@
             border-radius: 0.5rem;
             font-size: 0.875rem;
             font-weight: 500;
-            color: #94a3b8;
+            color: white;
             transition: all 0.2s;
         }
         .admin-sidebar-item:hover, .admin-sidebar-item.active {
             color: #ffffff;
-            background-color: rgba(99, 102, 241, 0.15);
-            border-left: 3px solid #6366f1;
+            background-color: #EDC92C;
         }
     </style>
 </head>
@@ -41,7 +40,7 @@
         <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 z-40 bg-slate-900/50 md:hidden" style="display: none;"></div>
 
         <!-- Sidebar Navigation -->
-        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'" class="fixed md:sticky md:top-0 md:h-screen inset-y-0 left-0 z-50 w-64 shrink-0 bg-slate-900 text-white flex flex-col transition-transform duration-200 ease-in-out border-r border-slate-800">
+        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'" class="fixed md:sticky md:top-0 md:h-screen inset-y-0 left-0 z-50 w-64 shrink-0 bg-[#06923E]/90 text-white flex flex-col transition-transform duration-200 ease-in-out border-r border-slate-800">
             <!-- Sidebar Header / Logo -->
             <div class="h-20 flex items-center justify-between px-2 border-b border-slate-800">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center">
@@ -59,7 +58,7 @@
 
             <!-- Navigation Links -->
             <nav class="grow p-4 space-y-1 overflow-y-auto">
-                <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3 pt-2 pb-1">Operations</div>
+                <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-2 pb-1">Operations</div>
                 <a href="{{ route('admin.dashboard') }}" class="admin-sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <i class="ri-dashboard-line text-lg"></i> Overview Dashboard
                 </a>
@@ -67,7 +66,7 @@
                     <i class="ri-calendar-event-line text-lg"></i> Reservations Desk
                 </a>
 
-                <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3 pt-4 pb-1">Room Management</div>
+                <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-4 pb-1">Room Management</div>
                 <a href="{{ route('admin.rooms.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.rooms.*') ? 'active' : '' }}">
                     <i class="ri-hotel-bed-line text-lg"></i> Rooms Inventory
                 </a>
@@ -75,7 +74,7 @@
                     <i class="ri-price-tag-3-line text-lg"></i> Room Categories &amp; Rates
                 </a>
 
-                <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3 pt-4 pb-1">Billing &amp; Auditing</div>
+                <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-4 pb-1">Billing &amp; Auditing</div>
                 <a href="{{ route('admin.payments.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.payments.*') ? 'active' : '' }}">
                     <i class="ri-wallet-3-line text-lg"></i> Payments &amp; QR Verify
                 </a>
@@ -86,7 +85,7 @@
                     <i class="ri-history-line text-lg"></i> Audit Trails Log
                 </a>
 
-                <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3 pt-4 pb-1">System</div>
+                <div class="text-[11px] font-semibold text-[#EDC92C] uppercase tracking-wider px-3 pt-4 pb-1">System</div>
                 <a href="{{ route('admin.users.index') }}" class="admin-sidebar-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
                     <i class="ri-group-line text-lg"></i> Manage Users &amp; Roles
                 </a>
