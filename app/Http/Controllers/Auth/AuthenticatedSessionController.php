@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminNotification;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -42,13 +43,7 @@ class AuthenticatedSessionController extends Controller
                 ->whereIn('role_name', ['guest', 'account_user'])->exists();
 
         if ($isCustomer) {
-            $now = now();
-            DB::table('admin_notifications')->insert([
-                'event_type' => 'customer_login',
-                'message' => 'A customer signed in.',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ]);
+            AdminNotification::record('customer_login', 'A customer signed in.');
         }
 
         return redirect()->intended(route('dashboard', absolute: false));
