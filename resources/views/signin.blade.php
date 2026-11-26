@@ -197,7 +197,7 @@
                 <div class="text-center text-xs text-slate-500 pt-2">
                     Don't have an account yet?
                     <a href="{{ route('register') }}" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline">
-                        Register as Guest
+                        Register an Account
                     </a>
                 </div>
             </div>

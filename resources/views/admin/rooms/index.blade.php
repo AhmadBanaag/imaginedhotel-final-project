@@ -1,30 +1,39 @@
 @extends('layouts.admin')
 
-@section('page-title', '31 Rooms Inventory')
+@section('page-title', 'Rooms Inventory')
 @section('page-subtitle', 'Manage physical hotel rooms, assign categories, and update availability status')
 
 @section('content')
 <div class="space-y-6" x-data="{
-    filterCategory: '',
-    filterStatus: ''
+    filterCategory: ''
 }">
+    <!-- Success Notification Flash Message -->
+    @if(session('success'))
+        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="ri-checkbox-circle-line text-emerald-600 text-base"></i>
+                <span>{{ session('success') }}</span>
+            </div>
+        </div>
+    @endif
+
     <!-- Top Action Bar -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
         <div class="flex flex-wrap gap-2 text-xs">
-            <button @click="filterCategory = ''" :class="filterCategory === '' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition">
-                All (31 Units)
+            <button @click="filterCategory = ''" :class="filterCategory === '' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
+                All ({{ $rooms->count() }})
             </button>
-            <button @click="filterCategory = 'Single'" :class="filterCategory === 'Single' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition">
-                Single-bed (15)
+            <button @click="filterCategory = 'single'" :class="filterCategory === 'single' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
+                Single-bed
             </button>
-            <button @click="filterCategory = 'Double'" :class="filterCategory === 'Double' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition">
-                Double-bed (10)
+            <button @click="filterCategory = 'double'" :class="filterCategory === 'double' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
+                Double-bed
             </button>
-            <button @click="filterCategory = 'Family'" :class="filterCategory === 'Family' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition">
-                Family Room (5)
+            <button @click="filterCategory = 'family'" :class="filterCategory === 'family' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
+                Family Room
             </button>
-            <button @click="filterCategory = 'Superior'" :class="filterCategory === 'Superior' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition">
-                Superior Room (1)
+            <button @click="filterCategory = 'superior'" :class="filterCategory === 'superior' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
+                Superior / Suite
             </button>
         </div>
         <div>
@@ -43,85 +52,66 @@
                         <th class="py-3.5 px-5">Room Number</th>
                         <th class="py-3.5 px-5">Category / Type</th>
                         <th class="py-3.5 px-5">Nightly Rate</th>
-                        <th class="py-3.5 px-5">Bed Configuration</th>
+                        <th class="py-3.5 px-5">Max Capacity</th>
                         <th class="py-3.5 px-5">Current Availability</th>
                         <th class="py-3.5 px-5 text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700">
-                    <!-- Single Bed Rooms Sample -->
-                    @for ($i = 101; $i <= 105; $i++)
-                    <tr class="hover:bg-slate-50/80 transition" x-show="filterCategory === '' || filterCategory === 'Single'">
-                        <td class="py-3 px-5 font-mono font-bold text-slate-900">Room {{ $i }}</td>
-                        <td class="py-3 px-5">Single-bed room</td>
-                        <td class="py-3 px-5 font-semibold text-slate-900">₱999</td>
-                        <td class="py-3 px-5 text-slate-500">1 Single bed, Storage, AC</td>
+                    @forelse ($rooms as $room)
+                    <tr class="hover:bg-slate-50/80 transition" 
+                        x-show="filterCategory === '' || '{{ strtolower($room->roomType->name ?? '') }}'.includes(filterCategory)">
+                        <td class="py-3 px-5 font-mono font-bold text-slate-900">
+                            {{ str_starts_with(strtolower($room->room_number), 'room') ? $room->room_number : 'Room ' . $room->room_number }}
+                        </td>
+                        <td class="py-3 px-5 font-medium text-slate-800">
+                            {{ $room->roomType->name ?? 'Unassigned' }}
+                        </td>
+                        <td class="py-3 px-5 font-semibold text-slate-900">
+                            ₱{{ number_format($room->roomType->PricePerNight ?? 0, 2) }}
+                        </td>
+                        <td class="py-3 px-5 text-slate-500">
+                            {{ $room->roomType->maxGuest ?? 1 }} Guests
+                        </td>
                         <td class="py-3 px-5">
-                            @if ($i == 102)
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Booked</span>
-                            @elseif ($i == 105)
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Unavailable (Cleaning)</span>
+                            @if (strtolower($room->status) === 'available')
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                    Available
+                                </span>
+                            @elseif (strtolower($room->status) === 'booked')
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">
+                                    Booked
+                                </span>
                             @else
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Available</span>
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                                    Unavailable (Maintenance)
+                                </span>
                             @endif
                         </td>
-                        <td class="py-3 px-5 text-right space-x-2">
-                            <a href="{{ route('admin.rooms.create') }}" class="text-indigo-600 hover:underline font-semibold">Edit</a>
-                            <button onclick="alert('Room status toggled.')" class="text-slate-400 hover:text-slate-700">Toggle Status</button>
-                        </td>
-                    </tr>
-                    @endfor
+                        <td class="py-3 px-5 text-right space-x-3">
+                            <!-- Edit Button -->
+                            <a href="{{ route('admin.rooms.edit', $room->room_id) }}" class="text-indigo-600 hover:text-indigo-900 hover:underline font-semibold text-xs">
+                                Edit
+                            </a>
 
-                    <!-- Double Bed Sample -->
-                    @for ($i = 201; $i <= 204; $i++)
-                    <tr class="hover:bg-slate-50/80 transition" x-show="filterCategory === '' || filterCategory === 'Double'">
-                        <td class="py-3 px-5 font-mono font-bold text-slate-900">Room {{ $i }}</td>
-                        <td class="py-3 px-5">Double-bed room</td>
-                        <td class="py-3 px-5 font-semibold text-slate-900">₱1,999</td>
-                        <td class="py-3 px-5 text-slate-500">1 Double bed, Wardrobe, AC</td>
-                        <td class="py-3 px-5">
-                            @if ($i == 201)
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Booked</span>
-                            @else
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Available</span>
-                            @endif
-                        </td>
-                        <td class="py-3 px-5 text-right space-x-2">
-                            <a href="{{ route('admin.rooms.create') }}" class="text-indigo-600 hover:underline font-semibold">Edit</a>
-                            <button onclick="alert('Room status toggled.')" class="text-slate-400 hover:text-slate-700">Toggle Status</button>
+                            <!-- Delete Button -->
+                            <form action="{{ route('admin.rooms.destroy', $room->room_id) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this room?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-rose-600 hover:text-rose-900 hover:underline font-semibold cursor-pointer text-xs">
+                                    Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
-                    @endfor
-
-                    <!-- Family Room Sample -->
-                    <tr class="hover:bg-slate-50/80 transition" x-show="filterCategory === '' || filterCategory === 'Family'">
-                        <td class="py-3 px-5 font-mono font-bold text-slate-900">Room 301</td>
-                        <td class="py-3 px-5">Family Room</td>
-                        <td class="py-3 px-5 font-semibold text-slate-900">₱2,999</td>
-                        <td class="py-3 px-5 text-slate-500">2 Double-beds, 1 Single-large, Baby crib</td>
-                        <td class="py-3 px-5">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Booked</span>
-                        </td>
-                        <td class="py-3 px-5 text-right space-x-2">
-                            <a href="{{ route('admin.rooms.create') }}" class="text-indigo-600 hover:underline font-semibold">Edit</a>
-                            <button onclick="alert('Room status toggled.')" class="text-slate-400 hover:text-slate-700">Toggle Status</button>
+                    @empty
+                    <tr>
+                        <td colspan="6" class="py-10 text-center text-slate-400">
+                            <i class="ri-hotel-bed-line text-3xl block mb-2 text-slate-300"></i>
+                            No rooms found in the inventory. Click <strong>"Add New Room Unit"</strong> to create one.
                         </td>
                     </tr>
-
-                    <!-- Superior Room (1 Unit) -->
-                    <tr class="hover:bg-slate-50/80 transition bg-amber-50/30" x-show="filterCategory === '' || filterCategory === 'Superior'">
-                        <td class="py-3 px-5 font-mono font-bold text-amber-700">Room 401 (VIP Suite)</td>
-                        <td class="py-3 px-5 font-bold text-slate-900">Superior Room</td>
-                        <td class="py-3 px-5 font-bold text-indigo-700">₱4,999</td>
-                        <td class="py-3 px-5 text-slate-600">2 Double-beds, 1 Double-large, Massage Chairs, Living Room, Balcony</td>
-                        <td class="py-3 px-5">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Available</span>
-                        </td>
-                        <td class="py-3 px-5 text-right space-x-2">
-                            <a href="{{ route('admin.rooms.create') }}" class="text-indigo-600 hover:underline font-semibold">Edit</a>
-                            <button onclick="alert('Room status toggled.')" class="text-slate-400 hover:text-slate-700">Toggle Status</button>
-                        </td>
-                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

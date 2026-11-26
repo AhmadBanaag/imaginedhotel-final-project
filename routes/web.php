@@ -82,17 +82,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('dashboard');
 
     // Room Inventory
-    Route::get('/rooms', function () {
-        return view('admin.rooms.index');
-    })->name('rooms.index');
+    // dummy routes
+    // Route::get('/rooms', function () {
+    //     return view('admin.rooms.index');
+    // })->name('rooms.index');
+    
+    // this is redundant and can cause issue since they are first before below i created
+    // Route::get('/rooms', function () {
+    //     return view('admin.rooms.index');
+    // })->name('rooms.index');
 
-    Route::get('/rooms', function () {
-        return view('admin.rooms.index');
-    })->name('rooms.index');
+    // Route::get('/rooms/create', function () {
+    //     return view('admin.rooms.create');
+    // })->name('rooms.create');
 
-    Route::get('/rooms/create', function () {
-        return view('admin.rooms.create');
-    })->name('rooms.create');
+    Route::resource('rooms', App\Http\Controllers\Admin\RoomController::class);  // to link to the admin room controller
+
 
     // Categories & Rates
     Route::get('/categories', function () {
@@ -130,11 +135,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/audit-trails', function () {
         return view('admin.audit-trails.index');
     })->name('audit-trails.index');
+    //goneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+    // // User Management
+    // Route::get('/users', function () {
+    //     return view('admin.users.index');
+    // })->name('users.index');
+    //this is the new one: to link to the admin user controller
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+    //is it connected properly??????????????????
+    Route::patch('/users/{id}/toggle-status', [App\Http\Controllers\Admin\UserController::class, 'toggleStatus'])->name('users.toggle-status');
+    
 
-    // User Management
-    Route::get('/users', function () {
-        return view('admin.users.index');
-    })->name('users.index');
 });
+
 
 require __DIR__ . '/auth.php';
