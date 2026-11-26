@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 // Public Hotel Landing Page (Accessible by all guests without login)
@@ -23,6 +24,9 @@ Route::get('/rooms/{id}', function ($id) {
 })->name('rooms.show');
 
 // Reservation Booking Flow
+Route::post('/reservations', [ReservationController::class, 'store'])
+    ->name('reservations.store');
+
 Route::get('/reservations/book', function () {
     return view('reservations.create');
 })->name('reservations.create');
