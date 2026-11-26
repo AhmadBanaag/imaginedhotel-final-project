@@ -127,8 +127,8 @@
                     <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                     <input type="text" x-model="searchQuery" placeholder="Search room no. or floor..." class="pl-8 pr-3 py-1.5 text-xs rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
                 </div>
-                <select x-model="filterStatus" class="text-xs rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C] py-1.5 px-3">
-                    <option value="">All Statuses</option>
+                <select x-model="filterStatus" class="text-xs text-left rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C] py-1.5 pl-3 pr-6">
+                    <option value="">Room Status</option>
                     <option value="available">Available</option>
                     <option value="booked">Booked</option>
                     <option value="unavailable">Unavailable</option>

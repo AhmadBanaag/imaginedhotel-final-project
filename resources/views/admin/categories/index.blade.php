@@ -90,7 +90,6 @@
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <h3 class="font-bold text-slate-900 text-base" x-text="cat.name"></h3>
-                            <span class="text-[11px] text-slate-400" x-text="cat.capacity"></span>
                         </div>
                         <span :class="cat.badgeClass" class="px-2 py-0.5 rounded-sm text-[10px] font-bold" x-text="cat.units"></span>
                     </div>
@@ -116,8 +115,8 @@
     <!-- Deposit & Cancellation Policy Breakdown Table -->
     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="p-5 border-b border-slate-100">
-            <h3 class="font-bold text-slate-900 text-sm">Pricing, 50% OTC Deposit &amp; Cancellation Policy Matrix</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Standard 1-night deposit calculation and 20% cancellation fee / 80% refund policy per category.</p>
+            <h3 class="font-bold text-slate-900 text-sm">Pricings</h3>
+            <!-- <p class="text-xs text-slate-500 mt-0.5">Standard 1-night deposit calculation and 20% cancellation fee / 80% refund policy per category.</p> -->
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs border-collapse">
@@ -126,9 +125,10 @@
                         <th class="py-3.5 px-5">Category</th>
                         <th class="py-3.5 px-5">Inventory</th>
                         <th class="py-3.5 px-5">Nightly Rate</th>
+                        <th class="py-3.5 px-5">Room Size</th>
                         <th class="py-3.5 px-5">50% OTC Deposit</th>
                         <th class="py-3.5 px-5">20% Cancel Fee</th>
-                        <th class="py-3.5 px-5 text-right">80% Guest Refund</th>
+                        <th class="py-3.5 px-5">80% Guest Refund</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700">
@@ -137,9 +137,10 @@
                             <td class="py-3.5 px-5 font-bold text-slate-900" x-text="cat.name"></td>
                             <td class="py-3.5 px-5" x-text="cat.units"></td>
                             <td class="py-3.5 px-5 font-semibold" x-text="peso(cat.rate)"></td>
+                            <td class="py-3.5 px-5 font-bold text-slate-900" x-text="cat.capacity"></td>
                             <td class="py-3.5 px-5 text-[#06923E] font-semibold" x-text="peso(Math.round(cat.rate * 0.5))"></td>
                             <td class="py-3.5 px-5 text-rose-600" x-text="'-' + peso(Math.round(Math.round(cat.rate * 0.5) * 0.2))"></td>
-                            <td class="py-3.5 px-5 text-right font-bold text-slate-900" x-text="peso(Math.round(cat.rate * 0.5) - Math.round(Math.round(cat.rate * 0.5) * 0.2))"></td>
+                            <td class="py-3.5 px-5 font-bold text-slate-900" x-text="peso(Math.round(cat.rate * 0.5) - Math.round(Math.round(cat.rate * 0.5) * 0.2))"></td>
                         </tr>
                     </template>
                 </tbody>
