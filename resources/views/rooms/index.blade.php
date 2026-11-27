@@ -2,7 +2,7 @@
 
 @section('rooms')
 @include('components.navbar2')
-<section class="pt-23">
+<section class="pt-34">
     @include('components.search-widget')
 </section>
 
