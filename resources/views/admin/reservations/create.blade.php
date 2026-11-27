@@ -21,7 +21,7 @@
         { id: '202', label: 'Room 202', category: 'Double-bed Room', rate: 1999 },
         { id: '203', label: 'Room 203', category: 'Double-bed Room', rate: 1999 },
         { id: '302', label: 'Room 302', category: 'Family Room', rate: 2999 },
-        { id: '401', label: 'Room 401', category: 'Superior Room (VIP)', rate: 4999 }
+        { id: '401', label: 'Room 401', category: 'Deluxe Room (VIP)', rate: 4999 }
     ],
     get selectedRoom() {
         return this.rooms.find(r => r.id === this.selectedRoomId) || this.rooms[0];

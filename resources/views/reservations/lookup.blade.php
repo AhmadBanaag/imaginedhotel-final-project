@@ -135,7 +135,7 @@
                         <div class="flex justify-between">
                             <span class="text-slate-600">Room Rate (1 Night)</span>
                             <span class="font-semibold text-slate-900">
-                                ₱{{ request('room_type') == 'superior' ? '4,999' : (request('room_type') == 'family' ? '2,999' : (request('room_type') == 'double' ? '1,999' : '999')) }}
+                                ₱{{ request('room_type') == 'deluxe' ? '4,999' : (request('room_type') == 'family' ? '2,999' : (request('room_type') == 'double' ? '1,999' : '999')) }}
                             </span>
                         </div>
                         <div class="flex justify-between">
@@ -145,13 +145,13 @@
                         <div class="flex justify-between text-emerald-700 font-semibold">
                             <span>Amount Paid / Deposited</span>
                             <span>
-                                ₱{{ request('payment_method') == 'ewallet' ? (request('room_type') == 'superior' ? '4,999' : (request('room_type') == 'family' ? '2,999' : (request('room_type') == 'double' ? '1,999' : '999'))) : (request('room_type') == 'superior' ? '2,500' : (request('room_type') == 'family' ? '1,500' : (request('room_type') == 'double' ? '1,000' : '500'))) }}
+                                ₱{{ request('payment_method') == 'ewallet' ? (request('room_type') == 'deluxe' ? '4,999' : (request('room_type') == 'family' ? '2,999' : (request('room_type') == 'double' ? '1,999' : '999'))) : (request('room_type') == 'deluxe' ? '2,500' : (request('room_type') == 'family' ? '1,500' : (request('room_type') == 'double' ? '1,000' : '500'))) }}
                             </span>
                         </div>
                         <div class="flex justify-between text-slate-600">
                             <span>Balance Payable Upon Check-in</span>
                             <span>
-                                ₱{{ request('payment_method') == 'ewallet' ? '0.00' : (request('room_type') == 'superior' ? '2,499' : (request('room_type') == 'family' ? '1,499' : (request('room_type') == 'double' ? '999' : '499'))) }}
+                                ₱{{ request('payment_method') == 'ewallet' ? '0.00' : (request('room_type') == 'deluxe' ? '2,499' : (request('room_type') == 'family' ? '1,499' : (request('room_type') == 'double' ? '999' : '499'))) }}
                             </span>
                         </div>
                     </div>

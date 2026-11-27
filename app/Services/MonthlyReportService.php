@@ -121,7 +121,8 @@ class MonthlyReportService
                     'stays'     => $stays,
                     'revenue'   => $revenue,
                     'share_pct' => $totalStays > 0 ? round(($stays / $totalStays) * 100, 1) : 0.0,
-                    'is_vip'    => str_contains(strtolower($type->name), 'suite')
+                    'is_vip'    => str_contains(strtolower($type->name), 'deluxe')
+                        || str_contains(strtolower($type->name), 'suite')
                         || str_contains(strtolower($type->name), 'superior'),
                 ];
             });

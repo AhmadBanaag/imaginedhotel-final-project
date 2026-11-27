@@ -20,7 +20,7 @@ class AuthenticatedSessionController extends Controller
     {
         if ($request->boolean('checkout')) {
             $type = $request->query('room_type');
-            $room = in_array($type, ['single', 'double', 'family', 'superior'], true) ? $type : 'single';
+            $room = in_array($type, ['single', 'double', 'family', 'deluxe'], true) ? $type : 'single';
             redirect()->setIntendedUrl(route('reservations.create', ['room_type' => $room]));
         }
 

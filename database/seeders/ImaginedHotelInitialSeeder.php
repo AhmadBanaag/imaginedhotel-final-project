@@ -23,7 +23,7 @@ class ImaginedHotelInitialSeeder extends Seeder
             ['name' => 'Single-bed-room', 'PricePerNight' => 999.00, 'maxGuest' => 1],
             ['name' => 'Double-bed-room', 'PricePerNight' => 1999.00, 'maxGuest' => 2],
             ['name' => 'Family-Room', 'PricePerNight' => 2999.00, 'maxGuest' => 4],
-            ['name' => 'Suite', 'PricePerNight' => 4999.00, 'maxGuest' => 6],
+            ['name' => 'Deluxe-Room', 'PricePerNight' => 4999.00, 'maxGuest' => 6],
 
         ]);
         // sAMPLE Rooms for testing

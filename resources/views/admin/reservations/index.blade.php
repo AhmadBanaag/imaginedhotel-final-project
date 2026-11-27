@@ -75,7 +75,7 @@
             code: 'IH-2026-8450',
             guest: 'Elena Mendoza',
             phone: '0917-650-3321',
-            category: 'Superior Room (VIP)',
+            category: 'Deluxe Room (VIP)',
             unit: 'Unit 401 (Floor 4)',
             dates: 'Nov 20 → Nov 22',
             nights: '2 Nights',

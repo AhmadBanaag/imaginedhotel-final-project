@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\RoomController as PublicRoomController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +20,9 @@ Route::get('/signin', function () {
     return view('signin');
 })->name('signin');
 
-// Rooms Catalog & Detail (Open to all guests)
-Route::get('/rooms', function () {
-    return view('rooms.index');
-})->name('rooms.index');
+// Rooms Catalog & Search (Open to all guests)
+Route::get('/rooms', [PublicRoomController::class, 'index'])
+    ->name('rooms.index');
 
 // Reservation Booking Flow
 Route::post('/reservations', [ReservationController::class, 'store'])

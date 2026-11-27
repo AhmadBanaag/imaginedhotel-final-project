@@ -4,14 +4,14 @@
 @include('components.navbar2')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-25 pb-15" x-data="{
     roomType: '{{ request('room_type', 'single') }}',
-    checkIn: '{{ date('Y-m-d') }}',
-    checkOut: '{{ date('Y-m-d', strtotime('+1 day')) }}',
+    checkIn: '{{ request('check_in', date('Y-m-d')) }}',
+    checkOut: '{{ request('check_out', date('Y-m-d', strtotime('+1 day'))) }}',
     paymentMethod: 'otc',
     rates: {
         'single': 999,
         'double': 1999,
         'family': 2999,
-        'superior': 4999
+        'deluxe': 4999
     },
     get nights() {
         const start = new Date(this.checkIn);

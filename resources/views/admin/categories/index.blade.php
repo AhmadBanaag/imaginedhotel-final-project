@@ -46,8 +46,8 @@
             features: ['2 Double-beds + 1 Single-large bed', 'Baby Crib included', 'Air-conditioned & Storage', 'Free WiFi & Flat Screen TV']
         },
         {
-            key: 'superior',
-            name: 'Superior Room',
+            key: 'deluxe',
+            name: 'Deluxe Room',
             units: '1 VIP Unit',
             badgeClass: 'bg-[#EDC92C]/30 text-amber-900',
             priceClass: 'text-amber-600',

@@ -59,7 +59,7 @@
                     </div>
                     <h4 class="text-lg font-semibold text-gray-900">Browse Available Rooms</h4>
                     <p class="text-gray-500 text-sm mt-1 mb-4">
-                        Explore Single, Double, Family, and Superior suites with prices starting from ₱999/night.
+                        Explore Single, Double, Family, and Deluxe rooms with prices starting from ₱999/night.
                     </p>
                     <a href="{{ route('rooms.index') }}" class="text-indigo-600 text-sm font-medium hover:text-indigo-800 inline-flex items-center">
                         Find Rooms &rarr;

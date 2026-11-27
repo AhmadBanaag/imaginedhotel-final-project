@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'ImaginedHotel' }}</title>
-    <meta name="description" content="ImaginedHotel online room reservation system. Single, Double, Family and Superior rooms in Kabacan.">
+    <meta name="description" content="ImaginedHotel online room reservation system. Single, Double, Family and Deluxe rooms in Kabacan.">
 
     <!-- Tailwind & Vite Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

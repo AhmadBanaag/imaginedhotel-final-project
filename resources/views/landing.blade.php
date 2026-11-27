@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <!-- 4. Superior Suite -->
+        <!-- 4. Deluxe Room -->
         <div class="bg-white rounded-2xl border-2 border-amber-300 shadow-md overflow-hidden flex flex-col transition-all hover:shadow-xl duration-300  relative h-90 hover:-translate-y-1">
             <div class="h-56 bg-[url('../assets/images/rooms/deluxe-room-1.webp')] bg-cover bg-center relative flex items-center justify-center text-white p-4">
                 <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">
@@ -88,7 +88,7 @@
             </div>
             <div class="p-5 grow flex flex-col justify-between">
                 <div>
-                    <h4 class="text-lg font-bold text-slate-900">Superior Room</h4>
+                    <h4 class="text-lg font-bold text-slate-900">Deluxe Room</h4>
                     <p class="text-xs text-slate-500 mt-1 mb-1">
                         The ultimate luxury suite equipped with private living room, balcony and appliances.
                     </p>

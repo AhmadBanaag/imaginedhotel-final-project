@@ -32,8 +32,8 @@
             <button @click="filterCategory = 'family'" :class="filterCategory === 'family' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
                 Family Room
             </button>
-            <button @click="filterCategory = 'superior'" :class="filterCategory === 'superior' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
-                Superior / Suite
+            <button @click="filterCategory = 'deluxe'" :class="filterCategory === 'deluxe' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer">
+                Deluxe Room
             </button>
         </div>
         <div>
