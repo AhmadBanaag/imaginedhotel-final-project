@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AuditLogController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Public Hotel Landing Page (Accessible by all guests without login)
@@ -78,13 +80,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('dashboard');
 
     // Room Inventory
-    Route::get('/rooms', function () {
-        return view('admin.rooms.index');
-    })->name('rooms.index');
-
-    Route::get('/rooms/create', function () {
-        return view('admin.rooms.create');
-    })->name('rooms.create');
+    Route::resource('rooms', RoomController::class);
 
     // Categories & Rates
     Route::get('/categories', function () {
@@ -119,14 +115,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reports.index');
 
     // Audit Trails
-    Route::get('/audit-trails',
-    [AuditLogController::class, 'index'])
-    ->name('audit-trails.index');
+    Route::get('/audit-trails', [AuditLogController::class, 'index'])->name('audit-trails.index');
 
     // User Management
-    Route::get('/users', function () {
-        return view('admin.users.index');
-    })->name('users.index');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::patch('/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
+
 });
+
 
 require __DIR__ . '/auth.php';
