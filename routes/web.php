@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AuditLogController;
 use Illuminate\Support\Facades\Route;
 
 // Public Hotel Landing Page (Accessible by all guests without login)
@@ -118,9 +119,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reports.index');
 
     // Audit Trails
-    Route::get('/audit-trails', function () {
-        return view('admin.audit-trails.index');
-    })->name('audit-trails.index');
+    Route::get('/audit-trails',
+    [AuditLogController::class, 'index'])
+    ->name('audit-trails.index');
 
     // User Management
     Route::get('/users', function () {

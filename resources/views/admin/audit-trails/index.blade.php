@@ -3,49 +3,41 @@
 @section('page-subtitle', 'Audit Trails Log')
 
 @section('content')
-<div class="space-y-6" x-data="{
-    actionFilter: 'ALL',
-    searchQuery: '',
-    actions: [
-        { key: 'ALL', label: 'All Events', color: 'bg-slate-900 text-white'},
-        { key: 'ROOM_STATUS_CHANGE', label: 'Room Status', color: 'bg-blue-100 text-blue-800' },
-        { key: 'PAYMENT_VERIFIED', label: 'Payments', color: 'bg-emerald-100 text-emerald-800' },
-        { key: 'GUEST_CHECK_IN', label: 'Check-ins', color: 'bg-purple-100 text-purple-800' },
-        { key: 'GUEST_CHECK_OUT', label: 'Check-outs', color: 'bg-[#EDC92C] text-white' },
-        { key: 'CANCELLATION', label: 'Cancellations', color: 'bg-rose-100 text-rose-800' }
-    ],
-    logs: [
-        { timestamp: '{{ date('Y-m-d H:i:s') }}', actor: 'Admin (Ahmad Banaag)', action: 'ROOM_STATUS_CHANGE', badge: 'bg-blue-100 text-blue-800', details: 'Toggled Room 105 status to Unavailable (Housekeeping / Maintenance)', ip: '127.0.0.1' },
-        { timestamp: '{{ date('Y-m-d H:i:s', strtotime('-18 mins')) }}', actor: 'Admin (Carl James Ayag)', action: 'PAYMENT_VERIFIED', badge: 'bg-emerald-100 text-emerald-800', details: 'Approved GCash QR Reference REF-849102 (₱2,999.00) for IH-2026-8492', ip: '127.0.0.1' },
-        { timestamp: '{{ date('Y-m-d H:i:s', strtotime('-42 mins')) }}', actor: 'Admin (Kzyube Napoles)', action: 'GUEST_CHECK_IN', badge: 'bg-purple-100 text-purple-800', details: 'Checked in guest Maria Santos into Family Room 301 (IH-2026-7911)', ip: '127.0.0.1' },
-        { timestamp: '{{ date('Y-m-d H:i:s', strtotime('-2 hours')) }}', actor: 'Admin (Carl James Ayag)', action: 'GUEST_CHECK_OUT', badge: 'bg-[#EDC92C] text-white', details: 'Checked out guest Elena Mendoza from Superior Room 401 (IH-2026-8450)', ip: '127.0.0.1' },
-        { timestamp: '{{ date('Y-m-d H:i:s', strtotime('-5 hours')) }}', actor: 'Admin (Ahmad Banaag)', action: 'CANCELLATION', badge: 'bg-rose-100 text-rose-800', details: 'Processed cancellation for IH-2026-8398; retained 20% fee (₱200) and refunded ₱800', ip: '127.0.0.1' },
-        { timestamp: '{{ date('Y-m-d H:i:s', strtotime('-1 day')) }}', actor: 'Admin (Kzyube Napoles)', action: 'ROOM_STATUS_CHANGE', badge: 'bg-blue-100 text-blue-800', details: 'Marked Room 206 as Unavailable for AC servicing', ip: '127.0.0.1' }
-    ],
-    get filteredLogs() {
-        const q = this.searchQuery.trim().toLowerCase();
-        return this.logs.filter(log => {
-            const matchAction = this.actionFilter === 'ALL' || log.action === this.actionFilter;
-            const matchSearch = !q || log.actor.toLowerCase().includes(q) || log.details.toLowerCase().includes(q) || log.action.toLowerCase().includes(q);
-            return matchAction && matchSearch;
-        });
-    }
-}">
+@php
+    $actions = [
+        'ALL'                => ['label' => 'All Events',   'color' => 'bg-slate-900 text-white'],
+        'ROOM_STATUS_CHANGE' => ['label' => 'Room Status',  'color' => 'bg-blue-100 text-blue-800'],
+        'PAYMENT_VERIFIED'   => ['label' => 'Payments',     'color' => 'bg-emerald-100 text-emerald-800'],
+        'GUEST_CHECK_IN'     => ['label' => 'Check-ins',    'color' => 'bg-purple-100 text-purple-800'],
+        'GUEST_CHECK_OUT'    => ['label' => 'Check-outs',   'color' => 'bg-[#EDC92C] text-white'],
+        'CANCELLATION'       => ['label' => 'Cancellations','color' => 'bg-rose-100 text-rose-800'],
+    ];
+@endphp
+
+<div class="space-y-6">
     <!-- Filter & Search Bar -->
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div class="flex flex-wrap gap-1.5 text-xs">
-            <template x-for="act in actions" :key="act.key">
-                <button @click="actionFilter = act.key"
-                    :class="actionFilter === act.key ? `${act.color} font-bold` : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
-                    class="px-3 py-1.5 rounded-lg transition"
-                    x-text="act.label">
-                </button>
-            </template>
+            @foreach ($actions as $key => $act)
+                <a href="{{ route('admin.audit-trails.index', array_filter(['action_type' => $key, 'q' => $search])) }}"
+                   class="px-3 py-1.5 rounded-lg transition {{ $actionType === $key ? $act['color'] . ' font-bold' : 'bg-slate-100 text-slate-700 hover:bg-slate-200' }}">
+                    {{ $act['label'] }}
+                </a>
+            @endforeach
         </div>
-        <div class="relative w-full lg:w-72">
-            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input type="text" x-model="searchQuery" placeholder="Search staff name or log details..." class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
-        </div>
+
+        <form action="{{ route('admin.audit-trails.index') }}" method="GET" class="flex items-center gap-2 w-full lg:w-80">
+            <input type="hidden" name="action_type" value="{{ $actionType }}">
+            <div class="relative flex-1">
+                <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" name="q" value="{{ $search }}"
+                    placeholder="Search staff name or log details..."
+                    class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border-slate-200 focus:ring-[#EDC92C] focus:border-[#EDC92C]">
+            </div>
+            <button type="submit" class="px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition">
+                Search
+            </button>
+        </form>
     </div>
 
     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
@@ -54,9 +46,10 @@
                 <h3 class="font-bold text-slate-900 text-sm">Audit Trails Log</h3>
             </div>
             <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-[#06923E]">
-                <span x-text="filteredLogs.length"></span> Events Shown
+                {{ $logs->total() }} {{ Str::plural('Event', $logs->total()) }} Found
             </span>
         </div>
+
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs border-collapse">
                 <thead>
@@ -65,27 +58,63 @@
                         <th class="py-3.5 px-5">Officer / User</th>
                         <th class="py-3.5 px-5">Action Performed</th>
                         <th class="py-3.5 px-5">Details &amp; Affected Record</th>
-                        <th class="py-3.5 px-5 text-right">IP Address</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700 font-mono">
-                    <template x-for="(log, index) in filteredLogs" :key="index">
-                        <tr class="hover:bg-slate-50/80 transition">
-                            <td class="py-3 px-5 text-slate-500 whitespace-nowrap" x-text="log.timestamp"></td>
-                            <td class="py-3 px-5 font-sans font-semibold text-slate-900" x-text="log.actor"></td>
-                            <td class="py-3 px-5 font-sans">
-                                <span :class="log.badge" class="px-2 py-0.5 rounded-sm font-semibold text-[10px]" x-text="log.action"></span>
+                    @forelse ($logs as $log)
+                        @php
+                            $badgeClass = $actions[$log->action_type]['color'] ?? 'bg-slate-100 text-slate-700';
+                        @endphp
+                        <tr class="hover:bg-slate-50/80 transition align-top">
+                            <td class="py-3 px-5 text-slate-500 whitespace-nowrap">
+                                {{ $log->created_at?->format('Y-m-d H:i:s') }}
                             </td>
-                            <td class="py-3 px-5 font-sans" x-text="log.details"></td>
-                            <td class="py-3 px-5 text-right text-slate-400" x-text="log.ip"></td>
+                            <td class="py-3 px-5 font-sans font-semibold text-slate-900">
+                                {{ $log->actor_name }}
+                            </td>
+                            <td class="py-3 px-5 font-sans">
+                                <span class="{{ $badgeClass }} px-2 py-0.5 rounded-sm font-semibold text-[10px]">
+                                    {{ $log->action_type }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-5 font-sans">
+                                <p>{{ $log->details }}</p>
+
+                                @if (!empty($log->old_values) || !empty($log->new_values))
+                                    <details class="mt-1.5 text-[11px] text-slate-500">
+                                        <summary class="cursor-pointer font-semibold text-slate-600 hover:text-slate-900">
+                                            View value changes
+                                        </summary>
+                                        <div class="mt-1.5 grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                                            <div>
+                                                <span class="block font-sans font-semibold text-slate-400 uppercase text-[10px]">Old Values</span>
+                                                <pre class="whitespace-pre-wrap">{{ json_encode($log->old_values, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+                                            </div>
+                                            <div>
+                                                <span class="block font-sans font-semibold text-slate-400 uppercase text-[10px]">New Values</span>
+                                                <pre class="whitespace-pre-wrap">{{ json_encode($log->new_values, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+                                            </div>
+                                        </div>
+                                    </details>
+                                @endif
+                            </td>
                         </tr>
-                    </template>
-                    <tr x-show="filteredLogs.length === 0">
-                        <td colspan="5" class="py-10 text-center font-sans text-slate-400">No audit trail events match your filter.</td>
-                    </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="py-10 text-center font-sans text-slate-400">
+                                No audit trail events match your filter.
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
+
+        @if ($logs->hasPages())
+            <div class="p-4 border-t border-slate-100">
+                {{ $logs->links() }}
+            </div>
+        @endif
     </div>
 </div>
 @endsection
