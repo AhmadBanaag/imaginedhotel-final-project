@@ -1,6 +1,7 @@
 @extends('layouts.hotel')
 
 @section('main-section')
+
 @include('components.navbar')
 <!-- Hero Section with Booking Search Bar -->
 <section class="relative bg-[url('../assets/images/hero/kabacan-header.jpg')] bg-cover bg-center text-white py-70 px-4 sm:px-6 lg:px-8">
@@ -97,6 +98,9 @@
         </div>
     </div>
 </section>
+
+
+
 
 <!-- Reservation Workflow Guidance Banner 
 <section class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

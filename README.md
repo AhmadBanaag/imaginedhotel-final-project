@@ -57,3 +57,96 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # oop-pos-1-2627-sims
+
+## Carl's Module
+
+# ImaginedHotel - Room & User Management Modules (Carl's Module)
+
+This module implements the **Room Inventory Management** (CRUD operations, category pricing, and availability states) and **User Account Management** (role assignment and activation/deactivation controls) based on the project's Entity-Relationship Diagram (ERD).
+
+---
+
+## 🛠️ Features Completed
+
+### 1. Room Management (`/admin/rooms`)
+- **Add Rooms**: Create physical room units with custom identifiers (`Room 101`, `Room 201`, etc.) linked to designated Room Categories.
+- **Dynamic Categories & Pricing**: Seeded and synchronized with the ERD:
+  - *Single-bed room* (₱999.00 / night, 1 Guest)
+  - *Double-bed room* (₱1,999.00 / night, 2 Guests)
+  - *Family Room* (₱2,999.00 / night, 4 Guests)
+  - *Superior / Suite* (₱4,999.00 / night, 6 Guests)
+- **Room Status Management**: Track physical room readiness with availability states:
+  - `available` (Open for guest reservations)
+  - `booked` (Occupied by a guest)
+  - `unavailable` (Under maintenance / cleaning hold by admin)
+- **Edit & Update Rooms**: Modify room number, category assignment, or availability status with duplicate validation protection.
+- **Delete Rooms**: Remove room units from inventory with a single click.
+- **Dynamic Category Filtering**: Live client-side Alpine.js filtering (`All`, `Single`, `Double`, `Family`, `Superior`).
+
+### 2. User & Access Management (`/admin/users`)
+- **User Roles Synchronization**:
+  - `Role 1` = `admin` (System Administrator)
+  - `Role 2` = `guest` (Unregistered walk-in guest booking without an account)
+  - `Role 3` = `account_user` (Registered customer with credentials)
+- **Automatic Role Assignment**: When a new user registers through `/register`, they are automatically assigned `role_id = 3` (`account_user`).
+- **Account Activation / Deactivation**:
+  - Admins can toggle any user account between **Active** and **Deactivated** directly from the backoffice table.
+  - Deactivated accounts are restricted from logging into the portal.
+
+### 3. Guest Booking Calculation Flow (`/reservations/book`)
+- Multi-night stay calculation based on selected check-in and check-out dates.
+- Dynamic calculation of 50% downpayment deposit for Over-The-Counter (OTC) or full amount for E-Wallet payments.
+- Date validation ensuring check-out is strictly after check-in.
+
+---
+
+## 📂 Files Created & Modified
+
+### Database Migrations & Seeders
+- `database/migrations/..._create_user_roles_table.php` (Creates `user_roles` with `role_id` PK)
+- `database/migrations/..._add_role_and_status_to_users_table.php` (Adds `role_id`, `first_name`, `last_name`, `phone`, `is_active` to `users`)
+- `database/migrations/..._create_room_types_table.php` (Creates `room_types` with `PricePerNight`, `maxGuest`)
+- `database/migrations/..._create_rooms_table.php` (Creates `rooms` with FK `room_type_id`, `room_number`, `status`)
+- `database/seeders/ImaginedHotelInitialSeeder.php` (Initial seed data for roles, room types, and sample rooms)
+  
+
+### Models
+- `app/Models/User.php` (Updated fillable attributes and casts)
+- `app/Models/Room.php` (Custom PK `room_id`, `belongsTo(RoomType::class)`)
+- `app/Models/RoomType.php` (Custom PK `room_type_id`, `hasMany(Room::class)`)
+
+### Controllers
+- `app/Http/Controllers/Admin/RoomController.php` (Full CRUD operations for rooms)
+- `app/Http/Controllers/Admin/UserController.php` (Directory listing & account activation toggle)
+- `app/Http/Controllers/Auth/RegisteredUserController.php` (Auto-assigns `role_id = 3` to new signups)
+
+### Views & Routes
+- `resources/views/admin/rooms/index.blade.php` (Room inventory dashboard)
+- `resources/views/admin/rooms/create.blade.php` (Add room unit form)
+- `resources/views/admin/rooms/edit.blade.php` (Edit room unit form)
+- `resources/views/admin/users/index.blade.php` (User management directory & activation toggle)
+- `resources/views/reservations/create.blade.php` (Updated guest booking summary & cost calculation)
+- `routes/web.php` (Connected resource routes for rooms and users)
+
+---
+
+## User Dashboard Created
+- **Dynamic Synchronization**:
+  - Dynamic Personal Info
+  - Edit, Update of Personal info Not included yer    
+- **Dynamic Showcase of Available Rooms To Book**: Admins can Avail, Unavail Rooms and it will dynamically show it in the dashboard
+- **Account Activation / Deactivation**:
+  - Admins can toggle any user account between **Active** and **Deactivated** directly from the backoffice table and the dashboard will showcase it to the user.
+  - Deactivated accounts are restricted from logging into the portal.
+
+## 🚀 How to Run and Test
+
+1. **Start Laragon**: Ensure Apache and MySQL are running.
+2. **Start the Laravel Server**:
+   ```bash
+   php artisan serve
+   ```
+3. **Open the URLs in Browser**:
+   - **Room Inventory**: [http://127.0.0.1:8000/admin/rooms](http://127.0.0.1:8000/admin/rooms)
+   - **User Directory**: [http://127.0.0.1:8000/admin/users](http://127.0.0.1:8000/admin/users)
+   - **Guest Booking**: [http://127.0.0.1:8000/reservations/book](http://127.0.0.1:8000/reservations/book)
