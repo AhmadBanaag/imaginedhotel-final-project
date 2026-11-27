@@ -45,7 +45,17 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <!-- Form Column (8 cols) -->
         <div class="lg:col-span-8 space-y-6">
-            <form id="reservationForm" action="{{ route('reservations.confirmation') }}" method="GET">
+            <form id="reservation-form" action="{{ route('reservations.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="room_type" :value="roomType">
+
+                @if ($errors->any())
+                    <p role="alert" class="mb-4 text-rose-700">{{ $errors->first() }}</p>
+                @endif
+
+                @if (session('booking_status'))
+                    <p role="status" class="mb-4 text-emerald-700">{{ session('booking_status') }}</p>
+                @endif
                 <!-- Step 1: Guest Information -->
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs mb-3">
                     <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
@@ -190,14 +200,12 @@
                     </div>
 
                 <div class="flex gap-3 w-full pt-4">
-
-                    <button type="submit" form="reservationForm" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
-                        <i class="text-xs"></i> Pay as Guest
+                    <button type="submit" form="reservation-form" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
+                        {{ auth()->check() ? 'Confirm reservation' : 'Pay as Guest' }}
                     </button>
-
-                    <a form="reservationForm" type="submit" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">
-                        <i class="text-xs"></i> Login
-                    </a>
+                    @guest
+                        <a href="{{ route('login', ['checkout' => 1, 'room_type' => request('room_type', 'single')]) }}" class="flex-1 h-10 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-base shadow-md transition flex items-center justify-center gap-2">Log in</a>
+                    @endguest
                 </div>
             </div>
         </div>

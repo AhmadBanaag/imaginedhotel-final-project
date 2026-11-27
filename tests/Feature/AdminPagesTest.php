@@ -4,7 +4,16 @@ it('renders the main admin dashboard', function () {
     $this->get(route('admin.dashboard'))
         ->assertOk()
         ->assertSee('Total Rooms')
-        ->assertSee('Scheduled Arrivals');
+        ->assertSee('Scheduled Arrivals')
+        ->assertSee('Daily website views')
+        ->assertSee('No notifications yet.');
+
+    \Illuminate\Support\Facades\DB::table('admin_notifications')->insert([
+        'event_type' => 'customer_login',
+        'message' => 'A customer signed in.',
+        'created_at' => now(),
+    ]);
+    $this->get(route('admin.dashboard'))->assertOk()->assertSee('A customer signed in.');
 });
 
 it('renders every admin sidebar page with expected content', function (string $routeName, array $params, string $expectedText) {
