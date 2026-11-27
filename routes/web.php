@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\Admin\ReportController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -143,9 +144,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('payments.invoice');
 
     // Monthly Reports
-    Route::get('/reports', function () {
-        return view('admin.reports.index');
-    })->name('reports.index');
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
 
     // Audit Trails
     Route::get('/audit-trails', [AuditLogController::class, 'index'])->name('audit-trails.index');
