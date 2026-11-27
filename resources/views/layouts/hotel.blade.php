@@ -39,6 +39,10 @@
         @yield('reservation-create')
     </main>
 
+    <main class="grow">
+        @yield('admin')
+    </main>
+
     <!-- Site Footer -->
     <footer class="bg-[#202734] text-slate-400 text-sm border-t border-slate-800 pb-15 pt-15">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

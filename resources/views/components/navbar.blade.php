@@ -9,7 +9,7 @@
                     <a href="{{ route('landing') }}" class="flex items-center gap-2 group">
                          <i class="ri-hotel-line text-4xl text-[#EDC92C]"></i>
                         <div>
-                            <span class="text-white text-xl font-bold tracking-tight text-slate-900">ImaginedHotel</span>
+                            <span class="text-white text-xl font-bold tracking-tight">ImaginedHotel</span>
                         </div>
                     </a>
                 </div>

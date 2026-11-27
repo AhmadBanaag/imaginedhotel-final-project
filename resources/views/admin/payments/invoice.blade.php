@@ -1,15 +1,14 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Official Guest Invoice')
-@section('page-subtitle', 'Final guest checkout billing statement and payment verification record')
+@section('page-subtitle', 'Official Guest Invoice')
 
 @section('content')
 <div class="max-w-3xl mx-auto space-y-6">
-    <div class="flex items-center justify-between">
-        <a href="{{ route('admin.payments.index') }}" class="text-xs font-semibold text-indigo-600 hover:underline">
+    <div class="flex items-center justify-between print:hidden">
+        <a href="{{ route('admin.payments.index') }}" class="text-xs font-semibold text-[#06923E] hover:underline inline-flex items-center gap-1">
             &larr; Back to Payment Ledger
         </a>
-        <button onclick="window.print()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-2xs transition flex items-center gap-1.5">
+        <button type="button" onclick="window.print()" class="px-4 py-2 bg-slate-900 hover:bg-[#06923E] text-white font-semibold text-xs rounded-xl shadow-2xs transition flex items-center gap-1.5">
             <i class="ri-printer-line"></i> Print Official Invoice
         </button>
     </div>
@@ -17,32 +16,32 @@
     <!-- Printable Invoice Sheet -->
     <div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-12 space-y-8" id="invoiceSheet">
         <!-- Top Invoice Header -->
-        <div class="flex justify-between items-start pb-6 border-b border-slate-200">
-            <div>
-                <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg">IH</div>
-                    <div>
-                        <h2 class="text-xl font-bold tracking-tight text-slate-900">ImaginedHotel</h2>
-                        <span class="text-xs text-slate-500">UICTO, USM, Kabacan</span>
-                    </div>
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-slate-200">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-slate-900 text-[#EDC92C] flex items-center justify-center text-2xl">
+                    <i class="ri-hotel-line"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold tracking-tight text-slate-900">ImaginedHotel</h2>
+                    <span class="text-xs text-slate-500">UICTO, USM, Kabacan, Cotabato</span>
                 </div>
             </div>
-            <div class="text-right">
+            <div class="sm:text-right">
                 <span class="text-xs uppercase font-bold text-slate-400 block tracking-wider">Official Invoice</span>
-                <span class="text-lg font-mono font-bold text-slate-900">INV-2026-0849</span>
+                <span class="text-lg font-mono font-bold text-slate-900">INV-2026-{{ str_pad((string) ($id ?? 849), 4, '0', STR_PAD_LEFT) }}</span>
                 <span class="text-xs text-slate-400 block mt-0.5">Date: {{ date('F d, Y') }}</span>
             </div>
         </div>
 
         <!-- Bill To & Stay Summary -->
-        <div class="grid grid-cols-2 gap-6 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
             <div>
                 <span class="text-slate-400 uppercase font-semibold tracking-wider block mb-1">Billed To</span>
                 <strong class="text-sm font-bold text-slate-900 block">Juan Dela Cruz</strong>
                 <span class="text-slate-500">Contact: 0917-123-4567</span><br>
                 <span class="text-slate-500">Email: guest@example.com</span>
             </div>
-            <div class="text-right">
+            <div class="sm:text-right">
                 <span class="text-slate-400 uppercase font-semibold tracking-wider block mb-1">Stay Details</span>
                 <strong class="text-sm font-bold text-slate-900 block">Room 205 (Double-bed)</strong>
                 <span class="text-slate-500">Check-in: {{ date('M d, Y') }} (2:00 PM)</span><br>
@@ -82,7 +81,7 @@
                     <span>Subtotal:</span>
                     <span>₱1,999.00</span>
                 </div>
-                <div class="flex justify-between text-emerald-700 font-semibold">
+                <div class="flex justify-between text-[#06923E] font-semibold">
                     <span>Deposit Paid (50% OTC):</span>
                     <span>-₱1,000.00</span>
                 </div>
@@ -93,7 +92,7 @@
                 <hr class="border-slate-200 my-1">
                 <div class="flex justify-between text-base font-bold text-slate-900">
                     <span>Total Balance Due:</span>
-                    <span class="text-emerald-700">₱0.00 (PAID)</span>
+                    <span class="text-[#06923E]">₱0.00 (PAID)</span>
                 </div>
             </div>
         </div>

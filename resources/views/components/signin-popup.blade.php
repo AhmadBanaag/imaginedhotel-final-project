@@ -88,10 +88,6 @@
                                 class="px-2.5 py-1 rounded-lg bg-purple-50 text-purple-700 hover:bg-purple-100 font-medium border border-purple-200 transition">
                                 <i class="ri-shield-keyhole-line mr-0.5"></i> Admin
                             </button>
-                            <button type="button" @click="email = 'receptionist@imaginedhotel.com'; password = 'password'"
-                                class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-medium border border-indigo-200 transition">
-                                <i class="ri-user-star-line mr-0.5"></i> Receptionist
-                            </button>
                             <button type="button" @click="email = 'test@example.com'; password = 'password'"
                                 class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium border border-slate-200 transition">
                                 <i class="ri-user-line mr-0.5"></i> Guest User
