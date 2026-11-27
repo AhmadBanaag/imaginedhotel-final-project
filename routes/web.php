@@ -97,11 +97,15 @@ Route::middleware('auth')->group(function () {
 */
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Dashboard & Metrics
+   // Dashboard & Metrics
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+        $rooms = Room::with('roomType')->get();
+        $reservations = class_exists(\App\Models\Reservation::class)
+            ? \App\Models\Reservation::with(['user', 'room.roomType'])->latest()->take(10)->get()
+            : collect();
 
+        return view('admin.dashboard', compact('rooms', 'reservations'));
+    })->name('dashboard');
     // Room Inventory
     // dummy routes
     // Route::get('/rooms', function () {
