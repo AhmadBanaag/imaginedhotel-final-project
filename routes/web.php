@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Room;
+use App\Models\RoomType;
 
 // Public Hotel Landing Page (Accessible by all guests without login)
 Route::get('/', function () {
@@ -43,8 +45,27 @@ Route::get('/reservations/lookup', function () {
 
 // Default Breeze Dashboard route (Satisfies Breeze auth redirects & tests)
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    $role = Auth::user()->role_id;
+    // if admin
+    if ($role == 1) {
+        return redirect()->route('admin.dashboard');
+
+    }
+    //if account user
+
+    if ($role == 3) {
+        $roomTypes = RoomType::withCount(['rooms as available_rooms_count' => function ($query) {
+            $query->where('status', 'available');
+        }])->get();
+
+        $totalAvailableRooms = Room::where('status', 'available')->count();
+
+        return view('dashboard', compact('roomTypes', 'totalAvailableRooms'));
+    }
+    //if  guest
+    return redirect()->route('guest.dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');    
+    
 
 Route::middleware('auth')->group(function () {
     // Breeze Profile Routes

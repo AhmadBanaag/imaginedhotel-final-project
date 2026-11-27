@@ -33,5 +33,7 @@ class ImaginedHotelInitialSeeder extends Seeder
             ['room_type_id' => 2, 'room_number' => 'Room 201', 'status' => 'available', 'created_at' => now(), 'updated_at' => now()],
             ['room_type_id' => 3, 'room_number' => 'Room 301', 'status' => 'unavailable', 'created_at' => now(), 'updated_at' => now()],
         ]);
+
+       
     }
 }
