@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 <!-- Replace the dummy with the data from the database. -->
 @section('page-title', 'User & Staff Account Management')
-@section('page-subtitle', 'Manage registered guest profiles, receptionist credentials, and admin permissions')
+@section('page-subtitle', 'Manage registered guest profiles and admin permissions')
 
 @section('content')
 <div class="space-y-6">

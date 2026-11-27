@@ -37,8 +37,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
-        // Accounts created before the role migration have no role column.
-        $isCustomer = ! array_key_exists('role_id', $user->getAttributes())
+        // Accounts without an assigned role default to customer until assigned an admin role.
+        $isCustomer = $user->role_id === null
             || DB::table('user_roles')->where('role_id', $user->role_id)
                 ->whereIn('role_name', ['guest', 'account_user'])->exists();
 

@@ -3,16 +3,23 @@
 use App\Models\Guest;
 use App\Models\Payment;
 use App\Models\Reservation;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 it('shows saved bookings, pending payments and cancellations once in the bell', function () {
-    // Minimal room fixture while the inventory migrations live on the room branch.
-    Schema::create('rooms', function (Blueprint $table) {
-        $table->id('room_id');
-    });
-    $room = DB::table('rooms')->insertGetId(['room_id' => 1]);
+    $roomTypeId = DB::table('room_types')->insertGetId([
+        'name' => 'Single-bed-room',
+        'PricePerNight' => 999,
+        'maxGuest' => 1,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+    $room = DB::table('rooms')->insertGetId([
+        'room_type_id' => $roomTypeId,
+        'room_number' => 'Room 101',
+        'status' => 'available',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
     $guest = Guest::create(['first_name' => 'Test', 'last_name' => 'Guest',
         'phone_number' => '000', 'email' => 'guest@example.test']);
     $reservation = new Reservation;
