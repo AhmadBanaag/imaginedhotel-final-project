@@ -108,6 +108,7 @@ This module implements the **Room Inventory Management** (CRUD operations, categ
 - `database/migrations/..._create_room_types_table.php` (Creates `room_types` with `PricePerNight`, `maxGuest`)
 - `database/migrations/..._create_rooms_table.php` (Creates `rooms` with FK `room_type_id`, `room_number`, `status`)
 - `database/seeders/ImaginedHotelInitialSeeder.php` (Initial seed data for roles, room types, and sample rooms)
+  
 
 ### Models
 - `app/Models/User.php` (Updated fillable attributes and casts)
@@ -128,6 +129,15 @@ This module implements the **Room Inventory Management** (CRUD operations, categ
 - `routes/web.php` (Connected resource routes for rooms and users)
 
 ---
+
+## User Dashboard Created
+- **Dynamic Synchronization**:
+  - Dynamic Personal Info
+  - Edit, Update of Personal info Not included yer    
+- **Dynamic Showcase of Available Rooms To Book**: Admins can Avail, Unavail Rooms and it will dynamically show it in the dashboard
+- **Account Activation / Deactivation**:
+  - Admins can toggle any user account between **Active** and **Deactivated** directly from the backoffice table and the dashboard will showcase it to the user.
+  - Deactivated accounts are restricted from logging into the portal.
 
 ## 🚀 How to Run and Test
 
