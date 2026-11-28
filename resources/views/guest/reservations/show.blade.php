@@ -17,5 +17,8 @@
             <dt>Payment</dt><dd>No payment recorded</dd>
         @endforelse
     </dl>
+    @if ($booking->payments()->where('type', 'payment')->where('status', 'verified')->exists())
+        <a class="inline-block mt-4 rounded-lg bg-emerald-700 px-4 py-2 text-white" href="{{ route('guest.reservations.receipt', $booking) }}">View receipt</a>
+    @endif
 </section>
 @endsection

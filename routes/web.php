@@ -92,6 +92,15 @@ Route::middleware('auth')->group(function () {
             return view('guest.reservations.index', ['bookings' => $ownBookings()->latest('id')->get()]);
         })->name('reservations.index');
 
+        Route::get('/reservations/{id}/receipt', function ($id) use ($ownBookings) {
+            $booking = $ownBookings()->findOrFail($id);
+            $payments = $booking->payments()->with('paymentMethod')
+                ->where('type', 'payment')->where('status', 'verified')->orderBy('id')->get();
+            abort_if($payments->isEmpty(), 404);
+
+            return view('guest.reservations.receipt', compact('booking', 'payments'));
+        })->name('reservations.receipt');
+
         Route::get('/reservations/{id}', function ($id) use ($ownBookings) {
             return view('guest.reservations.show', ['booking' => $ownBookings()->findOrFail($id)]);
         })->name('reservations.show');
