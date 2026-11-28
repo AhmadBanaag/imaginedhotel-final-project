@@ -66,19 +66,19 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">First Name *</label>
-                            <input type="text" name="first_name" required value="{{ Auth::check() ? (Auth::user()->first_name ?? explode(' ', Auth::user()->name)[0]) : 'Juan' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="text" name="first_name" required value="{{ old('first_name', auth()->user()?->first_name) }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Last Name *</label>
-                            <input type="text" name="last_name" required value="{{ Auth::check() ? (Auth::user()->last_name ?? (explode(' ', Auth::user()->name)[1] ?? 'Dela Cruz')) : 'Dela Cruz' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="text" name="last_name" required value="{{ old('last_name', auth()->user()?->last_name) }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address (For E-Receipt) *</label>
-                            <input type="email" name="email" required value="{{ Auth::check() ? Auth::user()->email : 'guest@example.com' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="email" name="email" required value="{{ old('email', auth()->user()?->email) }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number *</label>
-                            <input type="tel" name="phone_number" required value="{{ Auth::check() ? (Auth::user()->phone ?? '09171234567') : '09171234567' }}" placeholder="e.g. 09171234567" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="tel" name="phone_number" required value="{{ old('phone_number', auth()->user()?->phone) }}" placeholder="e.g. 09171234567" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                     </div>
                 </div>
