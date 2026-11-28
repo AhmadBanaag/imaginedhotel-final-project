@@ -23,69 +23,25 @@
                         <th class="py-4 px-6">Booking Code</th>
                         <th class="py-4 px-6">Room Category</th>
                         <th class="py-4 px-6">Check-in / Check-out</th>
-                        <th class="py-4 px-6">Payment Method</th>
-                        <th class="py-4 px-6">Total / Paid</th>
+                        
+                        <th class="py-4 px-6">Stay total</th>
                         <th class="py-4 px-6">Status</th>
                         <th class="py-4 px-6 text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700">
-                    <!-- Reservation 1: Active -->
-                    <tr class="hover:bg-slate-50/80 transition">
-                        <td class="py-4 px-6 font-mono font-bold text-indigo-600">IH-2026-8492</td>
-                        <td class="py-4 px-6 font-semibold text-slate-900">
-                            Double-bed Room (Unit 205)
-                        </td>
-                        <td class="py-4 px-6">
-                            {{ date('M d, Y') }} &rarr; {{ date('M d, Y', strtotime('+1 day')) }}
-                        </td>
-                        <td class="py-4 px-6">
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-medium">
-                                <i class="ri-wallet-3-line"></i> 50% OTC Deposit
-                            </span>
-                        </td>
-                        <td class="py-4 px-6">
-                            <div class="font-bold text-slate-900">₱1,999</div>
-                            <span class="text-[10px] text-emerald-600">Paid: ₱1,000 (Bal: ₱999)</span>
-                        </td>
-                        <td class="py-4 px-6">
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                                Confirmed
-                            </span>
-                        </td>
-                        <td class="py-4 px-6 text-right space-x-2">
-                            <a href="{{ route('guest.reservations.show', 1) }}" class="text-indigo-600 font-semibold hover:underline">Details</a>
-                            <a href="{{ route('reservations.confirmation') }}" class="text-slate-500 hover:text-slate-900">Receipt</a>
-                        </td>
-                    </tr>
-
-                    <!-- Reservation 2: Past Stays -->
-                    <tr class="hover:bg-slate-50/80 transition">
-                        <td class="py-4 px-6 font-mono font-bold text-slate-500">IH-2026-1029</td>
-                        <td class="py-4 px-6 font-semibold text-slate-900">
-                            Single-bed Room (Unit 102)
-                        </td>
-                        <td class="py-4 px-6">
-                            Nov 10, 2026 &rarr; Nov 12, 2026
-                        </td>
-                        <td class="py-4 px-6">
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-medium">
-                                <i class="ri-qr-code-line"></i> E-Wallet QR
-                            </span>
-                        </td>
-                        <td class="py-4 px-6">
-                            <div class="font-bold text-slate-900">₱1,998</div>
-                            <span class="text-[10px] text-slate-500">Fully Settled</span>
-                        </td>
-                        <td class="py-4 px-6">
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">
-                                Checked Out
-                            </span>
-                        </td>
-                        <td class="py-4 px-6 text-right">
-                            <a href="{{ route('guest.reservations.show', 2) }}" class="text-slate-600 font-semibold hover:underline">View History</a>
-                        </td>
-                    </tr>
+                    @forelse ($bookings as $booking)
+                        <tr>
+                            <td class="py-4 px-6">{{ $booking->reservation_code }}</td>
+                            <td>{{ $booking->room->roomType->name }} · {{ $booking->room->room_number }}</td>
+                            <td>{{ $booking->check_in_date }} → {{ $booking->check_out_date }}</td>
+                            <td>₱{{ number_format($booking->total_amount, 2) }}</td>
+                            <td>{{ ucfirst($booking->status) }}</td>
+                            <td class="text-right px-6"><a class="underline" href="{{ route('guest.reservations.show', $booking) }}">Details</a></td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="6" class="p-6">No reservations yet.</td></tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

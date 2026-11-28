@@ -28,7 +28,7 @@
         return this.price * this.nights;
     },
     get otcDeposit() {
-        return Math.round(this.totalCost * 0.5);
+        return Math.round(this.totalCost * 50) / 100;
     },
     get otcRemaining() {
         return this.totalCost - this.otcDeposit;
@@ -44,7 +44,14 @@
     </div>
 
     <!-- Booking Form Wrapping Both Columns -->
-    <form action="{{ route('reservations.confirmation') }}" method="GET">
+    <form id="reservation-form" action="{{ route('reservations.store') }}" method="POST">
+        @csrf
+        @if ($errors->any())
+            <p role="alert">{{ $errors->first() }}</p>
+        @endif
+        @if (session('booking_status'))
+            <p role="status">{{ session('booking_status') }}</p>
+        @endif
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
             <!-- Form Column (8 cols) -->
             <div class="lg:col-span-8 space-y-6">
@@ -59,19 +66,19 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">First Name *</label>
-                            <input type="text" name="first_name" required value="{{ Auth::check() ? (Auth::user()->first_name ?? explode(' ', Auth::user()->name)[0]) : 'Juan' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="text" name="first_name" required value="{{ old('first_name', auth()->user()?->first_name) }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Last Name *</label>
-                            <input type="text" name="last_name" required value="{{ Auth::check() ? (Auth::user()->last_name ?? (explode(' ', Auth::user()->name)[1] ?? 'Dela Cruz')) : 'Dela Cruz' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="text" name="last_name" required value="{{ old('last_name', auth()->user()?->last_name) }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address (For E-Receipt) *</label>
-                            <input type="email" name="email" required value="{{ Auth::check() ? Auth::user()->email : 'guest@example.com' }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="email" name="email" required value="{{ old('email', auth()->user()?->email) }}" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number *</label>
-                            <input type="tel" name="phone_number" required value="{{ Auth::check() ? (Auth::user()->phone ?? '09171234567') : '09171234567' }}" placeholder="e.g. 09171234567" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="tel" name="phone_number" required value="{{ old('phone_number', auth()->user()?->phone) }}" placeholder="e.g. 09171234567" class="w-full text-sm rounded-xl border-slate-200 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
                     </div>
                 </div>
@@ -120,7 +127,7 @@
                             <input type="radio" name="payment_method" value="ewallet" x-model="paymentMethod" class="mt-1 text-[#EDC92C] focus:ring-[#EDC92C]">
                             <div>
                                 <span class="block text-sm font-bold text-black">E-Wallet (GCash / Maya QR)</span>
-                                <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Scan QR &amp; instant verification</span>
+                                <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Submit your reference for verification</span>
                                 <p class="text-xs text-slate-500 mt-1">Pay full amount (₱<span x-text="totalCost"></span>) via online wallet QR.</p>
                             </div>
                         </label>
@@ -194,12 +201,12 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-3 w-full pt-6">
-                        <button type="submit" class="flex-1 h-11 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer">
-                            <i class="ri-check-line"></i> Confirm Booking
+                        <button type="submit" form="reservation-form" class="flex-1 h-11 rounded-xl bg-[#EDC92C] hover:bg-[#06923E] text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer">
+                            <i class="ri-check-line"></i> {{ auth()->check() ? 'Confirm reservation' : 'Pay as Guest' }}
                         </button>
 
                         @guest
-                        <a href="{{ route('signin') }}" class="flex-1 h-11 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition flex items-center justify-center gap-1.5">
+                        <a href="{{ route('login', ['checkout' => 1, 'room_type' => request('room_type', 'single')]) }}" class="flex-1 h-11 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition flex items-center justify-center gap-1.5">
                             <i class="ri-user-line"></i> Sign In
                         </a>
                         @endguest

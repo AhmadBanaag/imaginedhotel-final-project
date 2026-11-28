@@ -23,60 +23,14 @@
         </div>
     </div>
 
-    <!-- Active / Upcoming Stay Card -->
-    <div class="bg-linear-to-tr from-slate-900 to-indigo-950 rounded-3xl text-white p-6 sm:p-8 shadow-xl mb-8 relative overflow-hidden">
-        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div class="space-y-3">
-                <div class="flex items-center gap-2">
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500 text-white">
-                        Upcoming Active Stay
-                    </span>
-                    <span class="text-xs text-indigo-200 font-mono">Code: IH-2026-8492</span>
-                </div>
-                <h3 class="text-2xl font-bold tracking-tight">Double-bed Room (Unit 205)</h3>
-                <div class="flex flex-wrap gap-4 text-xs text-slate-300">
-                    <span><i class="ri-calendar-line text-amber-400 mr-1"></i> {{ date('M d, Y') }} &rarr; {{ date('M d, Y', strtotime('+1 day')) }}</span>
-                    <span><i class="ri-wallet-line text-blue-400 mr-1"></i> 50% OTC Deposit Paid (₱1,000)</span>
-                    <span><i class="ri-map-pin-line text-rose-400 mr-1"></i> UICTO, USM, Kabacan</span>
-                </div>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-2 shrink-0">
-                <a href="{{ route('guest.reservations.show', 1) }}" class="px-4 py-2.5 rounded-xl bg-white text-slate-900 text-xs font-bold hover:bg-slate-100 transition text-center">
-                    Manage Booking
-                </a>
-                <a href="{{ route('reservations.confirmation') }}" class="px-4 py-2.5 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-white text-xs font-semibold transition text-center border border-indigo-500">
-                    Download E-Receipt
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Stats Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs">
-            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-3">
-                <i class="ri-hotel-bed-line"></i>
-            </div>
-            <div class="text-2xl font-bold text-slate-900">1</div>
-            <span class="text-xs text-slate-500 font-medium">Active / Upcoming Reservations</span>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-3">
-                <i class="ri-checkbox-circle-line"></i>
-            </div>
-            <div class="text-2xl font-bold text-slate-900">2</div>
-            <span class="text-xs text-slate-500 font-medium">Completed Past Stays</span>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-3">
-                <i class="ri-user-settings-line"></i>
-            </div>
-            <div class="text-sm font-bold text-slate-900">Verified Account</div>
-            <span class="text-xs text-slate-500 font-medium">Profile details &amp; password</span>
-            <a href="{{ route('profile.edit') }}" class="text-xs text-indigo-600 hover:underline block mt-2">Edit Account &rarr;</a>
-        </div>
-    </div>
+    <section class="bg-white border rounded-xl p-6">
+        <h2 class="font-bold">Latest reservation</h2>
+        @if ($latest)
+            <a class="text-indigo-700 underline" href="{{ route('guest.reservations.show', $latest) }}">{{ $latest->reservation_code }} · {{ $latest->room->room_number }}</a>
+        @else
+            <p>No reservations yet.</p>
+        @endif
+    </section>
+    <a href="{{ route('profile.edit') }}">Edit account</a>
 </div>
 @endsection

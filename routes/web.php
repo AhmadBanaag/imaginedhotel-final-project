@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\Room;
 use App\Models\RoomType;
@@ -25,6 +27,9 @@ Route::get('/rooms/{id}', function ($id) {
 })->name('rooms.show');
 
 // Reservation Booking Flow
+Route::post('/reservations', [ReservationController::class, 'store'])
+    ->name('reservations.store');
+
 Route::get('/reservations/book', function () {
     return view('reservations.create');
 })->name('reservations.create');
@@ -76,16 +81,28 @@ Route::middleware('auth')->group(function () {
 
     // Guest Portal
     Route::prefix('guest')->name('guest.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('guest.dashboard');
+        $ownBookings = fn () => \App\Models\Reservation::with(['room.roomType', 'guest'])
+            ->whereHas('guest', fn ($query) => $query->where('user_id', auth()->id()));
+
+        Route::get('/dashboard', function () use ($ownBookings) {
+            return view('guest.dashboard', ['latest' => $ownBookings()->latest('id')->first()]);
         })->name('dashboard');
 
-        Route::get('/reservations', function () {
-            return view('guest.reservations.index');
+        Route::get('/reservations', function () use ($ownBookings) {
+            return view('guest.reservations.index', ['bookings' => $ownBookings()->latest('id')->get()]);
         })->name('reservations.index');
 
-        Route::get('/reservations/{id}', function ($id) {
-            return view('guest.reservations.show', ['id' => $id]);
+        Route::get('/reservations/{id}/receipt', function ($id) use ($ownBookings) {
+            $booking = $ownBookings()->findOrFail($id);
+            $payments = $booking->payments()->with('paymentMethod')
+                ->where('type', 'payment')->where('status', 'verified')->orderBy('id')->get();
+            abort_if($payments->isEmpty(), 404);
+
+            return view('guest.reservations.receipt', compact('booking', 'payments'));
+        })->name('reservations.receipt');
+
+        Route::get('/reservations/{id}', function ($id) use ($ownBookings) {
+            return view('guest.reservations.show', ['booking' => $ownBookings()->findOrFail($id)]);
         })->name('reservations.show');
     });
 });
@@ -99,12 +116,38 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
    // Dashboard & Metrics
     Route::get('/dashboard', function () {
-        $rooms = Room::with('roomType')->get();
-        $reservations = class_exists(\App\Models\Reservation::class)
-            ? \App\Models\Reservation::with(['user', 'room.roomType'])->latest()->take(10)->get()
-            : collect();
+        $today = now('Asia/Manila')->toImmutable()->startOfDay();
+        $ranges = [7 => 'Last 7 days', 21 => 'Last 3 weeks', 30 => 'Last month', 90 => 'Last 3 months'];
+        $days = request()->integer('days', 7);
+        if (! isset($ranges[$days])) {
+            $days = 7;
+        }
+        $firstDay = $today->subDays($days - 1);
+        $counts = DB::table('daily_page_views')
+            ->whereBetween('view_date', [$firstDay->toDateString(), $today->toDateString()])
+            ->pluck('views', 'view_date');
+        $bucketDays = match ($days) {
+            7 => 1,
+            90 => 30,
+            default => 7,
+        };
+        $viewTotals = [];
+        for ($end = $today; $end >= $firstDay; $end = $start->subDay()) {
+            $start = $end->subDays($bucketDays - 1)->max($firstDay);
+            $label = $start->format('M j');
+            if ($start < $end) {
+                $label .= ' – '.$end->format('M j');
+            }
+            $viewTotals[$label] = 0;
+            for ($day = $start; $day <= $end; $day = $day->addDay()) {
+                $viewTotals[$label] += (int) $counts->get($day->toDateString(), 0);
+            }
+        }
 
-        return view('admin.dashboard', compact('rooms', 'reservations'));
+        $rooms = Room::with('roomType')->get();
+        $reservations = \App\Models\Reservation::with(['guest', 'room.roomType'])->latest()->take(10)->get();
+
+        return view('admin.dashboard', compact('rooms', 'reservations', 'viewTotals', 'ranges', 'days'));
     })->name('dashboard');
     // Room Inventory
     // dummy routes
@@ -143,9 +186,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reservations.show');
 
     // Payments & Invoice
-    Route::get('/payments', function () {
-        return view('admin.payments.index');
-    })->name('payments.index');
+    Route::middleware(['auth', 'can:verify-payments'])->group(function () {
+        Route::get('/payments', function () {
+            $payments = \App\Models\Payment::with(['reservation', 'paymentMethod'])
+                ->where('type', 'payment')->latest('id')->paginate(25);
+
+            return view('admin.payments.index', compact('payments'));
+        })->name('payments.index');
+
+        Route::patch('/payments/{payment}/verify', function (\App\Models\Payment $payment) {
+            $updated = \App\Models\Payment::whereKey($payment->id)
+                ->where('type', 'payment')->where('status', 'pending')
+                ->update(['status' => 'verified', 'verified_by' => auth()->id(), 'paid_at' => now()]);
+
+            return redirect()->route('admin.payments.index')->with('status',
+                $updated ? 'Payment verified.' : 'This payment is no longer pending.');
+        })->name('payments.verify');
+    });
 
     Route::get('/payments/invoice/{id}', function ($id) {
         return view('admin.payments.invoice', ['id' => $id]);
