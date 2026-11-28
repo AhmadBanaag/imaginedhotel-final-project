@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Models\Room;
+use App\Models\RoomType;
 
 // Public Hotel Landing Page (Accessible by all guests without login)
 Route::get('/', function () {
@@ -48,8 +50,27 @@ Route::get('/reservations/lookup', function () {
 
 // Default Breeze Dashboard route (Satisfies Breeze auth redirects & tests)
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    $role = Auth::user()->role_id;
+    // if admin
+    if ($role == 1) {
+        return redirect()->route('admin.dashboard');
+
+    }
+    //if account user
+
+    if ($role == 3) {
+        $roomTypes = RoomType::withCount(['rooms as available_rooms_count' => function ($query) {
+            $query->where('status', 'available');
+        }])->get();
+
+        $totalAvailableRooms = Room::where('status', 'available')->count();
+
+        return view('dashboard', compact('roomTypes', 'totalAvailableRooms'));
+    }
+    //if  guest
+    return redirect()->route('guest.dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');    
+    
 
 Route::middleware('auth')->group(function () {
     // Breeze Profile Routes
@@ -76,12 +97,12 @@ Route::middleware('auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin Backoffice Routes
+| Admin & Receptionist Backoffice Routes
 |--------------------------------------------------------------------------
 */
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Dashboard & Metrics
+   // Dashboard & Metrics
     Route::get('/dashboard', function () {
         $today = now('Asia/Manila')->toImmutable()->startOfDay();
         $ranges = [7 => 'Last 7 days', 21 => 'Last 3 weeks', 30 => 'Last month', 90 => 'Last 3 months'];
@@ -111,17 +132,28 @@ Route::prefix('admin')->name('admin.')->group(function () {
             }
         }
 
-        return view('admin.dashboard', compact('viewTotals', 'ranges', 'days'));
+        $rooms = Room::with('roomType')->get();
+        $reservations = \App\Models\Reservation::with(['guest', 'room.roomType'])->latest()->take(10)->get();
+
+        return view('admin.dashboard', compact('rooms', 'reservations', 'viewTotals', 'ranges', 'days'));
     })->name('dashboard');
-
     // Room Inventory
-    Route::get('/rooms', function () {
-        return view('admin.rooms.index');
-    })->name('rooms.index');
+    // dummy routes
+    // Route::get('/rooms', function () {
+    //     return view('admin.rooms.index');
+    // })->name('rooms.index');
+    
+    // this is redundant and can cause issue since they are first before below i created
+    // Route::get('/rooms', function () {
+    //     return view('admin.rooms.index');
+    // })->name('rooms.index');
 
-    Route::get('/rooms/create', function () {
-        return view('admin.rooms.create');
-    })->name('rooms.create');
+    // Route::get('/rooms/create', function () {
+    //     return view('admin.rooms.create');
+    // })->name('rooms.create');
+
+    Route::resource('rooms', App\Http\Controllers\Admin\RoomController::class);  // to link to the admin room controller
+
 
     // Categories & Rates
     Route::get('/categories', function () {
@@ -134,7 +166,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reservations.index');
 
     Route::get('/reservations/create', function () {
-        return view('admin.reservations.create');
+        return view('reservations.create');
     })->name('reservations.create');
 
     Route::get('/reservations/{id}', function ($id) {
@@ -159,11 +191,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/audit-trails', function () {
         return view('admin.audit-trails.index');
     })->name('audit-trails.index');
+    //goneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+    // // User Management
+    // Route::get('/users', function () {
+    //     return view('admin.users.index');
+    // })->name('users.index');
+    //this is the new one: to link to the admin user controller
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+    //is it connected properly??????????????????
+    Route::patch('/users/{id}/toggle-status', [App\Http\Controllers\Admin\UserController::class, 'toggleStatus'])->name('users.toggle-status');
+    
 
-    // User Management
-    Route::get('/users', function () {
-        return view('admin.users.index');
-    })->name('users.index');
 });
+
 
 require __DIR__ . '/auth.php';

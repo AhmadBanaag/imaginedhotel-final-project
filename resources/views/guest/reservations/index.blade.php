@@ -12,7 +12,7 @@
                 <i class="ri-add-line"></i> New Booking
             </a>
         </div>
-    </div>
+    </div>  
 
     <!-- Reservations Table Card -->
     <div class="bg-white rounded-3xl border border-slate-200 shadow-2xs overflow-hidden">
