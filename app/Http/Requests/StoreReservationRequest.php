@@ -27,6 +27,7 @@ class StoreReservationRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'phone_number' => ['required', 'string', 'max:30'],
+            'room_type' => ['required', 'string', 'in:single,double,family,superior'],
             'check_in' => ['required', 'date_format:Y-m-d', 'after_or_equal:today'],
             'check_out' => ['required', 'date_format:Y-m-d', 'after:check_in'],
             'payment_method' => ['required', 'in:otc,ewallet'],

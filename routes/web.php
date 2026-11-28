@@ -81,16 +81,19 @@ Route::middleware('auth')->group(function () {
 
     // Guest Portal
     Route::prefix('guest')->name('guest.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('guest.dashboard');
+        $ownBookings = fn () => \App\Models\Reservation::with(['room.roomType', 'guest'])
+            ->whereHas('guest', fn ($query) => $query->where('user_id', auth()->id()));
+
+        Route::get('/dashboard', function () use ($ownBookings) {
+            return view('guest.dashboard', ['latest' => $ownBookings()->latest('id')->first()]);
         })->name('dashboard');
 
-        Route::get('/reservations', function () {
-            return view('guest.reservations.index');
+        Route::get('/reservations', function () use ($ownBookings) {
+            return view('guest.reservations.index', ['bookings' => $ownBookings()->latest('id')->get()]);
         })->name('reservations.index');
 
-        Route::get('/reservations/{id}', function ($id) {
-            return view('guest.reservations.show', ['id' => $id]);
+        Route::get('/reservations/{id}', function ($id) use ($ownBookings) {
+            return view('guest.reservations.show', ['booking' => $ownBookings()->findOrFail($id)]);
         })->name('reservations.show');
     });
 });
@@ -174,9 +177,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('reservations.show');
 
     // Payments & Invoice
-    Route::get('/payments', function () {
-        return view('admin.payments.index');
-    })->name('payments.index');
+    Route::middleware(['auth', 'can:verify-payments'])->group(function () {
+        Route::get('/payments', function () {
+            $payments = \App\Models\Payment::with(['reservation', 'paymentMethod'])
+                ->where('type', 'payment')->latest('id')->paginate(25);
+
+            return view('admin.payments.index', compact('payments'));
+        })->name('payments.index');
+
+        Route::patch('/payments/{payment}/verify', function (\App\Models\Payment $payment) {
+            $updated = \App\Models\Payment::whereKey($payment->id)
+                ->where('type', 'payment')->where('status', 'pending')
+                ->update(['status' => 'verified', 'verified_by' => auth()->id(), 'paid_at' => now()]);
+
+            return redirect()->route('admin.payments.index')->with('status',
+                $updated ? 'Payment verified.' : 'This payment is no longer pending.');
+        })->name('payments.verify');
+    });
 
     Route::get('/payments/invoice/{id}', function ($id) {
         return view('admin.payments.invoice', ['id' => $id]);

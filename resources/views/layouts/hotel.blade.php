@@ -21,6 +21,7 @@
     <!-- Main Dynamic Content -->
     <main class="grow -mt-6 mb-15"> 
         @yield('main-section')
+        @yield('content')
     </main>
 
     <main class="grow">

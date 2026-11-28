@@ -28,7 +28,7 @@
         return this.price * this.nights;
     },
     get otcDeposit() {
-        return Math.round(this.totalCost * 0.5);
+        return Math.round(this.totalCost * 50) / 100;
     },
     get otcRemaining() {
         return this.totalCost - this.otcDeposit;
@@ -127,7 +127,7 @@
                             <input type="radio" name="payment_method" value="ewallet" x-model="paymentMethod" class="mt-1 text-[#EDC92C] focus:ring-[#EDC92C]">
                             <div>
                                 <span class="block text-sm font-bold text-black">E-Wallet (GCash / Maya QR)</span>
-                                <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Scan QR &amp; instant verification</span>
+                                <span class="block text-xs text-[#06923E] font-semibold mt-0.5">Submit your reference for verification</span>
                                 <p class="text-xs text-slate-500 mt-1">Pay full amount (₱<span x-text="totalCost"></span>) via online wallet QR.</p>
                             </div>
                         </label>
